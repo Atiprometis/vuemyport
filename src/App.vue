@@ -2,6 +2,9 @@
 
   <router-link to="/">HOME</router-link>
   <router-link to="/about">about</router-link>
+  <router-link to="/about">about</router-link>
+  <router-link to="/about">about</router-link>
+  <router-link to="/about">about</router-link>
   <router-view ></router-view>
   
   <img alt="Vue logo" src="./assets/logo.png">
