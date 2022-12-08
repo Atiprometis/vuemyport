@@ -2,11 +2,12 @@
 
   <router-link to="/">HOME</router-link>
   <router-link to="/about">about</router-link>
- 
-  <div>
-    <button class="btn btn-success">click</button>
-  </div>
+ <router-view to="/navber"></router-view>
+  
 
+
+
+  
   
   <router-view ></router-view>
   
