@@ -1,12 +1,12 @@
 <template>
     <div class="con d-flex justify-content-end ">
         <div class="img-b1 d-flex flex-column align-items-center justify-content-center">
-               <h1>I am a Front-end</h1>
-               <h2>Web Developer</h2>
+               <h1 class="ab1">I am a Front-end</h1>
+               <h2 class="ab2">Web Developer</h2>
                <p class="aboutmeskill">
-                HTML,CSS,JACASCRIPT
+                HTML,CSS,JACASCRIPT,มาม่า
                </p>
-                <img class="b1" :src="require(`../../img/b1.png`)" alt="">
+                <img class="b1" :src="require(`../../assets/img/b1.png`)" alt="">
         </div>
         <div class="bigblock ">
             
@@ -50,5 +50,8 @@ export default{
     right: -60%;
     width: 500px;
     height: 400px;
+}
+.ab1{
+
 }
 </style>
