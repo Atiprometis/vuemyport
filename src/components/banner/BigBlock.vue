@@ -46,51 +46,6 @@ export default{
 
 <style>
 
-
-/* .ab1 , .ab2{
-    cursor: pointer;
-} */
-.ab1:hover ~ .line{
-    background-color: #ca97ca;
-    width: 28%;
-    
-    /* border-bottom: 5px solid gold; */
-}
-.allab{
-    cursor: pointer;
-}
-.allab:hover ~ .line{
-    background-color: #f4c152;
-    width: 28%;
-}
-.line{
-
-    height: 5px;
-    width: 0%;
-    transition: width 1s;
-    background-color: #f4c152;
-}
-
-.ab1{
-    line-height: 20px;
-    font-size: 2.5rem;
-    transition: font-size 1s;
-}
-.ab1:hover{
-    font-size: 3rem;
-    
-}
-.ab2{
-    font-size: 2rem;
-    transition: font-size 1s;
-}
-.ab2:hover{
-    font-size: 2.5rem;
-
-}
-
-
-
 .con{
     width: 100%;
 }
@@ -110,87 +65,7 @@ export default{
     background-color: #2e6c65;
     color: #fff;;
 }
-@keyframes move-bg {
-                0% {
-                    right: -60%;
-                }
-                50%{
-                    right: -61%;
-                    width: 530px;
-                    /* top: -1%; */
-                }
-                
-                100% {
-                    right: -60%;
-                    top: 0;
-                }
-            }
-@keyframes move-right {
-                0% {
-                    right: -60%;
-                }
-                50%{
-                    right: -59.5%;
-                    top: 5px;
-                    /* top: -1%; */
-                }
-                
-                100% {
-                    right: -60%;
-                    top: 0;
-                }
-            }            
 
-@keyframes spin {
-                from {
-                    transform: rotate(270deg);
-                }
-                to {
-                    transform: rotate(630deg);
-                }
-            }
-@keyframes night {
-                0% {
-                    opacity: 1;
-                }
-                50%{
-                    opacity: 0.4;
-                }
-                
-                100% {
-                    opacity: 1;
-                }
-                
-            }
-@keyframes sun {
-                0% {
-                    opacity: 0;
-                }
-                50%{
-                    opacity: 1;
-                }
-                
-                100% {
-                    opacity: 0;
-                }
-            }
-@keyframes fate-top {
-                0% {
-                    top: 8%;
-                    right: -58%;
-                    opacity: 0;
-                }
-                30% {
-                    top: 4%;
-                    right: -58%;
-                    opacity: 1;
-                }
-                100% {
-                    top: 8%;
-                    right: -58%;
-                    opacity: 0;
-                }
-            }
 .b1{
     z-index: 4;
     position: absolute;
@@ -297,7 +172,123 @@ export default{
    
 }
 
+.ab1:hover ~ .line{
+    background-color: #ca97ca;
+    width: 28%;
+}
+.allab{
+    cursor: pointer;
+}
+.allab:hover ~ .line{
+    background-color: #f4c152;
+    width: 28%;
+}
+.line{
 
+    height: 5px;
+    width: 0%;
+    transition: width 1s;
+    background-color: #f4c152;
+}
 
+.ab1{
+    line-height: 20px;
+    font-size: 2.5rem;
+    transition: font-size 1s;
+}
+.ab1:hover{
+    font-size: 3rem;
+    
+}
+.ab2{
+    font-size: 2rem;
+    transition: font-size 1s;
+}
+.ab2:hover{
+    font-size: 2.5rem;
+
+}
+
+@keyframes move-bg {
+                0% {
+                    right: -60%;
+                }
+                50%{
+                    right: -61%;
+                    width: 530px;
+                    /* top: -1%; */
+                }
+                
+                100% {
+                    right: -60%;
+                    top: 0;
+                }
+            }
+@keyframes move-right {
+                0% {
+                    right: -60%;
+                }
+                50%{
+                    right: -59.5%;
+                    top: 5px;
+                    /* top: -1%; */
+                }
+                
+                100% {
+                    right: -60%;
+                    top: 0;
+                }
+            }            
+
+@keyframes spin {
+                from {
+                    transform: rotate(270deg);
+                }
+                to {
+                    transform: rotate(630deg);
+                }
+            }
+@keyframes night {
+                0% {
+                    opacity: 1;
+                }
+                50%{
+                    opacity: 0.4;
+                }
+                
+                100% {
+                    opacity: 1;
+                }
+                
+            }
+@keyframes sun {
+                0% {
+                    opacity: 0;
+                }
+                50%{
+                    opacity: 1;
+                }
+                
+                100% {
+                    opacity: 0;
+                }
+            }
+@keyframes fate-top {
+                0% {
+                    top: 8%;
+                    right: -58%;
+                    opacity: 0;
+                }
+                30% {
+                    top: 4%;
+                    right: -58%;
+                    opacity: 1;
+                }
+                100% {
+                    top: 8%;
+                    right: -58%;
+                    opacity: 0;
+                }
+            }
 
 </style>

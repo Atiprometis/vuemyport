@@ -3,7 +3,8 @@
     <NavBarview/>
 
     <BigBlock/>  
-
+    
+    <MyBackGround/>  
  <!-- <router-view></router-view> -->
  
  
@@ -22,6 +23,7 @@
 
 import NavBarview from './components/navbar/NavBar'
 import BigBlock from './components/banner/BigBlock.vue'
+import MyBackGround from './components/mybgandskill/MyBackGround.vue'
 
 
 
@@ -29,7 +31,8 @@ export default {
   name: 'App',
   components: {
     NavBarview,
-    BigBlock
+    BigBlock,
+    MyBackGround,
   }
 }
 
