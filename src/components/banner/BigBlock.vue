@@ -15,7 +15,7 @@
                 <img class="star" :src="require(`../../assets/img/star1.png`)" alt="">
                 <img class="nri" :src="require(`../../assets/img/nri.png`)" alt="">
                 <img class="k1" :src="require(`../../assets/img/k1.png`)" alt="">
-                <img class="b2" :src="require(`../../assets/img/b2.png`)" alt="">
+
                 <img class="b3" :src="require(`../../assets/img/b3.png`)" alt="">
 
                 
