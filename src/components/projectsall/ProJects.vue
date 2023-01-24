@@ -3,14 +3,16 @@
         <div class="container ">
         <div class="row ">
                 <div class="col-lg-4 col-sm-12   " v-for="item in 5" :key="item" >
-                            <div class="col-12 mt-3   d-flex flex-column text-center  project-box  ">
-                            <img class="img-pj " :src=" pic "  >
+                            <label class="col-12 project-box  mt-3   d-flex flex-column text-center   ">
+
+                                <img class="img-pj " :src=" pic "  >
                                 <div class="box-text p-3 mb-3 text-start d-inline-block overflow-scroll  ">
-                                    <h3 class="text-main  ">Projectasdasdsasadas3333335dasdsad asdasdasdsadasdd {{ item }}</h3>
-                                    <h5 class="text-content m-0 p-0">asdasdasdasd</h5>
-                                    <p class="text-type m-0 p-0 ">Web developer</p>
+                                    <h3 class="text-main  ">Web design pro ject{{ item }}</h3>
+                                    <h5 class="text-content m-0 p-0">final projec  website for education</h5>
+                                    <p class="text-type m-0 p-0 ">PHP / LARAVEL</p>
                                 </div>
-                            </div>
+                            </label>
+
                 </div>
                 
         </div>
@@ -43,12 +45,15 @@
 
     width: 100%;
     height: 100%;
+    
     position: relative;
-
+    cursor: pointer;
 }
 .img-pj{
-    width: 100%;
-    height: 40vh;
+    /* width: 80%;
+    padding-left: 2vh;
+    padding-bottom: 3vh;
+    height: 30vh; */
 }
 .box-text{
     position: absolute;
@@ -56,13 +61,43 @@
     left: 0;
     width: 100%;
     
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
 
 }
 .box-text .text-main {
 
     color: black;
 }
+
+.project-box .box-text .text-main  {
+
+    background: linear-gradient(#1095c1 0 0) no-repeat calc(200% - var(--p, 0%))
+    100% / 200% var(--p, 0.08em);
+  padding-bottom: 5px;
+  
+  transition: background-size .3s, background-position .3s .3s;
+}
+ .project-box:hover .box-text .text-main  {
+  
+  color: #1095c1;
+  background-size: 100% .08em;
+
+}
+.project-box .img-pj{
+    width: 90%;
+    height: 80%;
+    padding-left: 3vh;
+    margin-top: 3vh;
+    padding-top: 1vh;
+
+    transition: padding-top .3s,padding-bottom .3s,
+}
+.project-box:hover .img-pj{
+    padding-top:0vh;
+    padding-bottom: 1vh;
+
+}
+
 .box-text .text-content {
     color: black;
 }
