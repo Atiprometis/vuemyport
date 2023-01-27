@@ -2,8 +2,10 @@
     <div class="all-box-project">
         <div class="container ">
         <div class="row ">
+                <h2 class=" head-text-project  text-uppercase text-start mt-2">projects</h2>
                 <div class="col-lg-4 col-sm-12   " v-for="item in 5" :key="item" >
-                            <label class="col-12 project-box  mt-3   d-flex flex-column text-center   ">
+                    
+                            <label class="col-12 project-box d-flex flex-column text-center   ">
 
                                 <img class="img-pj " :src=" pic "  >
                                 <div class="box-text p-3 mb-3 text-start d-inline-block overflow-scroll  ">
@@ -60,8 +62,15 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    
     background-color: rgba(255, 255, 255, 0.8);
+
+}
+
+.head-text-project  {
+
+    text-decoration: underline;
+    text-decoration-color: #1095c1;
+    text-underline-offset: 8px;
 
 }
 .box-text .text-main {
