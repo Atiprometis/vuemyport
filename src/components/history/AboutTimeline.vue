@@ -5,22 +5,25 @@
                 <h2 class=" head-text-about  text-uppercase text-start mt-2">ABOUT ME</h2>
                 <div class=" col-lg-12 d-flex flex-row ">
                     <div class="col-lg-6 col-sm-12 mt-3 d-flex justify-content-start flex-column text-start ">
-                        <h1> experience</h1>
-                        <div class=" d-flex flex-row">
+                        <h1 class=" text-uppercase"> experience</h1>
+                        <div v-for="project in projects" :key="project.id">
+                            <div   class=" d-flex flex-row">
                             <div class="timeline"></div>
                             <div class="dot m-1"></div>
                            
                             <div class=" d-flex flex-column text-start ">
-                                <h3>KARINA</h3>
-                                <p>DATE</p>
-                                <p>contact</p>
+                                <h3 class=" text-uppercase"> {{ project.name }}</h3>
+                                <p>-</p>
+                                <p>{{ project.contect}}</p>
+                            </div>
+                            
                             </div>
                         </div>
-                        
 
+                        <div class="dot m-1"></div>
                     </div>
                     <div class="col-lg-6 col-sm-12 mt-3 d-flex justify-content-start flex-column text-start ">
-                        <h1> education</h1>
+                        <h1 class=" text-uppercase"> education</h1>
                     </div>
 
                 </div>
@@ -36,7 +39,10 @@
 
         data(){
         return{
-           
+           projects:[
+            {id:0,name:"thesis project  | ilovetraining",contect:"this about website promote the course manage the course and make a resume using laravel and mysql"},
+           {id:1,name:"internship | Appsynth company",contect:"I have interned at Appsynth cooperation for 3 months.I learned mobile application development via React Native with Firebase"}
+        ],
         }
     }
     }
@@ -82,7 +88,7 @@ text-underline-offset: 8px;
 }
 .timeline::after {
     content: "";
-  height:150px;
+  height:100%;
   width: 5px;
   position: absolute;
   top:0;
