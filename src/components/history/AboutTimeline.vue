@@ -14,7 +14,7 @@
                             <div class=" d-flex flex-column text-start ">
                                 <h3 class=" text-uppercase"> {{ project.name }}</h3>
                                 <p>-</p>
-                                <p>{{ project.contect}}</p>
+                                <p class="text-capitalize">{{ project.contect}}</p>
                             </div>
                             
                             </div>
@@ -24,6 +24,20 @@
                     </div>
                     <div class="col-lg-6 col-sm-12 mt-3 d-flex justify-content-start flex-column text-start ">
                         <h1 class=" text-uppercase"> education</h1>
+                        <div v-for="education in educations" :key="education.id">
+                            <div   class=" d-flex flex-row">
+                            <div class="timeline"></div>
+                            <div class="dot m-1"></div>
+                           
+                            <div class=" d-flex flex-column text-start ">
+                                <h3 class=" text-uppercase "> {{ education.name }}</h3>
+                                <p class="m-0 p-0">{{ education.time}}</p>
+                                <p class="m-0 pb-4 text-capitalize">{{ education.major}}</p>
+                            </div>
+                            
+                            </div>
+                        </div>
+                        <div class="dot m-1"></div>
                     </div>
 
                 </div>
@@ -43,6 +57,7 @@
             {id:0,name:"thesis project  | ilovetraining",contect:"this about website promote the course manage the course and make a resume using laravel and mysql"},
            {id:1,name:"internship | Appsynth company",contect:"I have interned at Appsynth cooperation for 3 months.I learned mobile application development via React Native with Firebase"}
         ],
+        educations:[{id:0,name:"Silpakorn University",major:"Web and Interactive Media Design",time:"2013"},{id:0,name:"saohai wimolwitthayanukul school",major:"student",time:"2013"}],
         }
     }
     }
@@ -74,7 +89,7 @@ text-underline-offset: 8px;
     border-radius: 50%;
     display: inline-block;
     position: absolute;
-    border: #1095c1 solid 4px;
+    border: #FDBB59 solid 4px;
     z-index: 2;
 }
 .timeline {
@@ -94,7 +109,7 @@ text-underline-offset: 8px;
   top:0;
     margin-left: 1.5vh;
     margin-top: 1vh;
-  background-color: #1095c1;
+  background-color: #FDBB58;
 
   display: inline-block;
 }
