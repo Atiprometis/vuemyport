@@ -30,7 +30,7 @@ import BigBlock from './components/banner/BigBlock.vue'
 import MyBackGround from './components/mybgandskill/MyBackGround.vue'
 
 import AboutTimeline from './components/history/AboutTimeline.vue'
-import ProJects from './components/projectsall/ProJects.vue'
+import ProJects from './components/projectsall/ProJects'
 import ContactSocial from './components/social/ContactSocial.vue'
 
 
