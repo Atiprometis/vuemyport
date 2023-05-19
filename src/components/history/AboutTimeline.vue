@@ -25,10 +25,7 @@
                     <div class="col-lg-6 col-sm-12 mt-3 d-flex justify-content-start flex-column text-start ">
                        
                         <h1 class=" text-uppercase">education</h1>
-                        <h1>    
-                            <font-awesome-icon icon="fa-solid fa-user-secret" />
-                            <font-awesome-icon icon="fa-brands fa-facebook" style="color: #4bcbce;" />
-                        </h1>
+                        
                         <div v-for="education in educations" :key="education.id">
                             <div   class=" d-flex flex-row">
                             <div class="timeline"></div>

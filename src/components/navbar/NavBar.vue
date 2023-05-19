@@ -11,11 +11,11 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
 
-                <router-link to="" class="nav-link">HOME</router-link>
+                <router-link to="/" class="nav-link">HOME</router-link>
                 </li>
                 <li class="nav-item">
 
-                <router-link to="" class="nav-link">about me</router-link>
+                <router-link to="/aboutme" class="nav-link">about me</router-link>
                 </li>
 
                 <li class="nav-item">
