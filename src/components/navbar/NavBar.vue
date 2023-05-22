@@ -13,9 +13,10 @@
 
                 <router-link to="/" class="nav-link">HOME</router-link>
                 </li>
-                <li class="nav-item">
+                
+                <li class="nav-item" >
 
-                <router-link to="/aboutme" class="nav-link">about me</router-link>
+                <router-link to="" class="nav-link" @click="scrollToElement" >aboutme</router-link>
                 </li>
 
                 <li class="nav-item">
@@ -32,8 +33,20 @@
 </template>
 
 <script>
+
+import { scrollToTargetElement } from '@/js/scrollUtils.js'
+
 export default{
     name: 'NavBarview',
+    
+    methods:{
+   
+   scrollToElement() {
+    scrollToTargetElement();
+ },
+
+ },
+  
 }
 
 </script>
