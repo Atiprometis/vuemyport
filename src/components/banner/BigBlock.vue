@@ -32,9 +32,7 @@ export default{
     name: 'BigBlock',
 
     methods: {
-        hoverFontsize(){
-
-        }
+       
     },
 
     

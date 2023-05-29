@@ -16,12 +16,20 @@
                 
                 <li class="nav-item" >
 
-                <router-link to="" class="nav-link" @click="scrollToElement" >aboutme</router-link>
+                <router-link to="" class="nav-link"  @click="addscrollToElement" >aboutme</router-link>
                 </li>
 
                 <li class="nav-item">
                     <a href="" class="nav-link">contact</a>
                 </li>
+                <h1>{{ this.$store.state.count }}</h1>
+                <button
+    style="font-size: 1em; cursor:pointer; background: green;"
+    @click="scrollToTargetInB"
+  >
+    Scroll to Element
+  </button>
+               
             </ul>
             
             </div>
@@ -34,20 +42,30 @@
 
 <script>
 
-import { scrollToTargetElement } from '@/js/scrollUtils.js'
+// import { eventBus } from 'path/to/eventBus.js'
+import { mapActions } from 'vuex';
 
 export default{
+
+  
+
     name: 'NavBarview',
     
     methods:{
+       
+      ...mapActions(['setTargetRefB']),
+    scrollToTargetInB() {
+      this.setTargetRefB('targetElementB');
+    }
    
-   scrollToElement() {
-    scrollToTargetElement();
- },
-
- },
+       
+    }
   
-}
+ 
+
+ }
+  
+
 
 </script>
 <style>

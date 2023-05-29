@@ -15,13 +15,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import { faUserSecret,faEye } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook,faLinkedin,faGithub } from '@fortawesome/free-brands-svg-icons'
+import store from './store'
+
+
 
 
 /* add icons to the library */
 library.add(faUserSecret,faFacebook,faLinkedin,faGithub,faEye)
 
 
-createApp(App)
+createApp(App).use(store)
 
 .use(router)
 .use(bootstrap)

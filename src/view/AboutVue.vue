@@ -1,7 +1,9 @@
 <template>
     <div class="about">
       <NavBarview/>
-        <h1>ABOUT ABOUTE</h1>
+      asdasd
+        <h class=" bg-danger">ABOUT ABOUTE</h>
+        
     </div>
 </template>
 
