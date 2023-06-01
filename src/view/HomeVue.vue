@@ -18,18 +18,18 @@
 
   <button @click="add">add</button>
 
-  <button @click="addScroll">add scroll</button>
-
+  <button @click="add1">add scroll</button>
+  <h1>{{ this.$store.state.targetRefB }}</h1>
        
         <NavBarview/>
         <BigBlock/>  
 
         <MyBackGround/>  
         <ProJects/>
-        <AboutTimeline/>
+
         <ContactSocial/>
 
-        <div ref="targetElementB">Target Element</div>
+        <div id="targetElementB">Target Element</div>
         
         
     </div>
@@ -43,47 +43,39 @@ import NavBarview from '../components/navbar/NavBar.vue'
 import BigBlock from '../components/banner/BigBlock.vue'
 import MyBackGround from '../components/mybgandskill/MyBackGround.vue'
 
-import AboutTimeline from '../components/history/AboutTimeline.vue'
+// import AboutTimeline from '../components/history/AboutTimeline.vue'
 import ProJects from '../components/projectsall/ProJects'
 import ContactSocial from '../components/social/ContactSocial.vue'
 
+import { mapActions } from 'vuex';
 
 
 export default {
   name: 'HomeView',
   components: {
-    
+    NavBarview,
     BigBlock,
     MyBackGround,
-    AboutTimeline,
+    // AboutTimeline,
     ProJects,
     ContactSocial,
-    NavBarview,
+    
   },
   methods:{
-   
-    addscrollToElement() {
+    ...mapActions(['addActionCount']),
+    add1(){
+      this.$store.dispatch("addActionCount")
+    },
+
+    // addscrollToElement() {
+    //   const el = this.$store.state.targetRefB
+    //     if(el == "targetElementB"){
+    //       this.$refs['targetElementB'].scrollIntoView({behavior: 'smooth'})
+    //     }
       
-        this.$refs['targetElementB'].scrollIntoView({behavior: 'smooth'});
-      
-  },
+    // },
 
-  add(){
-    this.$store.dispatch("addActionCount")
-  },
-
- 
-
-  },
-  mounted() {
-    this.$store.watch(
-      state => state.getTargetRefB,
-      newRef => {
-        if (newRef === 'targetElementB') {
-          this.$refs.targetElementB.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    );
+  
   }
 }
 </script>

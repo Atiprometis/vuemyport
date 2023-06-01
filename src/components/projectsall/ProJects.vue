@@ -8,7 +8,7 @@
                             <label class="col-12 project-box d-flex flex-column text-center   ">
 
                                 <img class="img-pj " :src=" pic "  >
-                                <div class="box-text p-3 mb-3 text-start d-inline-block overflow-scroll  ">
+                                <div class="box-text p-3 mb-3 text-start d-inline-block overflow-hidden  ">
                                     <h3 class="text-main  ">Web design pro ject{{ item }}</h3>
                                     <h5 class="text-content m-0 p-0">final projec  website for education</h5>
                                     <p class="text-type m-0 p-0 ">PHP / LARAVEL</p>
