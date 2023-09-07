@@ -1,8 +1,11 @@
 <template>
+    
     <div class="all-box-project">
         <div class="container ">
         <div class="row ">
-                <h2 class=" head-text-project  text-uppercase text-start mt-2">projects</h2>
+            <div id="targetElementB" class=""></div>
+                <h2 class=" head-text-project  text-uppercase text-start mt-5 pt-2 ">projects</h2>
+                
                 <div class="col-lg-4 col-sm-12   " v-for="item in 5" :key="item" >
                     
                             <label class="col-12 project-box d-flex flex-column text-center   ">

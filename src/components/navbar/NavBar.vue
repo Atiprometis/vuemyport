@@ -15,20 +15,20 @@
                 </li>
                 
                 <li class="nav-item" >
+                    <div class="nav-link" @click="addscrollToElement">EXPERIENCE</div>
 
-                <router-link to="/aboutme" class="nav-link" >aboutme</router-link>
+                </li>
+
+                <li class="nav-item" >
+                    <div class="nav-link" @click="addscrollToElement">project</div>
+
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">contact</a>
+                    <a href="" class="nav-link">social</a>
                 </li>
-                <h1>{{ this.$store.state.count }}</h1>
-                <button
-    style="font-size: 1em; cursor:pointer; background: green;"
-    @click="addscrollToElement"
-  >
-    Scroll to Element
-  </button>
+
+                
                <h1>{{ this.$store.state.targetRefB }}</h1>
 
                <div>
@@ -64,11 +64,8 @@ export default{
     },
 
     addscrollToElement() {
-      // const el = this.$store.state.targetRefB
-        // if(el == "targetElementB"){
+     
           document.getElementById('targetElementB').scrollIntoView({behavior: 'smooth'})
-        // }
-      
     },
   
     // ['targetElementB'].scrollIntoView({behavior: 'smooth'})

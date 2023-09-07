@@ -1,8 +1,8 @@
 <template>
-    <div class="bg-light">
+    <div class="bg-light pt-5 pb-5">
         <div class="container">
             <div class="row">
-                <h2 class=" head-text-about  text-uppercase text-start mt-2">ABOUT ME</h2>
+                <h2 class=" head-text-about  text-uppercase text-start mt-2">EXPERIENCE</h2>
                 <div class=" col-lg-12 d-flex flex-row ">
                     <div class="col-lg-6 col-sm-12 mt-3 d-flex justify-content-start flex-column text-start ">
                         <h1 class=" text-uppercase"> experience</h1>
@@ -19,6 +19,7 @@
                             
                             </div>
                         </div>
+                        
 
                         <div class="dot m-1"></div>
                     </div>
@@ -41,6 +42,7 @@
                         </div>
                         <div class="dot m-1"></div>
                     </div>
+                    
 
                 </div>
 
