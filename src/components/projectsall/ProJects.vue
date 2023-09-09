@@ -5,19 +5,19 @@
         <div class="row ">
             <div id="targetElementB" class=""></div>
                 <h2 class=" head-text-project  text-uppercase text-start mt-5 pt-2 ">projects</h2>
-                
-                <div class="col-lg-4 col-sm-12   " v-for="item in 5" :key="item" >
-                    
-                            <label class="col-12 project-box d-flex flex-column text-center   ">
 
-                                <img class="img-pj " :src=" pic "  >
+            <!-- <img src="../../assets/img/project/jisoo1.jpg" alt=""> -->
+                <div class="col-lg-4 col-sm-12   " v-for="item in quote.data" :key="item" >
+
+                            <label class="col-12 project-box d-flex flex-column text-center   ">
+                                <img class="img-pj " :src="getImgUrl(item.photo)" alt="" >
                                 <div class="box-text p-3 mb-3 text-start d-inline-block overflow-hidden  ">
-                                    <h3 class="text-main  ">Web design pro ject{{ item }}</h3>
-                                    <h5 class="text-content m-0 p-0">final projec  website for education</h5>
-                                    <p class="text-type m-0 p-0 ">PHP / LARAVEL</p>
+                                    <h3 class="text-main  ">{{ item.projectname }}</h3>
+                                    <h5 class="text-content m-0 p-0">{{ item.data }}</h5>
+                                    <p class="text-type m-0 p-0 ">{{ item.type }}</p>
+                                    
                                 </div>
                             </label>
-
 
                 </div>
                 
@@ -34,6 +34,12 @@ import axios from 'axios';
 
 
     export default{
+
+        methods: {
+        getImgUrl: function (imagePath) {
+        return require('@/assets/img/project/' + imagePath);
+        }
+        },
 
         setup() {
 
@@ -56,7 +62,9 @@ import axios from 'axios';
            pic:"https://img.i-scmp.com/cdn-cgi/image/fit=contain,width=425,format=auto/sites/default/files/styles/768x768/public/d8/images/methode/2020/06/08/4b0bdfc6-a639-11ea-8ea0-d7434be00753_image_hires_121748.jpg?itok=zq4iUnBF&v=1591589877",
             size:200,
         }
-    }
+        
+    },
+        
     }
     
 
@@ -77,10 +85,11 @@ import axios from 'axios';
     cursor: pointer;
 }
 .img-pj{
-    /* width: 80%;
+    width: 80%;
     padding-left: 2vh;
     padding-bottom: 3vh;
-    height: 30vh; */
+    height: 40vh;
+    /* size:200px; */
 }
 .box-text{
     position: absolute;
