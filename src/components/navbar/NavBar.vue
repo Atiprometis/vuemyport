@@ -15,17 +15,17 @@
                 </li>
                 
                 <li class="nav-item" >
-                    <div class="nav-link" @click="addscrollToElement">EXPERIENCE</div>
+                    <div class="nav-link poiter" @click="addscrollToExp">EXPERIENCE</div>
 
                 </li>
 
                 <li class="nav-item" >
-                    <div class="nav-link" @click="addscrollToElement">project</div>
+                    <div class="nav-link poiter" @click="addscrollToElement">project</div>
 
                 </li>
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">social</a>
+                  <div class="nav-link poiter" @click="addscrollTosocial">social</div>
                 </li>
 
                 
@@ -67,7 +67,14 @@ export default{
      
           document.getElementById('targetElementB').scrollIntoView({behavior: 'smooth'})
     },
-  
+    addscrollToExp() {
+     
+     document.getElementById('targetExp').scrollIntoView({behavior: 'smooth'})
+    },
+    addscrollTosocial() {
+        
+        document.getElementById('targetsocial').scrollIntoView({behavior: 'smooth'})
+    },
     // ['targetElementB'].scrollIntoView({behavior: 'smooth'})
  }
 }  
@@ -75,5 +82,7 @@ export default{
 
 </script>
 <style>
-
+  .poiter{
+    cursor: pointer;
+  }
 </style>
