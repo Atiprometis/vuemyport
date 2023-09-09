@@ -18,6 +18,7 @@
                                 </div>
                             </label>
 
+
                 </div>
                 
         </div>
@@ -25,8 +26,29 @@
     </div>
 </template>
 
-<script>
+<script >
+import { ref  } from 'vue'
+import axios from 'axios';
+
+
+
+
     export default{
+
+        setup() {
+
+            const quote = ref('')
+            axios.get('http://localhost:3000/read')
+            .then(response => {
+                quote.value = response
+            })
+
+            return {
+                quote
+            }
+        },
+       
+    
         name: 'ProJects',
 
         data(){
