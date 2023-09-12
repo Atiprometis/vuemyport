@@ -25,6 +25,10 @@
                 </li>
 
                 <li class="nav-item">
+                  <div class="nav-link poiter" >resume</div>
+                </li>
+
+                <li class="nav-item">
                   <div class="nav-link poiter" @click="addscrollTosocial">social</div>
                 </li>
 

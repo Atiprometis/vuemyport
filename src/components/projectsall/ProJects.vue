@@ -7,18 +7,21 @@
                 <h2 class=" head-text-project  text-uppercase text-start mt-5 pt-2 ">projects</h2>
 
             <!-- <img src="../../assets/img/project/jisoo1.jpg" alt=""> -->
-                <div class="col-lg-4 col-sm-12   " v-for="item in quote.data" :key="item" >
+                <div class="col-lg-4 col-sm-12 pt-5   " v-for="item in quote.data" :key="item" >
+                    <ul>
+                        <li >
+                            <label class="col-12 project-box d-flex flex-column text-center  ">
 
-                            <label class="col-12 project-box d-flex flex-column text-center   ">
                                 <img class="img-pj " :src="getImgUrl(item.photo)" alt="" >
-                                <div class="box-text p-3 mb-3 text-start d-inline-block overflow-hidden  ">
+                                <div class="box-text p-3 text-start d-inline-block overflow-hidden  ">
                                     <h3 class="text-main  ">{{ item.projectname }}</h3>
                                     <h5 class="text-content m-0 p-0">{{ item.data }}</h5>
                                     <p class="text-type m-0 p-0 ">{{ item.type }}</p>
                                     
                                 </div>
                             </label>
-
+                        </li>
+                    </ul>
                 </div>
                 
         </div>
@@ -84,19 +87,15 @@ import axios from 'axios';
     position: relative;
     cursor: pointer;
 }
-.img-pj{
-    width: 80%;
-    padding-left: 2vh;
-    padding-bottom: 3vh;
-    height: 40vh;
-    /* size:200px; */
-}
+
 .box-text{
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.8);
+    filter: drop-shadow(4px 6px 6px #dedede);
+
 
 }
 
@@ -114,7 +113,7 @@ import axios from 'axios';
 
 .project-box .box-text .text-main  {
 
-    background: linear-gradient(#1095c1 0 0) no-repeat calc(200% - var(--p, 0%))
+    background: linear-gradient(#FDBB59 0 0) no-repeat calc(200% - var(--p, 0%))
     100% / 200% var(--p, 0.08em);
   padding-bottom: 5px;
   
@@ -126,24 +125,36 @@ import axios from 'axios';
   background-size: 100% .08em;
 
 }
-.project-box .img-pj{
-    width: 90%;
-    height: 80%;
-    padding-left: 3vh;
-    margin-top: 3vh;
-    padding-top: 1vh;
 
-    transition: padding-top .3s,padding-bottom .3s,
+.project-box  .img-pj{
+    width: 80%;
+    height: 25vh;
+    contain: 'sssd';
+    margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4vh;
+  padding-top: 1.5vh;
+   /* padding-bottom: 2vh; */
+   filter: drop-shadow(6px 6px 6px #c9c9c9);
+   object-fit: cover;
+   opacity: 1;
+    transition: width .3s, height .3s,padding-bottom .3s,padding-top .3s,opacity .2s;  
+    
 }
-.project-box:hover .img-pj{
-    padding-top:0vh;
-    padding-bottom: 1vh;
 
+
+.project-box:hover .img-pj{
+    width: 80%;
+    height: 25vh;
+    padding-top: 0vh;
+    padding-bottom: 1vh;
+    opacity: 0.7;
 }
 
 .box-text .text-content {
     color: black;
 }
+
 .box-text .text-type {
     color: black;
 }
