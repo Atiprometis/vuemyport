@@ -1,28 +1,37 @@
 <template>
-    <div class="con d-flex justify-content-end ">
-        <div class="img-b1 d-flex flex-column align-items-center justify-content-center">
-                <label class="allab">
+    <div class="  ">
+        <div class="row g-0">
+            <div class=" col-lg-6 img-b1 m-0 p-0 d-flex flex-column align-items-center justify-content-center  ">
+                <!-- <label class="allab">
                     <h1 class="ab1">I am a Front-end</h1>
                     <h2 class="ab2 m-0 p-0 ">Web Developer</h2>
+                </label> -->
+                <label class="allab">
+                    <h1 class="ab1">Hi my name is </h1>
+                    <h2 class="ab2 m-0 p-0 text-uppercase">Chaithawat Samanjit</h2>
                 </label>
                <div class="line"></div>
                <p class="all2">
                 HTML,CSS,JACASCRIPT,มาม่า
-               </p>
+               </p>     
+            </div>
+            <div class="bigblock m-0 p-0 col-lg-6 d-flex justify-content-center align-items-center ">
+                <div class="circle rounded-circle"></div>
+                <div class="circle-2 rounded-circle"></div>
+                <img class="phone" :src="require(`../../assets/img/mockup/phone_14.png`)" alt="">
                 <img class="b1" :src="require(`../../assets/img/b1.png`)" alt="">
-                <img class="e-ro2" :src="require(`../../assets/img/e-ro2.png`)" alt="">
-                <img class="e-ro3" :src="require(`../../assets/img/e-ro3.png`)" alt="">
+                <img class="b3" :src="require(`../../assets/img/b3.png`)" alt="">
                 <img class="star" :src="require(`../../assets/img/star1.png`)" alt="">
+
+                <img class="e-ro3" :src="require(`../../assets/img/e-ro3.png`)" alt="">
+               
                 <img class="nri" :src="require(`../../assets/img/nri.png`)" alt="">
                 <img class="k1" :src="require(`../../assets/img/k1.png`)" alt="">
-
-                <img class="b3" :src="require(`../../assets/img/b3.png`)" alt="">
-
                 
         </div>
-        <div class="bigblock ">
-           
+        
         </div>
+        
         
     </div>
 </template>
@@ -47,92 +56,88 @@ export default{
 }
 .bigblock{
 
-    position: relative;
+
     width:100%;
-    height: 400px;
-    background: #f4c152;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 59% 100%);
+
+    background: #ffffff;
+    position: relative;
 
 }
 .img-b1{
-    position: relative;
-    width: 100%;
-    height: 400px;
-    background-color: #2e6c65;
-    color: #fff;;
-}
 
+    height: 100vh;
+    background-color: #fff;
+    color: #000;;
+}
+.phone{
+    width: 40vh;
+    height: 75vh;
+    z-index: 5;
+}
 .b1{
     z-index: 4;
     position: absolute;
-    top: 0;
-    right: -60%;
-    width: 500px;
-    height: 400px;
+    top: 40vh;
+
+    width: 50vh;
+    height: 40vh;
     /* animation-name: move;
     animation-duration: 3s;
     animation-iteration-count: infinite; */
 
 }
-.star{
+.b3{
     z-index: 3;
     position: absolute;
-    top: 4%;
-    right: -58%;
-    width: 500px;
-    height: 400px;
-    animation-name: fate-top;
-    animation-duration: 4.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-.b2{
-    z-index: 2;
-    position: absolute;
-    top: 0;
-    right: -60%;
-    width: 550px;
-    height: 400px;
-    animation-name: move-bg,sun;
-    
-    animation-duration: 4.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-.b3{
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    right: -60%;
-    width: 550px;
-    height: 400px;
+    top: 40vh;
+
+    width: 55vh;
+    height: 35vh;
 
     animation-name: move-bg;
     animation-duration: 4.5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-.e-ro2{
+
+.star{
     z-index: 3;
     position: absolute;
-    top: 40%;
-    right: -10%;
-    width: 20px;
-    height: 20px;
+    top: 45vh;
 
-    animation-name: spin;
-    animation-duration: 2s;
+    width: 60vh;
+    height: 50vh;
+    animation-name: fate-top;
+    animation-duration: 4.5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-   
 }
+.circle{
+    z-index: 2;
+    position: absolute;
+    width: 60vh; 
+    height: 60vh;
+    background-color: #FCF4A3;
+}
+.circle-2{
+    z-index: 1;
+    position: absolute;
+    width: 70vh; 
+    top: 14.5vh;
+    height: 70vh;
+    background-color: #B22222;
+}
+
+
+
+
 .e-ro3{
     z-index: 4;
     position: absolute;
-    top: 0;
-    right: -60%;
-    width: 500px;
-    height: 400px;
+    top: 40vh;
+    /* right: -60%; */
+    width: 50vh;
+    height: 40vh;
      animation-name: move-right;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -141,10 +146,10 @@ export default{
 .k1{
     z-index: 3;
     position: absolute;
-    top: 32.8%;
-    right: -45.7%;
-    width: 30px;
-    height: 30px;
+    top: 48vh;
+    right: 38vh;
+    width: 3vh;
+    height: 3vh;
 
     animation-name: spin;
     /* transform: rotate(270deg); */
@@ -156,10 +161,10 @@ export default{
 .nri{
     z-index: 3;
     position: absolute;
-    top: 30%;
-    right: -47%;
-    width: 50px;
-    height: 50px;
+    top: 47vh;
+    right: 37vh;
+    width: 5vh;
+    height: 5vh;
 
     /* animation-name: spin; */
     animation-duration: 2s;
@@ -189,50 +194,51 @@ export default{
 
 .ab1{
     line-height: 20px;
-    font-size: 2.5rem;
+    font-size: 3vw;
     transition: font-size 1s;
 }
 .ab1:hover{
-    font-size: 3rem;
+    /* font-size: 3rem; */
     
 }
 .ab2{
-    font-size: 2rem;
+    font-size: 3.5vw;
     transition: font-size 1s;
 }
 .ab2:hover{
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
 
 }
 
 @keyframes move-bg {
                 0% {
-                    right: -60%;
+                    /* right: 0%; */
+                    width: 55vh;
                 }
-                50%{
-                    right: -61%;
-                    width: 530px;
-                    /* top: -1%; */
+                50% {
+                    
+                    width: 60vh;
                 }
                 
                 100% {
-                    right: -60%;
-                    top: 0;
+                    /* right: 1%; */
+                    width: 55vh;
                 }
             }
 @keyframes move-right {
                 0% {
-                    right: -60%;
+                    /* right: -60%; */
+                    /* top: 0vh; */
                 }
                 50%{
-                    right: -59.5%;
-                    top: 5px;
+                    /* right: -59.5%; */
+                    top: 42vh;
                     /* top: -1%; */
                 }
                 
                 100% {
-                    right: -60%;
-                    top: 0;
+                    /* right: -60%; */
+                    /* top: 0vh; */
                 }
             }            
 
@@ -271,18 +277,18 @@ export default{
             }
 @keyframes fate-top {
                 0% {
-                    top: 8%;
-                    right: -58%;
+                    top: 40vh;
+
                     opacity: 0;
                 }
-                30% {
-                    top: 4%;
-                    right: -58%;
+                50% {
+                    top: 45vh;
+
                     opacity: 1;
                 }
                 100% {
-                    top: 8%;
-                    right: -58%;
+                    top: 40vh;
+
                     opacity: 0;
                 }
             }

@@ -63,4 +63,8 @@ export default{
     .my-skills{
         overflow-wrap: break-word;
     }
+    .my-bg{
+        width: 100%;
+        height:100vh;
+    }
 </style>

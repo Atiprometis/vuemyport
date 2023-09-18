@@ -1,5 +1,5 @@
 <template>
-<div class=" shadow-sm fixed-top bg-white">
+<div class=" shadow-sm fixed-top navbar-all " :style="navbarChange">
 
         <nav class=" container navbar navbar-expand-lg  ">
         <div class="container-fluid ">
@@ -34,11 +34,8 @@
 
                 
                <h1>{{ this.$store.state.targetRefB }}</h1>
-
-               <div>
-
-                <ComponentB :customFunction="myFunction" />
-               </div>
+               
+               
             </ul>
             
             </div>
@@ -52,20 +49,61 @@
 <script>
 
 // import { eventBus } from 'path/to/eventBus.js'
-import { mapActions } from 'vuex';
+
 
 export default{
 
   
 
     name: 'NavBarview',
+
+    data() {
+    return {
+
+      timer: null,
+    };
+  },
+  computed: {
     
+    navbarChange(){
+      return {
+        // backgroundColor: this.scrollY > 100? '#000' : '#fff',
+        opacity: this.timer > 100?  '0.9' : '1',
+      };
+    }
+  },
+  
+  mounted() {
+    // Add a scroll event listener to track scroll position
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
+    // Remove the scroll event listener to prevent memory leaks
+    window.removeEventListener('scroll', this.handleScroll);
+
+  },
     methods:{
        
-      ...mapActions(['setTargetRefB']),
+
     scrollToTargetInB() {
       this.setTargetRefB('targetElementB');
+
+
     },
+
+    handleScroll() {
+      // Update the scrollY data property with the current scroll position
+
+      if(this.timer !== null){
+        clearTimeout(this.timer);
+
+      }
+      this.timer = setTimeout(() => {
+        this.timer = 0;
+      }, 200);
+
+    },
+   
 
     addscrollToElement() {
      
@@ -86,7 +124,15 @@ export default{
 
 </script>
 <style>
+.navbar-all
+{
+  background-color: #fff;
+}
   .poiter{
     cursor: pointer;
   }
+  .scroll-container {
+  /* Your default styles for the container */
+  transition: background-color 0.3s ease;
+}
 </style>

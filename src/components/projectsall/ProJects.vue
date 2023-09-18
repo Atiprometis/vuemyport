@@ -76,7 +76,7 @@ import axios from 'axios';
 <style>
 .all-box-project{
     width:100%;
-    height: auto;
+    height: 100vh;
     background-color: #f0f0ff;
 }
 .project-box{
