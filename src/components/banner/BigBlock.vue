@@ -2,23 +2,36 @@
     <div class="  ">
         <div class="row g-0">
             <div class=" col-lg-6 img-b1 m-0 p-0 d-flex flex-column align-items-center justify-content-center  ">
-                <!-- <label class="allab">
-                    <h1 class="ab1">I am a Front-end</h1>
-                    <h2 class="ab2 m-0 p-0 ">Web Developer</h2>
-                </label> -->
-                <label class="allab">
-                    <h1 class="ab1">Hi my name is </h1>
+
+                <div class="pre-1 m-0 p-0" >
+                    <label class="allab ">
+                    <h1 class="ab1">My project </h1>
+                    <h2 class="ab2 m-0 p-0 text-uppercase">project</h2>
+                    </label>
+                    <div class="line"></div>
+                    <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
+                        HTML
+                    </p>   
+                </div>
+
+                <div class="pre-2 m-0 p-0">
+                    <label class="allab ">
+                    <h1 class="ab1">My name is </h1>
                     <h2 class="ab2 m-0 p-0 text-uppercase">Chaithawat Samanjit</h2>
-                </label>
-               <div class="line"></div>
-               <p class="all2">
-                HTML,CSS,JACASCRIPT,มาม่า
-               </p>     
+                    </label>
+                    <div class="line"></div>
+                    <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
+                        I am a front-end developer who is constantly seeking self-improvement. Currently, I am looking for opportunities in the field of programming, and I hope to be the one who gets that chance.
+                    </p>   
+                </div>
+            
             </div>
             <div class="bigblock m-0 p-0 col-lg-6 d-flex justify-content-center align-items-center ">
                 <div class="circle rounded-circle"></div>
                 <div class="circle-2 rounded-circle"></div>
+
                 <img class="phone" :src="require(`../../assets/img/mockup/phone_14.png`)" alt="">
+                <img class="phone-bg" :src="require(`../../assets/img/mockup/phone_14_bg.png`)" alt="">
                 <img class="b1" :src="require(`../../assets/img/b1.png`)" alt="">
                 <img class="b3" :src="require(`../../assets/img/b3.png`)" alt="">
                 <img class="star" :src="require(`../../assets/img/star1.png`)" alt="">
@@ -39,9 +52,56 @@
 <script>
 export default{
     name: 'BigBlock',
+    data(){
+        return{
+            boxpre1: true,
+            boxpre2: true,
+           
 
+        }
+    },
+
+    mounted(){
+        // window.addEventListener('scroll', this.fadefont);
+        // window.addEventListener('load', this.fadefont2);
+    },
+    beforeUnmount() {
+    // Remove the scroll event listener to prevent memory leaks
+    window.removeEventListener('scroll', this.fadefont);
+
+  },
+    computed: {
+    
+    boxchange(){
+      return {
+        
+        display: this.boxpre1 !== false ? 'block' : 'none',
+      };
+      
+    }
+  },
     methods: {
+
        
+        fadefont(){
+
+            if(this.boxpre1 !== false){
+                setTimeout(() => {
+                this.boxpre1 = false;
+                console.log(this.boxpre1);
+                // document.getElementsByClassName('pre-1');
+            }, 2000);
+            }else if(this.boxpre1 !== true){
+                setTimeout(() => {
+                this.boxpre1 = true;
+                console.log(this.boxpre1);
+                // document.getElementsByClassName('pre-1');
+                }, 2000);
+            }
+
+           
+      },
+      
     },
 
     
@@ -69,10 +129,22 @@ export default{
     background-color: #fff;
     color: #000;;
 }
+.pre-1{
+    display: none;
+}
+.pre-2{
+    display: block;
+}
 .phone{
     width: 40vh;
     height: 75vh;
     z-index: 5;
+}
+.phone-bg{
+    position: absolute;
+    width: 40vh;
+    height: 74vh;
+    z-index: 1;
 }
 .b1{
     z-index: 4;
@@ -147,7 +219,7 @@ export default{
     z-index: 3;
     position: absolute;
     top: 48vh;
-    right: 38vh;
+    right: 35vh;
     width: 3vh;
     height: 3vh;
 
@@ -162,7 +234,7 @@ export default{
     z-index: 3;
     position: absolute;
     top: 47vh;
-    right: 37vh;
+    right: 34vh;
     width: 5vh;
     height: 5vh;
 
@@ -178,38 +250,85 @@ export default{
     width: 28%;
 }
 .allab{
-    cursor: pointer;
+    text-align: start;
+    
 }
-.allab:hover ~ .line{
-    background-color: #f4c152;
-    width: 28%;
-}
+
 .line{
 
     height: 5px;
-    width: 0%;
-    transition: width 1s;
+    width: 100%;
+    /* transition: width 1s; */
     background-color: #f4c152;
+    animation-name: line-animation;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
 }
+@keyframes line-animation {
+                from {
+ 
+                    width:0%;
+                }
+                
+                
+                to {
+                    width:100%;
+                }
+            }  
 
 .ab1{
     line-height: 20px;
-    font-size: 3vw;
+    font-size: 2.3vw;
     transition: font-size 1s;
+    font-weight:700;
+    text-align: start;
 }
 .ab1:hover{
     /* font-size: 3rem; */
     
 }
 .ab2{
-    font-size: 3.5vw;
+    font-size: 2.7vw;
     transition: font-size 1s;
+    font-weight:700;
 }
 .ab2:hover{
     /* font-size: 2.5rem; */
 
 }
+.all2{
+    font-size: 1.6vw;
+    font-weight:400;
+    width: 30vw;
+    text-align: start;
+    margin: auto;
 
+     animation-name: fadeIn;
+     animation-duration: 4s;
+    animation-iteration-count:1;
+
+    opacity:1;
+
+}
+@keyframes fadeIn
+  {
+    from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+  }
+/* .all2:hover{
+    
+    
+    opacity: 0.6;
+} */
+
+.fadefontchange{
+    
+    /* opacity: 1; */
+}
 @keyframes move-bg {
                 0% {
                     /* right: 0%; */

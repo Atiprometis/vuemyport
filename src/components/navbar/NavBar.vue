@@ -74,8 +74,11 @@ export default{
   },
   
   mounted() {
+    
     // Add a scroll event listener to track scroll position
     window.addEventListener('scroll', this.handleScroll);
+    
+    
   },
   beforeUnmount() {
     // Remove the scroll event listener to prevent memory leaks
@@ -83,6 +86,8 @@ export default{
 
   },
     methods:{
+
+      
        
 
     scrollToTargetInB() {
@@ -131,8 +136,5 @@ export default{
   .poiter{
     cursor: pointer;
   }
-  .scroll-container {
-  /* Your default styles for the container */
-  transition: background-color 0.3s ease;
-}
+   
 </style>
