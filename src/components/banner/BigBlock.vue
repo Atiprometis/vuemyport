@@ -1,20 +1,23 @@
 <template>
     <div class="  ">
         <div class="row g-0">
-            <div class=" col-lg-6 img-b1 m-0 p-0 d-flex flex-column align-items-center justify-content-center  ">
+            <!--  -->
+            <div class=" col-lg-6 img-b1 d-flex justify-content-center align-items-center ">
+                <swiper
+                :spaceBetween="30"
 
-                <div class=" m-0 p-0" :style="boxchange">
-                    <label class="allab ">
-                    <h1 class="ab1">My project </h1>
-                    <h2 class="ab2 m-0 p-0 text-uppercase">project</h2>
-                    </label>
-                    <div class="line"></div>
-                    <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
-                        HTML
-                    </p>   
-                </div>
-
-                <div class=" m-0 p-0">
+                
+                :autoplay="{
+                delay: 11000,
+                disableOnInteraction: false,
+                }"
+                
+                :modules="modules"
+                class="mySwiper pb-5"
+            >
+                <swiper-slide>
+                    <!-- <img class="" width="200" height="200" :src="require(`../../assets/img/project/jisoo2.jpeg`)" alt=""> -->
+                    <div class="pre-2 m-0 p-0 ">
                     <label class="allab ">
                     <h1 class="ab1">My name is </h1>
                     <h2 class="ab2 m-0 p-0 text-uppercase">Chaithawat Samanjit</h2>
@@ -23,10 +26,28 @@
                     <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
                         I am a front-end developer who is constantly seeking self-improvement. Currently, I am looking for opportunities in the field of programming, and I hope to be the one who gets that chance.
                     </p>   
-                </div>
-            
+                    </div>
+
+                </swiper-slide>
+                <swiper-slide>
+                    <!-- <img class="" width="200" height="200" :src="require(`../../assets/img/project/jisoo1.jpg`)" alt=""> -->
+                    <div class="pre-2 " >
+                        <label class="allab ">
+                        <h1 class="ab1">My project </h1>
+                        <h2 class="ab2 m-0 p-0 text-uppercase">project</h2>
+                        </label>
+                        <div class="line"></div>
+                        <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
+                            HTML
+                        </p>   
+                    </div>
+                </swiper-slide>
+                
+                
+                </swiper>
             </div>
             <div class="bigblock m-0 p-0 col-lg-6 d-flex justify-content-center align-items-center ">
+                
                 <div class="circle rounded-circle"></div>
                 <div class="circle-2 rounded-circle"></div>
 
@@ -44,14 +65,39 @@
         </div>
         
         </div>
-        
+                
         
     </div>
+    
 </template>
 
 <script>
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
 export default{
+
     name: 'BigBlock',
+    components: {
+      Swiper,
+      SwiperSlide,
+    },
+    setup() {
+      return {
+        modules: [Autoplay, Pagination, Navigation],
+      };
+    },
     data(){
         return{
             boxpre1: true,
@@ -135,8 +181,8 @@ export default{
 .pre-2{
     display: block;
     animation-name: fadeIn;
-     animation-duration: 4s;
-    animation-iteration-count:1;
+     animation-duration: 11.4s;
+    animation-iteration-count:infinite;
 }
 .phone{
     width: 40vh;
@@ -260,22 +306,25 @@ export default{
 .line{
 
     height: 5px;
-    width: 100%;
+    width: 60%;
+    margin: auto;
     /* transition: width 1s; */
     background-color: #f4c152;
     animation-name: line-animation;
-    animation-duration: 5s;
-    animation-iteration-count: 1;
+    animation-duration: 11s;
+    animation-iteration-count: infinite;
 }
 @keyframes line-animation {
-                from {
+                0% {
  
                     width:0%;
                 }
+                40% {
+                    width:60%;
+                }
                 
-                
-                to {
-                    width:100%;
+                100% {
+                    width:0%;
                 }
             }  
 
@@ -306,20 +355,21 @@ export default{
     text-align: start;
     margin: auto;
 
-     animation-name: fadeIn;
-     animation-duration: 4s;
-    animation-iteration-count:1;
+     
 
     opacity:1;
 
 }
 @keyframes fadeIn
   {
-    from {
+    0% {
     opacity:0;
   }
-  to {
+  50% {
     opacity:1;
+  }
+  100% {
+    opacity:0;
   }
   }
 /* .all2:hover{
