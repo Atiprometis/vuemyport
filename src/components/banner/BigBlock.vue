@@ -3,7 +3,7 @@
         <div class="row g-0">
             <div class=" col-lg-6 img-b1 m-0 p-0 d-flex flex-column align-items-center justify-content-center  ">
 
-                <div class="pre-1 m-0 p-0" >
+                <div class=" m-0 p-0" :style="boxchange">
                     <label class="allab ">
                     <h1 class="ab1">My project </h1>
                     <h2 class="ab2 m-0 p-0 text-uppercase">project</h2>
@@ -14,7 +14,7 @@
                     </p>   
                 </div>
 
-                <div class="pre-2 m-0 p-0">
+                <div class=" m-0 p-0">
                     <label class="allab ">
                     <h1 class="ab1">My name is </h1>
                     <h2 class="ab2 m-0 p-0 text-uppercase">Chaithawat Samanjit</h2>
@@ -134,6 +134,9 @@ export default{
 }
 .pre-2{
     display: block;
+    animation-name: fadeIn;
+     animation-duration: 4s;
+    animation-iteration-count:1;
 }
 .phone{
     width: 40vh;
