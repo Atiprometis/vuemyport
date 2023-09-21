@@ -5,13 +5,15 @@
             <div class=" col-lg-6 img-b1 d-flex justify-content-center align-items-center ">
                 <swiper
                 :spaceBetween="30"
-
+                
                 
                 :autoplay="{
                 delay: 11000,
                 disableOnInteraction: false,
                 }"
-                
+
+                :allowTouchMove = "false"
+
                 :modules="modules"
                 class="mySwiper pb-5"
             >
