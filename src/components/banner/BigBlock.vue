@@ -104,8 +104,7 @@ export default{
         return{
             boxpre1: true,
             boxpre2: true,
-           
-
+        
         }
     },
 
@@ -183,7 +182,7 @@ export default{
 .pre-2{
     display: block;
     animation-name: fadeIn;
-     animation-duration: 11.4s;
+     animation-duration: 11.3s;
     animation-iteration-count:infinite;
 }
 .phone{
@@ -313,7 +312,7 @@ export default{
     /* transition: width 1s; */
     background-color: #f4c152;
     animation-name: line-animation;
-    animation-duration: 11s;
+    animation-duration: 11.3s;
     animation-iteration-count: infinite;
 }
 @keyframes line-animation {
@@ -321,7 +320,7 @@ export default{
  
                     width:0%;
                 }
-                40% {
+                50% {
                     width:60%;
                 }
                 
