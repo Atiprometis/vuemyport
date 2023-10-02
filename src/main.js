@@ -14,14 +14,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { faUserSecret,faEye } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook,faLinkedin,faGithub,faHtml5,faCss3Alt,faJs,faVuejs,faPhp } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook,faLinkedin,faGithub,faHtml5,faCss3Alt,faJs,faVuejs,faPhp,faLaravel } from '@fortawesome/free-brands-svg-icons'
 import store from './store'
 
 
 
 
 /* add icons to the library */
-library.add(faUserSecret,faFacebook,faLinkedin,faGithub,faEye,faHtml5,faCss3Alt,faJs,faVuejs,faPhp)
+library.add(faUserSecret,faFacebook,faLinkedin,faGithub,faEye,faHtml5,faCss3Alt,faJs,faVuejs,faPhp,faLaravel)
 
 
 createApp(App).use(store)
