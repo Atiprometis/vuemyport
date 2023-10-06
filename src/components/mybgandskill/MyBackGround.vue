@@ -15,12 +15,12 @@
                     <div class="boxskill   animete-on-scroll"  ></div>
                 </div>
             </div>
-            <div class="col-lg-6 p-5 my-skills d-flex flex-column" >
+            <div class="col-lg-6 p-5 mt-5 my-skills d-flex flex-column align-items-start justify-content-start" >
                 <h4 class="  text-start">About me</h4>
-                <p class="p-0 m-0">
+                <p class="p-0 m-0 text-start">
                     Motivated and skilled front-end developer with experience building responsive and user-friendly websites using Vue.js Proficient in HTML, CSS, and JavaScript, as well as experience with PHPframeworks such as Laravel and CodeIgniter. Strong attention to detail and ability to work well in a team environment.
                 </p>
-                <h4 class=" text-start">Skills</h4>
+                <h4 class=" text-start mt-4">Skills</h4>
                 <div class=" d-flex flex-column ">
                     <div class="text-start m-0 p-0">
                         <ul class="m-0 p-0 d-flex flex-row font-all">
@@ -44,9 +44,9 @@
                     </div>
                     <div class="text-start ml-0 pl-0">
                     <ul class="m-0 pl-3 d-flex flex-row ">
-                        <li c v-for=" skill in myskills2" :key="skill">
+                        <!-- <li c v-for=" skill in myskills2" :key="skill">
                             {{ skill }}
-                        </li>
+                        </li> -->
                     </ul>
                     </div>
                 </div>

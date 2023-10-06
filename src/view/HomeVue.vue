@@ -4,8 +4,9 @@
         <BigBlock/>  
 
         <MyBackGround/>  
-        <AboutTimeline/>
         <ProJects/>
+        <AboutTimeline/>
+        
 
         <ContactSocial/>
 
