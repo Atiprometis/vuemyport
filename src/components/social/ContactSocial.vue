@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-light">
+    <div class="contact-all">
         <div class="container">
         <div class="row">
             <h2 class=" head-text-about  text-uppercase text-start mt-4">social</h2>
@@ -24,4 +24,9 @@ export default {
 </script>
 
 <style>
+.contact-all{
+    width: 100%;
+    height: 20vh;
+    background-color: #fff;
+}
 </style>

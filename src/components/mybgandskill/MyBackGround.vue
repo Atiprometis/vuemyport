@@ -72,8 +72,6 @@ export default{
     },
             mounted: function(){
 
-
-
                 function getScrollAnimation() { 
                    
                     const animation_element = document.querySelectorAll('.animete-on-scroll, .animete-top-down, .animete-right, .add-opacity');
@@ -84,7 +82,7 @@ export default{
                                     entry.target.classList.add('animete');
                                     
                                 }else{
-                                    // entry.target.classList.remove('animete');
+                                    entry.target.classList.remove('animete');
                                 }
                             })
                             

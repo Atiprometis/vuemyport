@@ -1,6 +1,6 @@
 <template>
     <div id="targetExp" class=""></div>
-    <div class="bg-light pt-5 pb-5">
+    <div class="timeline-container pt-5 pb-5">
         <div class="container">
             <div class="row">
                 <h2 class=" head-text-about  text-uppercase text-start mt-2">EXPERIENCE</h2>
@@ -72,7 +72,11 @@
 </script>
 
 <style>
-
+.timeline-container{
+    width: 100%;
+    height: 70vh;
+    background-color: #fff;
+}
 .head-text-about  {
 
 text-decoration: underline;
