@@ -2,7 +2,7 @@
     <div class="bg-color-my-bg ">
         <div class="container">
             <div class="row ">
-            
+                
             <div class="col-lg-6  my-bg d-flex justify-content-center align-items-center ">
 
                 <img class="phone-my-bg" :src="require(`../../assets/img/mockup/phone_14.png`)" alt="">
@@ -71,23 +71,53 @@ export default{
             }
     },
             mounted: function(){
+                
 
                 function getScrollAnimation() { 
                    
                     const animation_element = document.querySelectorAll('.animete-on-scroll, .animete-top-down, .animete-right, .add-opacity');
 
                         const observer = new IntersectionObserver((entries)=>{
+
                             entries.forEach((entry)=>{
-                                if(entry.isIntersecting){
-                                    entry.target.classList.add('animete');
-                                    
-                                }else{
-                                    entry.target.classList.remove('animete');
-                                }
+                                // console.log(entry.boundingClientRect.top )
+
+                                // if(entry.isIntersecting ){
+                                //     entry.target.classList.add('animete');
+                                //     let ratio = entry.isIntersecting;
+                                //     console.log(entry.target, "is fully visible +:(ratio "+ratio+") ");
+
+ 
+                                // }
+
+                                // if(entry.isIntersecting < 0){
+                                //     entry.target.classList.add('animete');
+                                //     console.log(entry.target.classList, "is fully visible");
+                                // }
+                                 if (entry.intersectionRatio > 0.5) {
+                                let ratio = entry.intersectionRatio.toFixed(4);
+                            console.log(entry.target, "has started leaving the viewport (ratio "+ratio+")");
+                            entry.target.classList.add('animete');
+                            
+                                //  entry.target.classList.remove('animete');
+                                    } 
+                                    else if (entry.intersectionRatio < 0.5) {
+                            let ratio = entry.intersectionRatio.toFixed(4);
+                            console.log(entry.target, "has started entering the viewport (ratio "+ratio+")");
+                            // entry.target.classList.add('animete');
+                            entry.target.classList.remove('animete');
+                                    }
+                                
+                                // else{
+                                //     entry.target.classList.remove('animete');
+
+
+                                // }
                             })
                             
                         },{
-                            threshold:0.5
+                            root: null,
+                            threshold: 0.5,
                         });
 
                         for (let i = 0; i < animation_element.length; i++) {
@@ -108,6 +138,11 @@ export default{
 
 
 <style>
+#position {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .bg-color-my-bg{
     background-color: #fff;
 }
