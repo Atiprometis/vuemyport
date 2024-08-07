@@ -5,16 +5,16 @@
             <div class="row">
                 <h2 class=" head-text-about  text-uppercase text-start mt-2">EXPERIENCE</h2>
                 
-                <div class=" col-lg-12 d-flex flex-row ">
-                    <div class="col-lg-6 col-sm-12 mt-3 d-flex justify-content-start flex-column text-start ">
+                <div class=" col-lg-12 d-flex flex-column ">
+                    <div class="col-lg-6 col-sm-12 mt-3  d-flex justify-content-start flex-column text-start ">
                         <h1 class=" text-uppercase"> experience</h1>
                         <div v-for="project in projects" :key="project.id">
-                            <div   class=" d-flex flex-row">
+                            <div   class=" d-flex flex-row ">
                             <div class="timeline"></div>
                             <div class="dot m-1"></div>
                            
                             <div class=" d-flex flex-column text-start ">
-                                <h3 class=" text-uppercase"> {{ project.name }}</h3>
+                                <h3 class=" text-uppercase mt-1"> {{ project.name }}</h3>
                                 <p>-</p>
                                 <p class="text-capitalize">{{ project.contect}}</p>
                             </div>
@@ -25,7 +25,7 @@
 
                         <div class="dot m-1"></div>
                     </div>
-                    <div class="col-lg-6 col-sm-12 mt-3 d-flex justify-content-start flex-column text-start ">
+                    <div class="col-lg-6 col-sm-12 mt-5 d-flex justify-content-start flex-column text-start ">
                        
                         <h1 class=" text-uppercase">education</h1>
                         
@@ -35,7 +35,7 @@
                             <div class="dot m-1"></div>
                            
                             <div class=" d-flex flex-column text-start ">
-                                <h3 class=" text-uppercase "> {{ education.name }}</h3>
+                                <h3 class=" text-uppercase mt-1"> {{ education.name }}</h3>
                                 <p class="m-0 p-0">{{ education.time}}</p>
                                 <p class="m-0 pb-4 text-capitalize">{{ education.major}}</p>
                             </div>
@@ -74,7 +74,7 @@
 <style>
 .timeline-container{
     width: 100%;
-    height: 70vh;
+    height: 100%;
     background-color: #fff;
 }
 .head-text-about  {
@@ -85,7 +85,7 @@ text-underline-offset: 8px;
 
 }
 .dot {
-  padding: 1px 4% 0 0%;
+  padding: 0 7% 0 0%;
 
   display: inline-block;
   position: relative;
@@ -93,10 +93,11 @@ text-underline-offset: 8px;
 }
 .dot::after {
     content: "";
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
     background-color: #fff;
     border-radius: 50%;
+    left: 0;
     display: inline-block;
     position: absolute;
     border: #FDBB59 solid 4px;
@@ -106,7 +107,7 @@ text-underline-offset: 8px;
    
   position: relative;
 
-  
+ 
   /* background-color: rgb(206, 39, 39); */
 
 
@@ -114,11 +115,13 @@ text-underline-offset: 8px;
 .timeline::after {
     content: "";
   height:100%;
-  width: 5px;
+  width: 7px;
   position: absolute;
   top:0;
-    margin-left: 1.5vh;
+  left: 0;
+    margin-left: 2vh;
     margin-top: 1vh;
+
   background-color: #FDBB58;
 
   display: inline-block;

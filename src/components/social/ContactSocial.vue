@@ -1,5 +1,5 @@
 <template>
-    <div class="contact-all">
+    <div class="contact-all mt-2">
         <div class="container">
         <div class="row">
             <h2 class=" head-text-about  text-uppercase text-start mt-4">social</h2>

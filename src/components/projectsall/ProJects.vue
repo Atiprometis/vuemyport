@@ -5,25 +5,29 @@
         <div class="row justify-content-start">
             <div id="targetElementB" class=""></div>
             <h1 id="position"></h1>
-                <h2 class=" head-text-project  text-uppercase animete-top-down text-start mt-5 pt-2 ">projects</h2>
+                <!-- <h2 class=" head-text-project mb-2  text-uppercase animete-top-down text-start mt-5 pt-2 ">projects</h2> -->
+                <h2 class=" head-text-project mb-2  text-uppercase text-start mt-5 pt-2 ">portfolio</h2>
+
                 <!-- <h1>{{ quotes }}</h1> -->
             <!-- <img src="../../assets/img/project/jisoo1.jpg" alt=""> -->
-            
-                <div class="col-lg-4   col-lg-auto col-sm-12 project-all  pt-5  offset-lg-1    " v-for="item in quotes " :key="item.id" >
+
+                <div class="col-lg-4  col-lg-auto col-sm-12 project-all       " v-for="item in quotes " :key="item.id" >
 
                     <!-- <img class="img-pj animete-top-down"  :src="getImgUrl(item.photo)" alt="" > -->
                     
-                            <label class="col-12  project-box    d-flex flex-column text-center  ">
+                            <label class="col-12  project-box  ">
 
-                                <img class="img-pj  animete-top-down " :src="getImgUrl(item.photo)" alt="" >
+                                <img class="img-pj  " :src="getImgUrl(item.photo)" alt="" >
                                  
-                                <div class="box-text p-3 text-start d-inline-block overflow-hidden  ">
+                                <div class="box-text d-flex flex-column justify-content-center align-items-center   ">
                                     <h3 class="text-main  ">{{ item.projectname }}</h3> 
                                     <h5 class="text-content m-0 p-0">{{ item.data }}</h5>
                                     <p class="text-type m-0 p-0 ">{{ item.type }}</p>
                                     
                                 </div>
+                                
                             </label>
+                            
                        
                 </div>
                 
@@ -103,28 +107,87 @@ import axios from 'axios';
     background-color: #fff;
 }
 .project-all{
-    /* opacity: 0; */
-    /* display:none; */
-    /* opacity: 1; */
-}
-.project-box{
-
     width: 100%;
     height: 100%;
-    position: relative;
-    cursor: pointer;
+   position: relative;
 }
+.project-box {
+    display:block;
+    width: 100%;
+    height: 40vh;
+    cursor: pointer;
+    position: relative;
+    top:0;
+    left: 0;
+    /* background-color: #060303; */
+    margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4vh;
 
+  filter: drop-shadow(6px 6px 6px #c9c9c9);
+
+  
+}
+.img-pj{
+    width: 100%;
+    height: 40vh;
+  
+    object-fit: cover;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+   
+}
+.project-all:hover .img-pj{
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+}
 .box-text{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.6s;
     position: absolute;
-    bottom: 0;
+    top:0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    filter: drop-shadow(4px 6px 6px #dedede);
-
+    height: 40vh;
+    padding-top: 1.5vh;
+    margin-bottom: 4vh;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    
+}
+.box-text:hover{
+    opacity: 1;
 
 }
+
+ .box-text .text-main {
+
+    
+color: #fff;
+}
+.box-text .text-content {
+    color: #fff;
+}
+
+.box-text .text-type {
+    color: #fff;
+}
+
+
+
+
+
+
+/* .project-box:hover  + .box-text{
+    display: block;
+
+} */
+
 
 .head-text-project  {
 
@@ -133,10 +196,7 @@ import axios from 'axios';
     text-underline-offset: 8px;
 
 }
-.box-text .text-main {
 
-    color: black;
-}
 
 .project-box .box-text .text-main  {
 
@@ -146,44 +206,15 @@ import axios from 'axios';
   
   transition: background-size .3s, background-position .3s .3s;
 }
- .project-box:hover .box-text .text-main  {
-  
-  color: #1095c1;
-  background-size: 100% .08em;
-
-}
 
 
-.img-pj{
-    width: 80%;
-    height: 25vh;
-
-    margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 4vh;
-  padding-top: 1.5vh;
-   /* padding-bottom: 2vh; */
-   filter: drop-shadow(6px 6px 6px #c9c9c9);
-   object-fit: cover;
-   /* opacity: 1; */
-
-}
 
 
-.project-box:hover .img-pj{
-    width: 80%;
-    height: 25vh;
-    padding-top: 0vh;
-    padding-bottom: 1vh;
-    opacity: 0.7;
-}
 
-.box-text .text-content {
-    color: black;
-}
 
-.box-text .text-type {
-    color: black;
-}
+
+ 
+
+
 
 </style>
