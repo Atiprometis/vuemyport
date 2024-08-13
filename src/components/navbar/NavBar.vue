@@ -8,28 +8,28 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase ">
                 <li class="nav-item">
 
                 <router-link to="/" class="nav-link">HOME</router-link>
                 </li>
                 
                 <li class="nav-item" >
-                    <div class="nav-link poiter" @click="addscrollToExp">EXPERIENCE</div>
+                    <div class="nav-link poiter " @click="addscrollToElement">project</div>
 
                 </li>
 
                 <li class="nav-item" >
-                    <div class="nav-link poiter" @click="addscrollToElement">project</div>
+                    <div class="nav-link poiter" @click="addscrollToExp">EXPERIENCE</div>
 
-                </li>
-
-                <li class="nav-item">
-                  <div class="nav-link poiter" >resume</div>
                 </li>
 
                 <li class="nav-item">
                   <div class="nav-link poiter" @click="addscrollTosocial">social</div>
+                </li>
+                <li class="nav-item">
+
+                  <router-link to="/resume" class="nav-link">resume</router-link>
                 </li>
 
                 

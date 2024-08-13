@@ -2,7 +2,7 @@
     <div class="contact-all mt-2">
         <div class="container">
         <div class="row">
-            <h2 class=" head-text-about  text-uppercase text-start mt-4">social</h2>
+            <h2 class=" head-text-about  text-uppercase text-start mt-4">Contact me</h2>
             <div class=" d-flex flex-row justify-content-start ">
                 <!-- <h1><font-awesome-icon :icon="['fab', 'facebook']" /></h1> -->
                 <a href="https://www.linkedin.com/in/chaitawat/"><h1 class=" p-2"><font-awesome-icon :icon="['fab', 'linkedin']" /></h1></a>
