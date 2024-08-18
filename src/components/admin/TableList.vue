@@ -23,9 +23,9 @@
                         <h2 class="aboutmeShow" v-if="aboutmeData[0]">{{  aboutmeData[0].content }}</h2>
 
                         
-                        <form v-on:submit="submitText">
+                        <form v-on:submit="submitText" class="form-label">
 
-                                <input type="text" v-model="content" class=" edit-input">
+                                <input type="text" v-model="content" class="form-control ">
 
                             <button  type="submit"  class="btn btn-primary">บันทึก</button>
                         </form>
@@ -222,7 +222,7 @@ export default {
             height: 100px;
             font-size: 16px;
             padding-top: 0; /* ไม่ใส่ padding ด้านบน */
-            padding-bottom: 60px; /* เพิ่ม padding ด้านล่าง เพื่อเลื่อนข้อความขึ้นด้านบน */
+            padding-bottom: 70px; /* เพิ่ม padding ด้านล่าง เพื่อเลื่อนข้อความขึ้นด้านบน */
             box-sizing: border-box; /* ให้ padding รวมอยู่ใน height */
             border: 1px solid #ccc; /* ใส่เส้นขอบ */
     }

@@ -17,8 +17,9 @@
             </div>
             <div class="col-lg-6 p-5 mt-5 my-skills d-flex flex-column align-items-start justify-content-start" >
                 <h4 class="  text-start">About me</h4>
-                <p class="p-0 m-0 text-start">
-                    Motivated and skilled front-end developer with experience building responsive and user-friendly websites using Vue.js Proficient in HTML, CSS, and JavaScript, as well as experience with PHPframeworks such as Laravel and CodeIgniter. Strong attention to detail and ability to work well in a team environment.
+                <p class="p-0 m-0 text-start" v-if="aboutmeData[0]">
+                    {{  aboutmeData[0].content }}
+                    <!-- Motivated and skilled front-end developer with experience building responsive and user-friendly websites using Vue.js Proficient in HTML, CSS, and JavaScript, as well as experience with PHPframeworks such as Laravel and CodeIgniter. Strong attention to detail and ability to work well in a team environment. -->
                 </p>
                 <h4 class=" text-start mt-4">Skills</h4>
                 <div class=" d-flex flex-column ">
@@ -58,6 +59,8 @@
 
 
 <script >
+import axios from 'axios'
+
 export default{
     name: "MyBackGround",
 
@@ -68,6 +71,7 @@ export default{
 
             myskills:["html5","CSS","JavaScript","Vue.js","PHP (Laravel, CodeIgniter)"],
             myskills2:["Photoshop","Illustrator"],
+            aboutmeData: [],
             }
     },
             mounted: function(){
@@ -130,7 +134,20 @@ export default{
                 getScrollAnimation();
 
             },
-
+            methods:{
+                async getContentAboutme(){
+                    try{
+                        const response = await axios.get('http://localhost:3000/readaboutme')
+                        this.aboutmeData = response.data;
+                        
+                    } catch (error) {
+                        return  console.error('Error fetching quotes:', error);
+                    }
+                }
+            },
+            beforeMount(){
+        this.getContentAboutme()
+    }
    
 }
 </script>
