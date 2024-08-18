@@ -1,11 +1,11 @@
 <template>
     <div>
-        <NavBarview/>
+        <!-- <NavBarview/> -->
         <h1> this is AdminPage</h1>
         <TableList>
             
         </TableList>
-        <ContactSocial/>
+        <!-- <ContactSocial/> -->
     </div>
 </template>
 <script>

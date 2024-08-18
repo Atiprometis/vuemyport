@@ -20,13 +20,21 @@
                         <h1> Aboutme แก้ไข</h1>
                     </template>
                     <template v-slot:card-content >
-                        <div class="input-form-admin">
-                        <input type="text">
-                    </div>
+                        <h2 class="aboutmeShow" v-if="aboutmeData[0]">{{  aboutmeData[0].content }}</h2>
+
+                        
+                        <form v-on:submit="submitText">
+
+                                <input type="text" v-model="content" class=" edit-input">
+
+                            <button  type="submit"  class="btn btn-primary">บันทึก</button>
+                        </form>
                     </template>
                     <template v-slot:card-button >
 
-                        <button type="button" class="btn btn-primary">Primary</button>
+                        <!-- <button  type="button"  class="btn btn-primary">
+                            <router-link to="/adminupdate" class="nav-link">update</router-link>
+                        </button> -->
 
                     </template>
                     
@@ -86,6 +94,9 @@
                     
                 </CardAdmin>
             </div>
+            
+        
+
         </div>
     </div>
 </template>
@@ -93,21 +104,48 @@
 <script>
 
 import CardAdmin from '../admin/CardAdmin.vue'
+import axios from 'axios'
 
 export default {
     name: 'TableList',
     components: {
         CardAdmin,
     },
+    
     data(){
         return {
             isHiddenAboutme: true,
             isHiddenPortfolio: false,
             isHiddenExp: false,
             isHiddenContact: false,
+            aboutmeData: [],
+            aboutmeDataPost: [],
+            id:2,
+            content:'',
+
         }
     },
     methods: {
+        async submitText(){
+            // e.preventDefault() 
+            console.log(this.id);
+            console.log(this.content);
+
+            try{
+
+                const response = await axios.patch('http://localhost:3000/update/aboutme',{
+                    id:2,
+                    content:this.content,
+                })
+
+                this.aboutmeDataPost = response.data;
+
+                console.log('returm = '+ this.aboutmeDataPost);
+                
+            } catch (error) {
+                console.error('Error fetching quotes:', error);
+            }
+        },
         submitAboutme() {
         this.isHiddenAboutme = true;
         this.isHiddenPortfolio = false;
@@ -137,6 +175,21 @@ export default {
         this.isHiddenContact = true;
 
         },
+        async getContentAboutme(){
+            try{
+                const response = await axios.get('http://localhost:3000/readaboutme')
+                this.aboutmeData = response.data;
+                
+            } catch (error) {
+                return  console.error('Error fetching quotes:', error);
+            }
+        }
+    },
+    mounted(){
+        
+    },
+    beforeMount(){
+        this.getContentAboutme()
     }
 }
 </script>
@@ -162,5 +215,20 @@ export default {
         width: 100%;
         height: 100%;
         background-color:rgb(236, 169, 77);
+    }
+    
+    .edit-input{
+
+            height: 100px;
+            font-size: 16px;
+            padding-top: 0; /* ไม่ใส่ padding ด้านบน */
+            padding-bottom: 60px; /* เพิ่ม padding ด้านล่าง เพื่อเลื่อนข้อความขึ้นด้านบน */
+            box-sizing: border-box; /* ให้ padding รวมอยู่ใน height */
+            border: 1px solid #ccc; /* ใส่เส้นขอบ */
+    }
+    .aboutmeShow{
+        border: solid 1px black;
+        width:100%;
+        display:block;
     }
 </style>

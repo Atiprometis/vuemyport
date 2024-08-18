@@ -4,6 +4,7 @@
         <h1> this is resume</h1>
         <slot></slot>
         <ContactSocial/>
+        
     </div>
 </template>
 <script>
