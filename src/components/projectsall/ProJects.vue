@@ -10,9 +10,11 @@
 
                 <!-- <h1>{{ quotes }}</h1> -->
             <!-- <img src="../../assets/img/project/jisoo1.jpg" alt=""> -->
-
-                <div class="col-lg-4  col-lg-auto col-sm-12 project-all       " v-for="item in quotes " :key="item.id" >
-
+            
+            
+                <div class="col-lg-4  col-lg-auto col-sm-12 project-all " v-for="item in quotes " :key="item.id">
+                    <router-link   class="nav-link" :to="{ name: 'projectdetail', params:{ idproject:item.id } }">  
+                        <h1>{{ item.id }}</h1>
                     <!-- <img class="img-pj animete-top-down"  :src="getImgUrl(item.photo)" alt="" > -->
                     
                             <label class="col-12  project-box  ">
@@ -28,8 +30,9 @@
                                 
                             </label>
                             
-                       
+                    </router-link>
                 </div>
+            
                 
         </div>
         </div>

@@ -4,6 +4,7 @@ import NavBar from '@/components/navbar/NavBar.vue'
 import ResumePage from '@/view/ResumePage.vue'
 import AdminPage from '../view/AdminPage.vue';
 import AdminUpdate from '../components/admin/AdminUpdate.vue'
+import ProjectDetail from '../components/projectsall/ProjectDetail.vue';
 
 import { createRouter , createWebHistory } from 'vue-router'
 
@@ -15,7 +16,9 @@ const router = createRouter({
         {path: '/navber', name:'NavBar', component: NavBar},
         {path: '/resume', name: 'Resume',component: ResumePage},
         {path: '/sp-admin', name: 'Admin',component: AdminPage},
-        {path: '/adminupdate', name:'Adminupdate',component: AdminUpdate}
+        {path: '/adminupdate', name:'Adminupdate',component: AdminUpdate},
+        {path: '/projectdetail/:idproject', name:'projectdetail',component: ProjectDetail}
+
     ]
 })
 
