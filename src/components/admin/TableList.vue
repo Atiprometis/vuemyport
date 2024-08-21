@@ -18,6 +18,7 @@
                 <CardAdmin>
                     <template v-slot:card-header>
                         <h1> Aboutme แก้ไข</h1>
+                        
                     </template>
                     <template v-slot:card-content >
                         <h2 class="aboutmeShow" v-if="aboutmeData[0]">{{  aboutmeData[0].content }}</h2>
@@ -51,7 +52,7 @@
                         <h1>ดดด</h1>
                     </template>
                     <template v-slot:card-button >
-
+                        
                         <button type="button" class="btn btn-primary">Primary</button>
 
                     </template>
@@ -66,7 +67,46 @@
                         <h1>Exp</h1>
                     </template>
                     <template v-slot:card-content >
-                        <h1>ดดด</h1>
+
+                        <table class="table table-striped table-dark" >
+                            
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                                <th scope="col">edit</th>
+                                <th scope="col">delete</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody v-for="item in ExpandEduData" :key="item.id_exp" >
+                                
+                                
+                                <tr>
+                               
+                                <th scope="row">{{ item.id_exp }}</th>
+   
+                                <td>{{ item.projectname }}</td>
+                                 <!-- <form v-on:submit="submitText" class="form-label"> -->
+                                <td>
+                                    {{ item.content }}
+                                    <!-- <input type="text" class="form-control" :placeholder="item.content" :value="item.content" aria-label="{{ item.content }}" aria-describedby="basic-addon1"> -->
+                                
+                                </td>
+                                <td>{{ item.location  }}</td>
+                                <td>
+                                    
+                                    <button type="button" v-on:click="showAlert(item.id_exp)" class="btn btn-primary">edit</button>
+                                </td>
+                                <td><button type="button" class="btn btn-danger">delete</button></td>
+                                <!-- </form> -->
+                                </tr>
+                                
+                            </tbody>
+                        
+                        </table>
                     </template>
                     <template v-slot:card-button >
 
@@ -105,8 +145,10 @@
 
 import CardAdmin from '../admin/CardAdmin.vue'
 import axios from 'axios'
+import Swal from 'sweetalert2';
 
 export default {
+    
     name: 'TableList',
     components: {
         CardAdmin,
@@ -122,7 +164,9 @@ export default {
             aboutmeDataPost: [],
             id:2,
             content:'',
-
+            ExpandEduData:[],
+            UpdateExp:[],
+            patchExpShow:[],
         }
     },
     methods: {
@@ -183,13 +227,81 @@ export default {
             } catch (error) {
                 return  console.error('Error fetching quotes:', error);
             }
+        },
+        async getExp(){
+            try{
+                const response = await axios.get('http://localhost:3000/readexp')
+                this.ExpandEduData = response.data;
+                
+            } catch (error) {
+                return  console.error('Error fetching quotes:', error);
+            }
+        },
+        
+       async showAlert(idExp) {
+            const projectname = '';
+            const content = '';
+            const location = '';
+
+            // console.log('EXP SHOW '+ idExp);
+            const  { value: formValues } = await Swal.fire({
+        title: "Multiple inputs",
+        html: `
+               <h5>ชื่อโปรเจค</h5> 
+            <input id="swal-input1" class="swal2-input" value="${projectname}">
+             <h5>เนื้อหา</h5> 
+            <input id="swal-input2" class="swal2-input" value="${content}">
+             <h5>สถานที่</h5> 
+            <input id="swal-input3" class="swal2-input" value="${location}">
+        `,
+        focusConfirm: false,
+        showCancelButton: true,
+        preConfirm: () => {
+            
+            return [
+            document.getElementById("swal-input1").value,
+            document.getElementById("swal-input2").value,
+            document.getElementById("swal-input3").value
+            ];
         }
+        });
+        if (formValues) {
+        // Swal.fire(JSON.stringify(formValues));
+        this.UpdateExp = {
+            id_exp:  idExp,
+            projectname: formValues[0], 
+            content: formValues[1], 
+            location: formValues[2], 
+        };
+        // console.log(this.UpdateExp);
+        this.patchExp(this.UpdateExp);
+
+        }
+    },
+    async patchExp(updateData){
+        
+        console.log("Processing update with data:", updateData);
+
+            try{
+
+                 await axios.patch('http://localhost:3000/update/exp',updateData)
+
+
+                console.log('returm = '+ this.patchExpShow);
+                await this.getExp();
+                // location.reload();
+                
+            } catch (error) {
+                console.error('Error fetching quotes:', error);
+            }
+        },
     },
     mounted(){
         
     },
     beforeMount(){
         this.getContentAboutme()
+        this.getExp()
     }
 }
 </script>

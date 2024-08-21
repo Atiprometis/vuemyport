@@ -14,7 +14,7 @@
             
                 <div class="col-lg-4  col-lg-auto col-sm-12 project-all " v-for="item in quotes " :key="item.id">
                     <router-link   class="nav-link" :to="{ name: 'projectdetail', params:{ idproject:item.id } }">  
-                        <h1>{{ item.id }}</h1>
+
                     <!-- <img class="img-pj animete-top-down"  :src="getImgUrl(item.photo)" alt="" > -->
                     
                             <label class="col-12  project-box  ">
