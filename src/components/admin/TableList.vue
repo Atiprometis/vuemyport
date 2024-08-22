@@ -101,7 +101,8 @@
                                     
                                     <button type="button" v-on:click="InputExp(item)" class="btn btn-primary">edit</button>
                                 </td>
-                                <td><button type="button" class="btn btn-danger">delete</button></td>
+                                <td>
+                                    <button type="button" v-on:click="ShowDeleteExp(item.id_exp)" class="btn btn-danger">delete</button></td>
                                 <!-- </form> -->
                                 </tr>
                                 
@@ -158,7 +159,7 @@
                                     
                                     <button type="button" v-on:click="inputEdu(item)" class="btn btn-primary">edit</button>
                                 </td>
-                                <td><button type="button" class="btn btn-danger">delete</button></td>
+                                <td><button type="button" v-on:click="ShowDeleteEdu(item.id_edu)" class="btn btn-danger">delete</button></td>
                                 <!-- </form> -->
                                 </tr>
                                 
@@ -320,6 +321,76 @@ export default {
             } catch(error){
                 return console.error('Error fetching quotes:', error);
             }
+        },
+        async DeleteExp(idExp){
+            // console.log('show id '+ idExp)
+            try{
+                 await axios.delete(`http://localhost:3000/delete/exp/${idExp}`)
+                // console.log('Delete successful:', response.data);
+
+                await this.getExp();
+            } catch(error){
+                return console.error('Error fetching quotes:', error);
+            }
+        },
+        async DeleteEdu(idEdu){
+            // console.log('show id '+ idExp)
+            try{
+                 await axios.delete(`http://localhost:3000/delete/edu/${idEdu}`)
+                // console.log('Delete successful:', response.data);
+
+                await this.getEducation();
+            } catch(error){
+                return console.error('Error fetching quotes:', error);
+            }
+        },
+        async ShowDeleteExp(idExp){
+            // console.log('show id '+ idExp)
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                    });
+
+                    this.DeleteExp(idExp);
+                    
+
+                }
+                });
+        },
+        async ShowDeleteEdu(idEdu){
+            // console.log('show id '+ idExp)
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                    });
+
+                    this.DeleteEdu(idEdu);
+                    
+
+                }
+                });
         },
         
        async InputExp(idExp) {
