@@ -7,7 +7,8 @@
                 <button v-on:click="submitAboutme()" type="button" class="btn btn-primary bg-t text-uppercase">about me</button>
                 <!-- <div v-show="!isHiddenAboutme">hide me</div> -->
                 <button v-on:click="submitPortfolio()" type="button" class="btn btn-primary bg-t text-uppercase">portfolio </button>
-                <button v-on:click="submitExp()" type="button" class="btn btn-primary bg-t text-uppercase">EXPERIENCE - EDUCATION</button>
+                <button v-on:click="submitExp()" type="button" class="btn btn-primary bg-t text-uppercase">EXPERIENCE</button>
+                <button v-on:click="submitEdu()" type="button" class="btn btn-primary bg-t text-uppercase">EDUCATION</button>
                 <button v-on:click="submitContact()" type="button" class="btn btn-primary bg-t text-uppercase">CONTACT</button>
             
 
@@ -81,7 +82,7 @@
                                 </tr>
                             </thead>
                             
-                            <tbody v-for="item in ExpandEduData" :key="item.id_exp" >
+                            <tbody v-for="item in showExp" :key="item.id_exp" >
                                 
                                 
                                 <tr>
@@ -98,7 +99,7 @@
                                 <td>{{ item.location  }}</td>
                                 <td>
                                     
-                                    <button type="button" v-on:click="showAlert(item)" class="btn btn-primary">edit</button>
+                                    <button type="button" v-on:click="InputExp(item)" class="btn btn-primary">edit</button>
                                 </td>
                                 <td><button type="button" class="btn btn-danger">delete</button></td>
                                 <!-- </form> -->
@@ -116,6 +117,65 @@
                     
                 </CardAdmin>
             </div>
+            <!-- edu  -->
+
+
+            <div v-if="isHiddenEdu"  class=" col-lg-9 p-0 m-0">
+                <div  class="bg-t-2"></div>
+                <CardAdmin>
+                    <template v-slot:card-header>
+                        <h1>edu</h1>
+                    </template>
+                    <template v-slot:card-content >
+                        <table class="table table-striped table-dark" >
+                            
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+
+                                <th scope="col">edit</th>
+                                <th scope="col">delete</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody v-for="item in EducationsData" :key="item.id_edu" >
+                                
+                                
+                                <tr>
+                               
+                                <th scope="row">{{ item.id_edu }}</th>
+   
+                                <td>{{ item.edu_name }}</td>
+                                 <!-- <form v-on:submit="submitText" class="form-label"> -->
+                                <td>
+                                    {{ item.edu_content }}
+                                    <!-- <input type="text" class="form-control" :placeholder="item.content" :value="item.content" aria-label="{{ item.content }}" aria-describedby="basic-addon1"> -->
+                                
+                                </td>
+                                <td>
+                                    
+                                    <button type="button" v-on:click="inputEdu(item)" class="btn btn-primary">edit</button>
+                                </td>
+                                <td><button type="button" class="btn btn-danger">delete</button></td>
+                                <!-- </form> -->
+                                </tr>
+                                
+                            </tbody>
+                        
+                        </table>
+                    </template>
+                    <template v-slot:card-button >
+
+                        <button type="button" class="btn btn-primary">Primary</button>
+
+                    </template>
+                    
+                </CardAdmin>
+            </div>
+
+
             <!-- CONTACT -->
             <div v-if="isHiddenContact"  class=" col-lg-9 p-0 m-0">
                 <div  class="bg-t-2"></div>
@@ -159,13 +219,16 @@ export default {
             isHiddenAboutme: true,
             isHiddenPortfolio: false,
             isHiddenExp: false,
+            isHiddenEdu: false,
             isHiddenContact: false,
             aboutmeData: [],
             aboutmeDataPost: [],
             id:2,
             content:'',
-            ExpandEduData:[],
+            showExp:[],
+            EducationsData:[],
             UpdateExp:[],
+            UpdateEdu:[],
             patchExpShow:[],
         }
     },
@@ -194,6 +257,7 @@ export default {
         this.isHiddenAboutme = true;
         this.isHiddenPortfolio = false;
         this.isHiddenExp = false;
+        this.isHiddenEdu = false;
         this.isHiddenContact = false;
         
         },
@@ -202,6 +266,7 @@ export default {
         this.isHiddenAboutme = false;
         this.isHiddenPortfolio = true;
         this.isHiddenExp = false;
+        this.isHiddenEdu = false;
         this.isHiddenContact = false;
 
         },
@@ -209,6 +274,15 @@ export default {
         this.isHiddenAboutme = false;
         this.isHiddenPortfolio = false;
         this.isHiddenExp = true;
+        this.isHiddenEdu = false;
+        this.isHiddenContact = false;
+
+        },
+        submitEdu() {
+        this.isHiddenAboutme = false;
+        this.isHiddenPortfolio = false;
+        this.isHiddenExp = false;
+        this.isHiddenEdu = true;
         this.isHiddenContact = false;
 
         },
@@ -216,6 +290,7 @@ export default {
         this.isHiddenAboutme = false;
         this.isHiddenPortfolio = false;
         this.isHiddenExp = false;
+        this.isHiddenEdu = false;
         this.isHiddenContact = true;
 
         },
@@ -231,14 +306,23 @@ export default {
         async getExp(){
             try{
                 const response = await axios.get('http://localhost:3000/readexp')
-                this.ExpandEduData = response.data;
+                this.showExp = response.data;
                 
             } catch (error) {
                 return  console.error('Error fetching quotes:', error);
             }
         },
+        async getEducation(){
+            try{
+                const response = await axios.get('http://localhost:3000/readeducation')
+               this.EducationsData = response.data
+            //    console.log('project = '+ this.projects)
+            } catch(error){
+                return console.error('Error fetching quotes:', error);
+            }
+        },
         
-       async showAlert(idExp) {
+       async InputExp(idExp) {
             const projectname = idExp.projectname;
             const content = idExp.content;
             const location = idExp.location;
@@ -261,9 +345,6 @@ export default {
         focusConfirm: false,
         showCancelButton: true,
         preConfirm: () => {
-
-            
-            
             return [
             document.getElementById("swal-input1").value,
             document.getElementById("swal-input2").value,
@@ -301,6 +382,63 @@ export default {
                 console.error('Error fetching quotes:', error);
             }
         },
+        async inputEdu(EduData) {
+
+            const edu_name = EduData.edu_name;
+            const edu_content = EduData.edu_content;
+
+            // console.log('show ' + idExp.id_exp);
+            // console.log('show2 ' + idExp.projectname);
+            // console.log('show3 ' + idExp.content);
+            console.log('EXP SHOW '+ EduData.id_edu);
+
+            const  { value: formValues } = await Swal.fire({
+        title: "Multiple inputs",
+        html: `
+               <h5>ชื่อโปรเจค</h5> 
+            <input id="swal-input1" class="swal2-input" value="${edu_name}">
+             <h5>เนื้อหา</h5> 
+            <input id="swal-input2" class="swal2-input" value="${edu_content}">
+
+        `,
+        focusConfirm: false,
+        showCancelButton: true,
+        preConfirm: () => {
+            return [
+            document.getElementById("swal-input1").value,
+            document.getElementById("swal-input2").value,
+            ];
+        }
+        });
+        if (formValues) {
+        // Swal.fire(JSON.stringify(formValues));
+        this.UpdateEdu = {
+            id_edu:  EduData.id_edu,
+            edu_name: formValues[0], 
+            edu_content: formValues[1], 
+        };
+        // console.log(this.UpdateExp);
+        this.patchEdu(this.UpdateEdu);
+
+        }
+    },
+    async patchEdu(updateEduData){
+        
+        console.log("Processing update with data:", updateEduData);
+
+            try{
+
+                 await axios.patch('http://localhost:3000/update/edu',updateEduData)
+
+
+                // console.log('returm = '+ this.patchExpShow);
+                await this.getEducation();
+                // location.reload();
+                
+            } catch (error) {
+                console.error('Error fetching quotes:', error);
+            }
+        },
     },
     mounted(){
         
@@ -308,6 +446,7 @@ export default {
     beforeMount(){
         this.getContentAboutme()
         this.getExp()
+        this.getEducation()
     }
 }
 </script>
