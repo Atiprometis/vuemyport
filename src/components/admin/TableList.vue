@@ -98,7 +98,7 @@
                                 <td>{{ item.location  }}</td>
                                 <td>
                                     
-                                    <button type="button" v-on:click="showAlert(item.id_exp)" class="btn btn-primary">edit</button>
+                                    <button type="button" v-on:click="showAlert(item)" class="btn btn-primary">edit</button>
                                 </td>
                                 <td><button type="button" class="btn btn-danger">delete</button></td>
                                 <!-- </form> -->
@@ -239,11 +239,15 @@ export default {
         },
         
        async showAlert(idExp) {
-            const projectname = '';
-            const content = '';
-            const location = '';
+            const projectname = idExp.projectname;
+            const content = idExp.content;
+            const location = idExp.location;
 
+            // console.log('show ' + idExp.id_exp);
+            // console.log('show2 ' + idExp.projectname);
+            // console.log('show3 ' + idExp.content);
             // console.log('EXP SHOW '+ idExp);
+
             const  { value: formValues } = await Swal.fire({
         title: "Multiple inputs",
         html: `
@@ -257,6 +261,8 @@ export default {
         focusConfirm: false,
         showCancelButton: true,
         preConfirm: () => {
+
+            
             
             return [
             document.getElementById("swal-input1").value,
@@ -268,7 +274,7 @@ export default {
         if (formValues) {
         // Swal.fire(JSON.stringify(formValues));
         this.UpdateExp = {
-            id_exp:  idExp,
+            id_exp:  idExp.id_exp,
             projectname: formValues[0], 
             content: formValues[1], 
             location: formValues[2], 
