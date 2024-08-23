@@ -11,10 +11,8 @@
                 <button v-on:click="submitEdu()" type="button" class="btn btn-primary bg-t text-uppercase">EDUCATION</button>
                 <button v-on:click="submitContact()" type="button" class="btn btn-primary bg-t text-uppercase">CONTACT</button>
             
-
-                
             </div>
-            <div v-if="isHiddenAboutme" class=" col-lg-9 p-0 m-0">
+            <div v-if="isAboutmeVisible" class=" col-lg-9 p-0 m-0">
                 <div  class="bg-t-2"></div>
                 <CardAdmin>
                     <template v-slot:card-header>
@@ -43,7 +41,7 @@
                 </CardAdmin>
             </div>
             <!-- portfolio -->
-            <div v-if="isHiddenPortfolio"  class=" col-lg-9 p-0 m-0">
+            <div v-if="isPortfolioVisible"  class=" col-lg-9 p-0 m-0">
                 <div  class="bg-t-2"></div>
                 <CardAdmin>
                     <template v-slot:card-header>
@@ -61,16 +59,14 @@
                 </CardAdmin>
             </div>
             <!-- EXPERIENCE - EDUCATION -->
-            <div v-if="isHiddenExp"  class=" col-lg-9 p-0 m-0">
+            <div v-if="isExpVisible"  class=" col-lg-9 p-0 m-0">
                 <div  class="bg-t-2"></div>
                 <CardAdmin>
                     <template v-slot:card-header>
                         <h1>Exp</h1>
                     </template>
                     <template v-slot:card-content >
-
                         <table class="table table-striped table-dark" >
-                            
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>
@@ -80,25 +76,16 @@
                                 <th scope="col">edit</th>
                                 <th scope="col">delete</th>
                                 </tr>
-                            </thead>
-                            
+                            </thead> 
                             <tbody v-for="item in showExp" :key="item.id_exp" >
-                                
-                                
                                 <tr>
-                               
                                 <th scope="row">{{ item.id_exp }}</th>
-   
                                 <td>{{ item.projectname }}</td>
-                                 <!-- <form v-on:submit="submitText" class="form-label"> -->
                                 <td>
                                     {{ item.content }}
-                                    <!-- <input type="text" class="form-control" :placeholder="item.content" :value="item.content" aria-label="{{ item.content }}" aria-describedby="basic-addon1"> -->
-                                
                                 </td>
                                 <td>{{ item.location  }}</td>
                                 <td>
-                                    
                                     <button type="button" v-on:click="InputExp(item)" class="btn btn-primary">edit</button>
                                 </td>
                                 <td>
@@ -111,8 +98,14 @@
                         </table>
                     </template>
                     <template v-slot:card-button >
+                        <form v-on:submit="insertExp" class="form-label">
+                            <input type="text" v-model="insertExpProjectname" class="form-control " placeholder="โปรเจค">
+                        <input type="text" v-model="insertExpContent" class="form-control " placeholder="เนื้อหา">
+                        <input type="text" v-model="insertExpLocation" class="form-control " placeholder="สถานที่">
 
-                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button  type="submit"  class="btn btn-primary">เพิ่ม</button>
+                        </form>
+
 
                     </template>
                     
@@ -121,7 +114,7 @@
             <!-- edu  -->
 
 
-            <div v-if="isHiddenEdu"  class=" col-lg-9 p-0 m-0">
+            <div v-if="isEduVisible"  class=" col-lg-9 p-0 m-0">
                 <div  class="bg-t-2"></div>
                 <CardAdmin>
                     <template v-slot:card-header>
@@ -178,7 +171,7 @@
 
 
             <!-- CONTACT -->
-            <div v-if="isHiddenContact"  class=" col-lg-9 p-0 m-0">
+            <div v-if="isContactVisible"  class=" col-lg-9 p-0 m-0">
                 <div  class="bg-t-2"></div>
                 <CardAdmin>
                     <template v-slot:card-header>
@@ -208,11 +201,14 @@ import CardAdmin from '../admin/CardAdmin.vue'
 import axios from 'axios'
 import Swal from 'sweetalert2';
 
+
+
 export default {
     
     name: 'TableList',
     components: {
         CardAdmin,
+
     },
     
     data(){
@@ -231,6 +227,9 @@ export default {
             UpdateExp:[],
             UpdateEdu:[],
             patchExpShow:[],
+            insertExpProjectname: '',
+            insertExpContent: '',
+            insertExpLocation: '',
         }
     },
     methods: {
@@ -254,45 +253,47 @@ export default {
                 console.error('Error fetching quotes:', error);
             }
         },
-        submitAboutme() {
-        this.isHiddenAboutme = true;
-        this.isHiddenPortfolio = false;
-        this.isHiddenExp = false;
-        this.isHiddenEdu = false;
-        this.isHiddenContact = false;
-        
-        },
+        async insertExp(){
+            // e.preventDefault();
+            // console.log('insertExpProjectname : '+this.insertExpProjectname)
+            // console.log('insertExpContent : '+this.insertExpContent)
+            // console.log('insertExpLocation : '+this.insertExpLocation)
+            try{
+                await axios.post('http://localhost:3000/insert/exp',{
+                    projectname: this.insertExpProjectname,
+                    content:this.insertExpContent,
+                    location:this.insertExpLocation,
+                })
 
+                await this.getExp();
+            } catch (error) {
+                console.error('Error fetching quotes:', error);
+            }
+        }, 
+        toggleVisibility(section){
+            this.isHiddenAboutme = section === 'aboutme';
+            this.isHiddenPortfolio = section === 'portfolio';
+            this.isHiddenExp = section === 'exp';
+            this.isHiddenEdu = section === 'edu';
+            this.isHiddenContact = section === 'contact';
+        },
+        submitAboutme() {
+       this.toggleVisibility('aboutme')
+        },
         submitPortfolio() {
-        this.isHiddenAboutme = false;
-        this.isHiddenPortfolio = true;
-        this.isHiddenExp = false;
-        this.isHiddenEdu = false;
-        this.isHiddenContact = false;
+            this.toggleVisibility('portfolio')
 
         },
         submitExp() {
-        this.isHiddenAboutme = false;
-        this.isHiddenPortfolio = false;
-        this.isHiddenExp = true;
-        this.isHiddenEdu = false;
-        this.isHiddenContact = false;
+            this.toggleVisibility('exp')
 
         },
         submitEdu() {
-        this.isHiddenAboutme = false;
-        this.isHiddenPortfolio = false;
-        this.isHiddenExp = false;
-        this.isHiddenEdu = true;
-        this.isHiddenContact = false;
+            this.toggleVisibility('edu')
 
         },
         submitContact() {
-        this.isHiddenAboutme = false;
-        this.isHiddenPortfolio = false;
-        this.isHiddenExp = false;
-        this.isHiddenEdu = false;
-        this.isHiddenContact = true;
+            this.toggleVisibility('contact')
 
         },
         async getContentAboutme(){
@@ -385,10 +386,7 @@ export default {
                     text: "Your file has been deleted.",
                     icon: "success"
                     });
-
                     this.DeleteEdu(idEdu);
-                    
-
                 }
                 });
         },
@@ -397,11 +395,6 @@ export default {
             const projectname = idExp.projectname;
             const content = idExp.content;
             const location = idExp.location;
-
-            // console.log('show ' + idExp.id_exp);
-            // console.log('show2 ' + idExp.projectname);
-            // console.log('show3 ' + idExp.content);
-            // console.log('EXP SHOW '+ idExp);
 
             const  { value: formValues } = await Swal.fire({
         title: "Multiple inputs",
@@ -498,14 +491,10 @@ export default {
         console.log("Processing update with data:", updateEduData);
 
             try{
-
                  await axios.patch('http://localhost:3000/update/edu',updateEduData)
-
-
                 // console.log('returm = '+ this.patchExpShow);
                 await this.getEducation();
-                // location.reload();
-                
+
             } catch (error) {
                 console.error('Error fetching quotes:', error);
             }
@@ -518,7 +507,25 @@ export default {
         this.getContentAboutme()
         this.getExp()
         this.getEducation()
+    },
+    computed: {
+        isAboutmeVisible() {
+        return this.isHiddenAboutme;
+        },
+        isPortfolioVisible() {
+            return this.isHiddenPortfolio;
+        },
+        isExpVisible() {
+        return this.isHiddenExp;
+        },
+        isEduVisible() {
+            return this.isHiddenEdu;
+        },isContactVisible() {
+        return this.isHiddenContact;
+        },
+        
     }
+
 }
 </script>
 

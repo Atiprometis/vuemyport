@@ -114,8 +114,6 @@ export default{
                                 
                                 // else{
                                 //     entry.target.classList.remove('animete');
-
-
                                 // }
                             })
                             
