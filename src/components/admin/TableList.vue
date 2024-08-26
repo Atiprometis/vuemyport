@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class=" col-lg-3 p-0 m-0 d-flex justify-content-center align-items-center flex-column">
+            <div class=" col-lg-3 p-0 m-0 d-flex justify-content-center align-items-center flex-column" style="height: 100%;">
                 <h1>table list</h1>
 
                 <button v-on:click="submitAboutme()" type="button" class="btn btn-primary bg-t text-uppercase">about me</button>
@@ -31,11 +31,7 @@
                         </form>
                     </template>
                     <template v-slot:card-button >
-
-                        <!-- <button  type="button"  class="btn btn-primary">
-                            <router-link to="/adminupdate" class="nav-link">update</router-link>
-                        </button> -->
-
+                        
                     </template>
                     
                 </CardAdmin>
@@ -121,7 +117,7 @@
                         <h1>edu</h1>
                     </template>
                     <template v-slot:card-content >
-                        <table class="table table-striped table-dark" >
+                        <table class="table table-striped table-dark table-all" >
                             
                             <thead>
                                 <tr>
@@ -162,8 +158,12 @@
                     </template>
                     <template v-slot:card-button >
 
-                        <button type="button" class="btn btn-primary">Primary</button>
+                        <form v-on:submit="insertEdu" class="form-label">
+                            <input type="text" v-model="insertEduName" class="form-control " placeholder="โปรเจค">
+                        <input type="text" v-model="insertEduContent" class="form-control " placeholder="เนื้อหา">
 
+                        <button  type="submit"  class="btn btn-primary">เพิ่ม</button>
+                        </form>
                     </template>
                     
                 </CardAdmin>
@@ -230,6 +230,8 @@ export default {
             insertExpProjectname: '',
             insertExpContent: '',
             insertExpLocation: '',
+            insertEduName: '',
+            insertEduContent: '',
         }
     },
     methods: {
@@ -253,8 +255,8 @@ export default {
                 console.error('Error fetching quotes:', error);
             }
         },
-        async insertExp(){
-            // e.preventDefault();
+        async insertExp(e){
+            e.preventDefault();
             // console.log('insertExpProjectname : '+this.insertExpProjectname)
             // console.log('insertExpContent : '+this.insertExpContent)
             // console.log('insertExpLocation : '+this.insertExpLocation)
@@ -266,6 +268,22 @@ export default {
                 })
 
                 await this.getExp();
+            } catch (error) {
+                console.error('Error fetching quotes:', error);
+            }
+        }, 
+        async insertEdu(e){
+            e.preventDefault();
+            // console.log('insertExpProjectname : '+this.insertExpProjectname)
+            // console.log('insertExpContent : '+this.insertExpContent)
+            // console.log('insertExpLocation : '+this.insertExpLocation)
+            try{
+                await axios.post('http://localhost:3000/insert/edu',{
+                    edu_name: this.insertEduName,
+                    edu_content:this.insertEduContent,
+                })
+
+                await this.getEducation();
             } catch (error) {
                 console.error('Error fetching quotes:', error);
             }
@@ -565,5 +583,8 @@ export default {
         border: solid 1px black;
         width:100%;
         display:block;
+    }
+    .table-all{ 
+        height:100%;
     }
 </style>
