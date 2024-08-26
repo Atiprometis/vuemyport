@@ -12,164 +12,15 @@
                 <button v-on:click="submitContact()" type="button" class="btn btn-primary bg-t text-uppercase">CONTACT</button>
             
             </div>
-            <div v-if="isAboutmeVisible" class=" col-lg-9 p-0 m-0">
-                <div  class="bg-t-2"></div>
-                <CardAdmin>
-                    <template v-slot:card-header>
-                        <h1> Aboutme แก้ไข</h1>
-                        
-                    </template>
-                    <template v-slot:card-content >
-                        <h2 class="aboutmeShow" v-if="aboutmeData[0]">{{  aboutmeData[0].content }}</h2>
-
-                        
-                        <form v-on:submit="submitText" class="form-label">
-
-                                <input type="text" v-model="content" class="form-control ">
-
-                            <button  type="submit"  class="btn btn-primary">บันทึก</button>
-                        </form>
-                    </template>
-                    <template v-slot:card-button >
-                        
-                    </template>
-                    
-                </CardAdmin>
-            </div>
+            <!-- About me -->
+             <AboutMeAll v-if="isAboutmeVisible"/>
             <!-- portfolio -->
-            <div v-if="isPortfolioVisible"  class=" col-lg-9 p-0 m-0">
-                <div  class="bg-t-2"></div>
-                <CardAdmin>
-                    <template v-slot:card-header>
-                        <h1>พอร์ต</h1>
-                    </template>
-                    <template v-slot:card-content >
-                        <h1>ดดด</h1>
-                    </template>
-                    <template v-slot:card-button >
-                        
-                        <button type="button" class="btn btn-primary">Primary</button>
-
-                    </template>
-                    
-                </CardAdmin>
-            </div>
-            <!-- EXPERIENCE - EDUCATION -->
-            <div v-if="isExpVisible"  class=" col-lg-9 p-0 m-0">
-                <div  class="bg-t-2"></div>
-                <CardAdmin>
-                    <template v-slot:card-header>
-                        <h1>Exp</h1>
-                    </template>
-                    <template v-slot:card-content >
-                        <table class="table table-striped table-dark" >
-                            <thead>
-                                <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                                <th scope="col">edit</th>
-                                <th scope="col">delete</th>
-                                </tr>
-                            </thead> 
-                            <tbody v-for="item in showExp" :key="item.id_exp" >
-                                <tr>
-                                <th scope="row">{{ item.id_exp }}</th>
-                                <td>{{ item.projectname }}</td>
-                                <td>
-                                    {{ item.content }}
-                                </td>
-                                <td>{{ item.location  }}</td>
-                                <td>
-                                    <button type="button" v-on:click="InputExp(item)" class="btn btn-primary">edit</button>
-                                </td>
-                                <td>
-                                    <button type="button" v-on:click="ShowDeleteExp(item.id_exp)" class="btn btn-danger">delete</button></td>
-                                <!-- </form> -->
-                                </tr>
-                                
-                            </tbody>
-                        
-                        </table>
-                    </template>
-                    <template v-slot:card-button >
-                        <form v-on:submit="insertExp" class="form-label">
-                            <input type="text" v-model="insertExpProjectname" class="form-control " placeholder="โปรเจค">
-                        <input type="text" v-model="insertExpContent" class="form-control " placeholder="เนื้อหา">
-                        <input type="text" v-model="insertExpLocation" class="form-control " placeholder="สถานที่">
-
-                        <button  type="submit"  class="btn btn-primary">เพิ่ม</button>
-                        </form>
-
-
-                    </template>
-                    
-                </CardAdmin>
-            </div>
-            <!-- edu  -->
-
-
-            <div v-if="isEduVisible"  class=" col-lg-9 p-0 m-0">
-                <div  class="bg-t-2"></div>
-                <CardAdmin>
-                    <template v-slot:card-header>
-                        <h1>edu</h1>
-                    </template>
-                    <template v-slot:card-content >
-                        <table class="table table-striped table-dark table-all" >
-                            
-                            <thead>
-                                <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-
-                                <th scope="col">edit</th>
-                                <th scope="col">delete</th>
-                                </tr>
-                            </thead>
-                            
-                            <tbody v-for="item in EducationsData" :key="item.id_edu" >
-                                
-                                
-                                <tr>
-                               
-                                <th scope="row">{{ item.id_edu }}</th>
-   
-                                <td>{{ item.edu_name }}</td>
-                                 <!-- <form v-on:submit="submitText" class="form-label"> -->
-                                <td>
-                                    {{ item.edu_content }}
-                                    <!-- <input type="text" class="form-control" :placeholder="item.content" :value="item.content" aria-label="{{ item.content }}" aria-describedby="basic-addon1"> -->
-                                
-                                </td>
-                                <td>
-                                    
-                                    <button type="button" v-on:click="inputEdu(item)" class="btn btn-primary">edit</button>
-                                </td>
-                                <td><button type="button" v-on:click="ShowDeleteEdu(item.id_edu)" class="btn btn-danger">delete</button></td>
-                                <!-- </form> -->
-                                </tr>
-                                
-                            </tbody>
-                        
-                        </table>
-                    </template>
-                    <template v-slot:card-button >
-
-                        <form v-on:submit="insertEdu" class="form-label">
-                            <input type="text" v-model="insertEduName" class="form-control " placeholder="โปรเจค">
-                        <input type="text" v-model="insertEduContent" class="form-control " placeholder="เนื้อหา">
-
-                        <button  type="submit"  class="btn btn-primary">เพิ่ม</button>
-                        </form>
-                    </template>
-                    
-                </CardAdmin>
-            </div>
-
-
+            <PortfolioAll v-if="isPortfolioVisible"  />
+            <!-- EXPERIENCE -->
+            <ExpAll  v-if="isExpVisible" />
+            <!-- EDUCATION  -->
+            <EduAll v-if="isEduVisible"/>
+            
             <!-- CONTACT -->
             <div v-if="isContactVisible"  class=" col-lg-9 p-0 m-0">
                 <div  class="bg-t-2"></div>
@@ -198,21 +49,29 @@
 <script>
 
 import CardAdmin from '../admin/CardAdmin.vue'
-import axios from 'axios'
-import Swal from 'sweetalert2';
+// import axios from 'axios'
+// import Swal from 'sweetalert2';
 
-
+import PortfolioAll from './component/PortfolioAll.vue'
+import ExpAll from './component/ExpAll.vue'
+import EduAll  from './component/EduAll.vue'
+import AboutMeAll from './component/AboutMeAll.vue'
 
 export default {
     
     name: 'TableList',
     components: {
         CardAdmin,
-
+        PortfolioAll,
+        ExpAll,
+        EduAll,
+        AboutMeAll,
     },
     
     data(){
         return {
+            id:2,
+            content:'',
             isHiddenAboutme: true,
             isHiddenPortfolio: false,
             isHiddenExp: false,
@@ -220,74 +79,10 @@ export default {
             isHiddenContact: false,
             aboutmeData: [],
             aboutmeDataPost: [],
-            id:2,
-            content:'',
-            showExp:[],
-            EducationsData:[],
-            UpdateExp:[],
-            UpdateEdu:[],
-            patchExpShow:[],
-            insertExpProjectname: '',
-            insertExpContent: '',
-            insertExpLocation: '',
-            insertEduName: '',
-            insertEduContent: '',
         }
     },
     methods: {
-        async submitText(){
-            // e.preventDefault() 
-            console.log(this.id);
-            console.log(this.content);
-
-            try{
-
-                const response = await axios.patch('http://localhost:3000/update/aboutme',{
-                    id:2,
-                    content:this.content,
-                })
-
-                this.aboutmeDataPost = response.data;
-
-                console.log('returm = '+ this.aboutmeDataPost);
-                
-            } catch (error) {
-                console.error('Error fetching quotes:', error);
-            }
-        },
-        async insertExp(e){
-            e.preventDefault();
-            // console.log('insertExpProjectname : '+this.insertExpProjectname)
-            // console.log('insertExpContent : '+this.insertExpContent)
-            // console.log('insertExpLocation : '+this.insertExpLocation)
-            try{
-                await axios.post('http://localhost:3000/insert/exp',{
-                    projectname: this.insertExpProjectname,
-                    content:this.insertExpContent,
-                    location:this.insertExpLocation,
-                })
-
-                await this.getExp();
-            } catch (error) {
-                console.error('Error fetching quotes:', error);
-            }
-        }, 
-        async insertEdu(e){
-            e.preventDefault();
-            // console.log('insertExpProjectname : '+this.insertExpProjectname)
-            // console.log('insertExpContent : '+this.insertExpContent)
-            // console.log('insertExpLocation : '+this.insertExpLocation)
-            try{
-                await axios.post('http://localhost:3000/insert/edu',{
-                    edu_name: this.insertEduName,
-                    edu_content:this.insertEduContent,
-                })
-
-                await this.getEducation();
-            } catch (error) {
-                console.error('Error fetching quotes:', error);
-            }
-        }, 
+       
         toggleVisibility(section){
             this.isHiddenAboutme = section === 'aboutme';
             this.isHiddenPortfolio = section === 'portfolio';
@@ -314,218 +109,9 @@ export default {
             this.toggleVisibility('contact')
 
         },
-        async getContentAboutme(){
-            try{
-                const response = await axios.get('http://localhost:3000/readaboutme')
-                this.aboutmeData = response.data;
-                
-            } catch (error) {
-                return  console.error('Error fetching quotes:', error);
-            }
-        },
-        async getExp(){
-            try{
-                const response = await axios.get('http://localhost:3000/readexp')
-                this.showExp = response.data;
-                
-            } catch (error) {
-                return  console.error('Error fetching quotes:', error);
-            }
-        },
-        async getEducation(){
-            try{
-                const response = await axios.get('http://localhost:3000/readeducation')
-               this.EducationsData = response.data
-            //    console.log('project = '+ this.projects)
-            } catch(error){
-                return console.error('Error fetching quotes:', error);
-            }
-        },
-        async DeleteExp(idExp){
-            // console.log('show id '+ idExp)
-            try{
-                 await axios.delete(`http://localhost:3000/delete/exp/${idExp}`)
-                // console.log('Delete successful:', response.data);
-
-                await this.getExp();
-            } catch(error){
-                return console.error('Error fetching quotes:', error);
-            }
-        },
-        async DeleteEdu(idEdu){
-            // console.log('show id '+ idExp)
-            try{
-                 await axios.delete(`http://localhost:3000/delete/edu/${idEdu}`)
-                // console.log('Delete successful:', response.data);
-
-                await this.getEducation();
-            } catch(error){
-                return console.error('Error fetching quotes:', error);
-            }
-        },
-        async ShowDeleteExp(idExp){
-            // console.log('show id '+ idExp)
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                    });
-
-                    this.DeleteExp(idExp);
-                    
-
-                }
-                });
-        },
-        async ShowDeleteEdu(idEdu){
-            // console.log('show id '+ idExp)
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                    });
-                    this.DeleteEdu(idEdu);
-                }
-                });
-        },
-        
-       async InputExp(idExp) {
-            const projectname = idExp.projectname;
-            const content = idExp.content;
-            const location = idExp.location;
-
-            const  { value: formValues } = await Swal.fire({
-        title: "Multiple inputs",
-        html: `
-               <h5>ชื่อโปรเจค</h5> 
-            <input id="swal-input1" class="swal2-input" value="${projectname}">
-             <h5>เนื้อหา</h5> 
-            <input id="swal-input2" class="swal2-input" value="${content}">
-             <h5>สถานที่</h5> 
-            <input id="swal-input3" class="swal2-input" value="${location}">
-        `,
-        focusConfirm: false,
-        showCancelButton: true,
-        preConfirm: () => {
-            return [
-            document.getElementById("swal-input1").value,
-            document.getElementById("swal-input2").value,
-            document.getElementById("swal-input3").value
-            ];
-        }
-        });
-        if (formValues) {
-        // Swal.fire(JSON.stringify(formValues));
-        this.UpdateExp = {
-            id_exp:  idExp.id_exp,
-            projectname: formValues[0], 
-            content: formValues[1], 
-            location: formValues[2], 
-        };
-        // console.log(this.UpdateExp);
-        this.patchExp(this.UpdateExp);
-
-        }
-    },
-    async patchExp(updateData){
-        
-        console.log("Processing update with data:", updateData);
-
-            try{
-
-                 await axios.patch('http://localhost:3000/update/exp',updateData)
-
-
-                console.log('returm = '+ this.patchExpShow);
-                await this.getExp();
-                // location.reload();
-                
-            } catch (error) {
-                console.error('Error fetching quotes:', error);
-            }
-        },
-        async inputEdu(EduData) {
-
-            const edu_name = EduData.edu_name;
-            const edu_content = EduData.edu_content;
-
-            // console.log('show ' + idExp.id_exp);
-            // console.log('show2 ' + idExp.projectname);
-            // console.log('show3 ' + idExp.content);
-            console.log('EXP SHOW '+ EduData.id_edu);
-
-            const  { value: formValues } = await Swal.fire({
-        title: "Multiple inputs",
-        html: `
-               <h5>ชื่อโปรเจค</h5> 
-            <input id="swal-input1" class="swal2-input" value="${edu_name}">
-             <h5>เนื้อหา</h5> 
-            <input id="swal-input2" class="swal2-input" value="${edu_content}">
-
-        `,
-        focusConfirm: false,
-        showCancelButton: true,
-        preConfirm: () => {
-            return [
-            document.getElementById("swal-input1").value,
-            document.getElementById("swal-input2").value,
-            ];
-        }
-        });
-        if (formValues) {
-        // Swal.fire(JSON.stringify(formValues));
-        this.UpdateEdu = {
-            id_edu:  EduData.id_edu,
-            edu_name: formValues[0], 
-            edu_content: formValues[1], 
-        };
-        // console.log(this.UpdateExp);
-        this.patchEdu(this.UpdateEdu);
-
-        }
-    },
-    async patchEdu(updateEduData){
-        
-        console.log("Processing update with data:", updateEduData);
-
-            try{
-                 await axios.patch('http://localhost:3000/update/edu',updateEduData)
-                // console.log('returm = '+ this.patchExpShow);
-                await this.getEducation();
-
-            } catch (error) {
-                console.error('Error fetching quotes:', error);
-            }
-        },
-    },
-    mounted(){
         
     },
-    beforeMount(){
-        this.getContentAboutme()
-        this.getExp()
-        this.getEducation()
-    },
+
     computed: {
         isAboutmeVisible() {
         return this.isHiddenAboutme;
