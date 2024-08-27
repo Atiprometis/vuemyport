@@ -1,61 +1,46 @@
 <template>
-<div class=" shadow-sm fixed-top navbar-all " :style="navbarChange">
-
-        <nav class=" container navbar navbar-expand-lg  ">
-        <div class="container-fluid ">
-            <a class="navbar-brand" href="#">LOGO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<NavBarTempate>
+  <template v-slot:logo-navbar>
+    LoGo
+  </template>
+  <template v-slot:nav-item>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase ">
-                <li class="nav-item">
-
-                <router-link to="/" class="nav-link">HOME</router-link>
-                </li>
-                
-                <li class="nav-item" >
-                    <div class="nav-link poiter " @click="addscrollToElement">project</div>
-
-                </li>
-
-                <li class="nav-item" >
-                    <div class="nav-link poiter" @click="addscrollToExp">EXPERIENCE</div>
-
-                </li>
-
-                <li class="nav-item">
-                  <div class="nav-link poiter" @click="addscrollTosocial">social</div>
-                </li>
-                <li class="nav-item">
-
-                  <router-link to="/resume" class="nav-link">resume</router-link>
-                </li>
-
-                
-               <h1>{{ this.$store.state.targetRefB }}</h1>
-               
-               
+              <li class="nav-item">
+                    <router-link to="/" class="nav-link">HOME</router-link>
+                    </li>
+                    
+                    <li class="nav-item" >
+                        <div class="nav-link poiter " @click="addscrollToElement">project</div>
+    
+                    </li>
+    
+                    <li class="nav-item" >
+                        <div class="nav-link poiter" @click="addscrollToExp">EXPERIENCE</div>
+    
+                    </li>
+    
+                    <li class="nav-item">
+                      <div class="nav-link poiter" @click="addscrollTosocial">social</div>
+                    </li>
+                    <li class="nav-item">
+    
+                      <router-link to="/resume" class="nav-link">resume</router-link>
+              </li>
             </ul>
-            
-            </div>
-        </div>
-        </nav>
+  </template>
+</NavBarTempate>
 
-  
-</div>
 </template>
 
 <script>
-
-// import { eventBus } from 'path/to/eventBus.js'
-
+import NavBarTempate from './NavBarTempate'
 
 export default{
-
-  
-
-    name: 'NavBarview',
+    
+    name: 'NavBar',
+    components:{
+      NavBarTempate,
+    },
 
     data() {
     return {
@@ -67,10 +52,10 @@ export default{
     
     navbarChange(){
       return {
-        // backgroundColor: this.scrollY > 100? '#000' : '#fff',
+        
         opacity: this.timer > 100?  '0.9' : '1',
       };
-    }
+    },
   },
   
   mounted() {
@@ -86,14 +71,8 @@ export default{
 
   },
     methods:{
-
-      
-       
-
     scrollToTargetInB() {
       this.setTargetRefB('targetElementB');
-
-
     },
 
     handleScroll() {
@@ -124,17 +103,11 @@ export default{
     },
     // ['targetElementB'].scrollIntoView({behavior: 'smooth'})
  }
-}  
+} 
 
 
 </script>
 <style>
-.navbar-all
-{
-  background-color: #fff;
-}
-  .poiter{
-    cursor: pointer;
-  }
+
    
 </style>
