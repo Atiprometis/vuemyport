@@ -5,21 +5,21 @@
       </template>
       <template v-slot:nav-item>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase ">
-                  <li class="nav-item">
-                        <router-link to="/" class="nav-link">HOME</router-link>
-                        </li>
+                  <li class="nav-item ">
+                        <router-link to="/" class="nav-link text-light">HOME</router-link>
+                  </li>
                         
                         <li class="nav-item" >
-                            <div class="nav-link poiter " @click="addscrollToElement">project</div>
+                            <div class="nav-link poiter text-light " @click="addscrollToElement">project</div>
         
                         </li>
         
                         <li class="nav-item">
-                          <div class="nav-link poiter" @click="addscrollTosocial">social</div>
+                          <div class="nav-link poiter text-light" @click="addscrollTosocial">social</div>
                         </li>
                         <li class="nav-item">
         
-                          <router-link to="/resume" class="nav-link">resume</router-link>
+                          <router-link to="/resume" class="nav-link text-light">resume</router-link>
                   </li>
                 </ul>
       </template>

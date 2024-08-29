@@ -4,8 +4,6 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-   
-
         targetRefB: null,
         scrollToElementResult: '',
   },
@@ -17,8 +15,6 @@ export default createStore({
   },
   mutations: {
 
-    
-    
     setTargetRefB(state, ref) {
       state.targetRefB = ref;
     },
