@@ -79,7 +79,7 @@
         handleScroll() {
             
           // Update the scrollY data property with the current scroll position
-          console.log('time2:'+this.timer);
+          // console.log('time2:'+this.timer);
 
           if(this.timer !== null){
             clearTimeout(this.timer);

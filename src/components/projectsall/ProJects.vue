@@ -75,6 +75,7 @@ import axios from 'axios';
                 console.error('Error fetching quotes:', error);
             }
             },
+            
 
         },
 

@@ -19,7 +19,17 @@ const router = createRouter({
         {path: '/adminupdate', name:'Adminupdate',component: AdminUpdate},
         {path: '/projectdetail/:idproject', name:'projectdetail',component: ProjectDetail}
 
-    ]
+    ],
+    scrollBehavior(to, from, savedPosition) {
+        console.log('To:', to);
+    console.log('From:', from);
+    console.log('Saved Position:', savedPosition);
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            return { top: 0 };
+        }
+      }
 })
 
 export default router

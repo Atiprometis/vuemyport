@@ -60,11 +60,11 @@
       mounted() {
         
         // Add a scroll event listener to track scroll position
-        window.addEventListener('scroll', this.handleScroll);
+        // window.addEventListener('scroll', this.handleScroll);
       },
       beforeUnmount() {
         // Remove the scroll event listener to prevent memory leaks
-        window.removeEventListener('scroll', this.handleScroll);
+        // window.removeEventListener('scroll', this.handleScroll);
     
       },
         methods:{

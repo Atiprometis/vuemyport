@@ -67,7 +67,16 @@ export default {
   },
   created() {
     this.id = this.$route.params.idproject;
-    console.log("this id = "+this.id);
+    // console.log("this id = "+this.id);
+  },
+  methods:{
+    scrollToTop() {
+    window.scrollTo(0,0);
+  }
+  },
+  mounted() {
+        
+        // this.scrollToTop() 
   }
 }
 </script>
@@ -91,7 +100,7 @@ export default {
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: top center;
-      background-size: cover; /* or 100% 100% */
+      background-size: cover; 
       filter: brightness(50%);
       z-index: 0;
 
@@ -123,4 +132,5 @@ export default {
     width:100%;
 
   }
+  
 </style>
