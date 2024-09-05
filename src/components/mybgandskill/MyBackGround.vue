@@ -6,13 +6,13 @@
             <div class="col-lg-6  my-bg d-flex justify-content-center align-items-center ">
 
                 <img class="phone-my-bg" :src="require(`../../assets/img/mockup/phone_14.png`)" alt="">
-                <img class="myimg-my-bg add-opacity " :src="require(`../../assets/img/mockup/t1.png`)" alt="">
-                <img class="myimg-my-bg animete-top-down" :src="require(`../../assets/img/mockup/t2.png`)" alt="">
-                <img class="mycode-my-bg animete-right" :src="require(`../../assets/img/mockup/t3.png`)" alt="">
+                <img class="myimg-my-bg add-animate-on-bg-opacity " :src="require(`../../assets/img/mockup/t1.png`)" alt="">
+                <img class="myimg-my-bg animate-on-bg-top-down" :src="require(`../../assets/img/mockup/t2.png`)" alt="">
+                <img class="mycode-my-bg animate-on-bg-right" :src="require(`../../assets/img/mockup/t3.png`)" alt="">
                 <!-- <img class="phone-my-bg z-0" :src="require(`../../assets/img/mockup/phone_14_bg_p.png`)" alt=""> -->
                 <div class="all-boxskill">
-                    <div class="boxskill   animete-on-scroll" ></div>
-                    <div class="boxskill   animete-on-scroll"  ></div>
+                    <div class="boxskill   animate-on-bg-scroll" ></div>
+                    <div class="boxskill   animate-on-bg-scroll"  ></div>
                 </div>
             </div>
             <div class="col-lg-6 p-5 mt-5 my-skills d-flex flex-column align-items-start justify-content-start" >
@@ -26,17 +26,17 @@
                     <div class="text-start m-0 p-0">
                         <ul class="m-0 p-0 d-flex flex-row font-all">
                             <li class=" d-flex flex-row">
-                                <h1 class="animete-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'html5']" style="color: #ec4432;" /></h1>
+                                <h1 class="animate-on-bg-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'html5']" style="color: #ec4432;" /></h1>
                                 
-                                <h1 class="animete-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'css3-alt']" style="color: #3074e8;" /></h1>
+                                <h1 class="animate-on-bg-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'css3-alt']" style="color: #3074e8;" /></h1>
 
-                                <h1 class="animete-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'js']" style="color: #e69941;" /></h1>
+                                <h1 class="animate-on-bg-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'js']" style="color: #e69941;" /></h1>
 
-                                <h1 class="animete-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'vuejs']" style="color: #5abf6b;" /></h1>
+                                <h1 class="animate-on-bg-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'vuejs']" style="color: #5abf6b;" /></h1>
 
-                                <h1 class="animete-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'php']" style="color: #694cae;" /></h1>
+                                <h1 class="animate-on-bg-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'php']" style="color: #694cae;" /></h1>
 
-                                <h1 class="animete-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'laravel']" style="color: #fd523f;" /></h1>
+                                <h1 class="animate-on-bg-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'laravel']" style="color: #fd523f;" /></h1>
                                 
                             </li>
 
@@ -79,39 +79,27 @@ export default{
 
                 function getScrollAnimation() { 
                    
-                    const animation_element = document.querySelectorAll('.animete-on-scroll, .animete-top-down, .animete-right, .add-opacity');
+                    const animation_element = document.querySelectorAll('.animate-on-bg-scroll, .animate-on-bg-top-down, .animate-on-bg-right, .add-animate-on-bg-opacity');
 
                         const observer = new IntersectionObserver((entries)=>{
 
                             entries.forEach((entry)=>{
                                 // console.log(entry.boundingClientRect.top )
-
-                                // if(entry.isIntersecting ){
-                                //     entry.target.classList.add('animete');
-                                //     let ratio = entry.isIntersecting;
-                                //     console.log(entry.target, "is fully visible +:(ratio "+ratio+") ");
-
- 
-                                // }
-
-                                // if(entry.isIntersecting < 0){
-                                //     entry.target.classList.add('animete');
-                                //     console.log(entry.target.classList, "is fully visible");
-                                // }
                                  if (entry.intersectionRatio > 0.5) {
-                                let ratio = entry.intersectionRatio.toFixed(4);
-                            console.log(entry.target, "has started leaving the viewport (ratio "+ratio+")");
-                            entry.target.classList.add('animete');
-                            
-                                //  entry.target.classList.remove('animete');
+                            //     let ratio = entry.intersectionRatio.toFixed(4);
+                            // console.log(entry.target, "has started leaving the viewport (ratio "+ratio+")");
+
+                                entry.target.classList.add('animate');
+
                                     } 
                                     else if (entry.intersectionRatio < 0.5) {
-                            let ratio = entry.intersectionRatio.toFixed(4);
-                            console.log(entry.target, "has started entering the viewport (ratio "+ratio+")");
-                            // entry.target.classList.add('animete');
-                            entry.target.classList.remove('animete');
+                            // let ratio = entry.intersectionRatio.toFixed(4);
+                            // console.log(entry.target, "has started entering the viewport (ratio "+ratio+")");
+
+
+                                entry.target.classList.remove('animate');
+
                                     }
-                                
                                 // else{
                                 //     entry.target.classList.remove('animete');
                                 // }
@@ -125,7 +113,7 @@ export default{
                         for (let i = 0; i < animation_element.length; i++) {
                             const el = animation_element[i];
                             observer.observe(el);
-
+                            console.log('Observing:', el);
                         }
                 }
 
@@ -200,29 +188,23 @@ export default{
     position: absolute;
     margin-right: 10vh;
 }
-.animete-on-scroll{
+.animate-on-bg-scroll{
     opacity: 0;
     transform: translate(-200px,0);
     transition: all 1s ease-out;
     transition-delay: 0.2s;
 }
-.animete-top-down{
-    opacity: 0;
-    transform: translate(0,-80px);
-    transition: all 1s ease-out;
-    transition-delay: 0.2s;
-  
-}
-.add-opacity{
+
+.add-animate-on-bg-opacity{
     opacity: 0;
     transform: translate(0,0px);
-    transition: all 0.2s ease-out;
+    transition: all 0.6s ease-out;
     transition-delay: 0.1s;
 }
-.animete-right{
+.animate-on-bg-right{
     opacity: 0;
     transform: translate(100px,0);
-    transition: all 1s ease-out;
+    transition: all 0.3s ease-out;
     transition-delay: 0.2s;
     
 }
@@ -246,12 +228,19 @@ export default{
             }
             
             
-        }  
-.animete{
-    opacity: 1;
-    transform: translate(0,0);
-    
+        }
+.animate-on-bg-top-down {
+    opacity: 0 ;
+    transform: translate(0,-80px);
+    transition: all 0.5s ease-out;
+    transition-delay: 0.5s;
 }
+.animate {
+    opacity: 1 ;
+  transform: translate(0, 0) ;
+
+} 
+
 .all-boxskill{
     display: flex;
     width: 100vw;
@@ -304,4 +293,5 @@ export default{
 .fontawesomes:nth-child(6){
     transition-delay: 1.4s;
 }
+
 </style>

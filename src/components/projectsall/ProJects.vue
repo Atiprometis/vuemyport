@@ -5,18 +5,13 @@
         <div class="row justify-content-start">
             <div id="targetElementB" class=""></div>
             <h1 id="position"></h1>
-                <!-- <h2 class=" head-text-project mb-2  text-uppercase animete-top-down text-start mt-5 pt-2 ">projects</h2> -->
+
                 <h2 class=" head-text-project mb-2  text-uppercase text-start mt-5 pt-2 ">portfolio</h2>
 
-                <!-- <h1>{{ quotes }}</h1> -->
-            <!-- <img src="../../assets/img/project/jisoo1.jpg" alt=""> -->
-            
-            
                 <div class="col-lg-4  col-lg-auto col-sm-12 project-all " v-for="item in quotes " :key="item.id">
-                    <router-link   class="nav-link" :to="{ name: 'projectdetail', params:{ idproject:item.id } }">  
+                    <router-link   class="nav-link" 
+                    :to="{ name: 'projectdetail', params:{ idproject:item.id } }">  
 
-                    <!-- <img class="img-pj animete-top-down"  :src="getImgUrl(item.photo)" alt="" > -->
-                    
                             <label class="col-12  project-box  ">
 
                                 <img class="img-pj  " :src="getImgUrl(item.photo)" alt="" >
@@ -75,27 +70,10 @@ import axios from 'axios';
                 console.error('Error fetching quotes:', error);
             }
             },
-            
-
-        },
-
-        setup() {
-
-            // const quote = ref('')
-            // axios.get('http://localhost:3000/read')
-            // .then(response => {
-            //     quote.value = response
-            // })
-
-            // return {
-            //     quote
-            // }
-
-            
-            
-        },
        
-    
+            
+
+        },
         name: 'ProJects',
 
 
@@ -183,16 +161,6 @@ color: #fff;
 }
 
 
-
-
-
-
-/* .project-box:hover  + .box-text{
-    display: block;
-
-} */
-
-
 .head-text-project  {
 
     text-decoration: underline;
@@ -200,7 +168,6 @@ color: #fff;
     text-underline-offset: 8px;
 
 }
-
 
 .project-box .box-text .text-main  {
 
@@ -210,14 +177,6 @@ color: #fff;
   
   transition: background-size .3s, background-position .3s .3s;
 }
-
-
-
-
-
-
-
- 
 
 
 

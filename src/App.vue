@@ -1,6 +1,7 @@
 <template>
-<router-view></router-view>
-  
+
+    <router-view></router-view>
+
 </template>
 
 <script >
@@ -27,6 +28,13 @@ background-color: #fff;
 font-family: 'Kanit', sans-serif;
 
 
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 15s, transform 15s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 </style>

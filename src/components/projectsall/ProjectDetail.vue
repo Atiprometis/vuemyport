@@ -5,7 +5,8 @@
     <div class="container-fluid ">
   <div class="row">
 
-      <div class="banner-main p-0 m-0 col-lg-12 d-flex justify-content-center align-items-center">
+      <div class="banner-main p-0 m-0 col-lg-12 d-flex justify-content-center align-items-center" 
+      :style="{'--background-image-url':`url(${imgUrlBanner})`}">
 
           <div class=" d-flex flex-column">
             <h1 class="heading-main"> {{ projectDetail[0].projectName }}</h1>
@@ -13,24 +14,27 @@
 
           </div>
       </div>
+      <div class="box" ></div>
 
-    <div class="col-lg-12" >
-        <div class="project_content flex-column" >
+      <div class="col-lg-12 animete-top-down" >
+        <div class=" project_content  flex-column" >
           <h5 class="projecthead_text">อธิบายโปรเจค</h5>
           <span class="projectcontent_text">{{ projectContent }}</span>
         </div>
-    </div>
-    <div class="col-lg-12" >
-      <div class="skill-all project_content flex-column">
-        <h5 class="projecthead_text">Technology</h5>
-        <span class="skill-text-content">{{ skillContent }}</span>
       </div>
-    </div>
-    <div class="col-lg-12 d-flex flex-row pt-5 pb-5" >
-      <div class="photo-project " v-for="(image,index) in imgUrl.slice(0,4) " :key="index">
-        <img class="" style="height:300px;width: 300px;" :src="image.imgFromDatabase" alt="">
+      <div class="col-lg-12 add-opacity  "  style="background-color: #dda15e">
+        <div class="skill-all project_content flex-column animete-top-down">
+          <h5 class="projecthead_text text-light">Technology</h5>
+          <span class="skill-text-content text-light">{{ skillContent }}</span>
+        </div>
       </div>
-    </div>
+
+      <div class="col-lg-12 d-flex flex-row pt-5 pb-5 " >
+        <div class="photo-project "  v-for="(image,index) in imgUrl.slice(0,4) " :key="index">
+          <img class="" style="height:300px;width: 300px;" :src="image.imgFromDatabase" alt="">
+        </div>
+      </div>
+
     
   </div>
 </div>
@@ -63,6 +67,8 @@ export default {
       {imgFromDatabase:"https://hackspirit.com/wp-content/uploads/2021/06/Copy-of-Rustic-Female-Teen-Magazine-Cover.jpg"},
       {imgFromDatabase:"https://hackspirit.com/wp-content/uploads/2021/06/pexels-andrea-piacquadio-3937468-1.jpg"}
     ],
+    imgUrlBanner: require('../../assets/img/project/jisoo2.jpeg'),
+
     };
   },
   created() {
@@ -77,6 +83,46 @@ export default {
   mounted() {
         
         // this.scrollToTop() 
+
+        function getDisplayProjectOnScrolling() { 
+
+                   const animation_element = document.querySelectorAll(' .animete-top-down, .animete-on-scroll, .add-opacity');
+
+                       const observer = new IntersectionObserver((entries)=>{
+
+                           entries.forEach((entry)=>{
+                               // console.log(entry.boundingClientRect.top )
+                                if (entry.intersectionRatio > 0.4) {
+                               let ratio = entry.intersectionRatio.toFixed(4);
+                           console.log(entry.target, "has started leaving the viewport (ratio "+ratio+")");
+                           entry.target.classList.add('add-animate');
+                           
+                               //  entry.target.classList.remove('animete');
+                                   } 
+                                   else if (entry.intersectionRatio < 0.4) {
+                           let ratio = entry.intersectionRatio.toFixed(4);
+                           console.log(entry.target, "has started entering the viewport (ratio "+ratio+")");
+                           // entry.target.classList.add('animete');
+                           entry.target.classList.remove('add-animate');
+                                   }
+                               // else{
+                               //     entry.target.classList.remove('animete');
+                               // }
+                           })
+                           
+                       },{
+                           root: null,
+                           threshold: 0.4,
+                       });
+
+                       for (let i = 0; i < animation_element.length; i++) {
+                           const el = animation_element[i];
+                           observer.observe(el);
+
+                       }
+               }
+
+               getDisplayProjectOnScrolling();
   }
 }
 </script>
@@ -96,7 +142,7 @@ export default {
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url('../../assets/img/project/jisoo2.jpeg');
+      background-image: var(--background-image-url);
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: top center;
@@ -122,8 +168,13 @@ export default {
     justify-content:center;
     align-items: center;
     padding: 0 10%;
-    height: 100vh;
+    height: 50vh;
     width: 100%;
+
+  }
+  .col-lg-12:nth-of-type(4) .project_content  {
+    height: 100vh;
+    
   }
   .projectcontent_text{
 
@@ -132,5 +183,53 @@ export default {
     width:100%;
 
   }
+  .project_ivisible{
+
+    opacity: 0;
+    transform: translate(0,-80px);
+    transition: all 1s ease-out;
+    transition-delay: 0.2s;
+    /* display: none; */
+  }
+  
+  .animete-on-scroll{
+    opacity: 0;
+    transform: translate(-200px,0);
+    transition: all 1s ease-out;
+    transition-delay: 0.2s;
+}
+
+.animete-top-down{
+    opacity: 0;
+    transform: translate(0,-80px);
+    transition: all 1s ease-out;
+    transition-delay: 0.5s;
+  
+}
+.add-opacity{
+    opacity: 0;
+    transform: translate(0,0px);
+    transition: all 0.2s ease-out;
+    transition-delay: 0.1s;
+}
+.animete-right{
+    opacity: 0;
+    transform: translate(100px,0);
+    transition: all 1s ease-out;
+    transition-delay: 0.2s;
+    
+}
+.animation-top-up{
+    animation-name: skill-up-down;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 0.8s;
+}
+
+.add-animate{
+
+opacity: 1;
+transform: translate(0,0);
+}
   
 </style>
