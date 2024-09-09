@@ -79,7 +79,7 @@ import axios from 'axios'
             try{
                 const response = await axios.get('http://localhost:3000/readexp')
                this.projects = response.data
-               console.log('project = '+ this.projects)
+
             } catch(error){
                 return console.error('Error fetching quotes:', error);
             }
@@ -88,7 +88,7 @@ import axios from 'axios'
             try{
                 const response = await axios.get('http://localhost:3000/readeducation')
                this.educations = response.data
-               console.log('project = '+ this.projects)
+
             } catch(error){
                 return console.error('Error fetching quotes:', error);
             }

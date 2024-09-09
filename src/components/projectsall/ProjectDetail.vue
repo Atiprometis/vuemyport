@@ -5,15 +5,20 @@
     <div class="container-fluid ">
   <div class="row">
 
-      <div class="banner-main p-0 m-0 col-lg-12 d-flex justify-content-center align-items-center" 
+      <div class="banner-main p-0 m-0 col-lg-12 d-flex justify-content-center align-items-center flex-column" 
       :style="{'--background-image-url':`url(${imgUrlBanner})`}">
 
           <div class=" d-flex flex-column">
             <h1 class="heading-main"> {{ projectDetail[0].projectName }}</h1>
-            <p class="heading-main">{{ projectDetail[0].projectType }}</p>
+            <p class="heading-main">{{ projectDetail[0].projectType }}
+              
+            </p>
 
           </div>
-      </div>
+          <h1 class="animation-up-and-down  text-light position-absolute" style="z-index: 1; bottom: 0;">
+            <font-awesome-icon :icon="['fas', 'chevron-down']" />
+          </h1>
+        </div>
       <div class="box" ></div>
 
       <div class="col-lg-12 animete-top-down" >
@@ -25,15 +30,19 @@
       <div class="col-lg-12 add-opacity  "  style="background-color: #dda15e">
         <div class="skill-all project_content flex-column animete-top-down">
           <h5 class="projecthead_text text-light">Technology</h5>
+          <ul class=" d-flex justify-content-start ">
+            <li>sad</li>
+          </ul>
           <span class="skill-text-content text-light">{{ skillContent }}</span>
         </div>
       </div>
 
-      <div class="col-lg-12 d-flex flex-row pt-5 pb-5 " >
+      <div class="col-lg-12 d-flex flex-row p-0 m-0" >
         <div class="photo-project "  v-for="(image,index) in imgUrl.slice(0,4) " :key="index">
-          <img class="" style="height:300px;width: 300px;" :src="image.imgFromDatabase" alt="">
+          <img class="img_project_style" :src="image.imgFromDatabase" alt="">
         </div>
       </div>
+      
 
     
   </div>
@@ -53,7 +62,7 @@ export default {
     return {
       id: null,
       projectDetail:[{
-        projectName:'asdsadasdasd',
+        projectName:'ชื่อโปรเจค',
         projectType:'WEBSITE',
 
       }],
@@ -91,23 +100,19 @@ export default {
                        const observer = new IntersectionObserver((entries)=>{
 
                            entries.forEach((entry)=>{
-                               // console.log(entry.boundingClientRect.top )
+
                                 if (entry.intersectionRatio > 0.4) {
-                               let ratio = entry.intersectionRatio.toFixed(4);
-                           console.log(entry.target, "has started leaving the viewport (ratio "+ratio+")");
+                          //      let ratio = entry.intersectionRatio.toFixed(4);
+                          //  console.log(entry.target, "has started leaving the viewport (ratio "+ratio+")");
                            entry.target.classList.add('add-animate');
-                           
-                               //  entry.target.classList.remove('animete');
+
                                    } 
                                    else if (entry.intersectionRatio < 0.4) {
-                           let ratio = entry.intersectionRatio.toFixed(4);
-                           console.log(entry.target, "has started entering the viewport (ratio "+ratio+")");
-                           // entry.target.classList.add('animete');
-                           entry.target.classList.remove('add-animate');
+                          //  let ratio = entry.intersectionRatio.toFixed(4);
+                          //  console.log(entry.target, "has started entering the viewport (ratio "+ratio+")");
+
+                          //  entry.target.classList.remove('add-animate');
                                    }
-                               // else{
-                               //     entry.target.classList.remove('animete');
-                               // }
                            })
                            
                        },{
@@ -151,9 +156,16 @@ export default {
       z-index: 0;
 
     }
-  
-  
- 
+    .skill-all ul  {
+      width: 100%;
+      list-style-type: disc; 
+      padding-left: 20px; 
+      }
+    /* li {
+    list-style-type: disc; 
+    padding-left: 20px; 
+    width: 100%;
+  } */
   .heading-main{
     color: #fff;
     z-index: 1;
@@ -173,15 +185,29 @@ export default {
 
   }
   .col-lg-12:nth-of-type(4) .project_content  {
-    height: 100vh;
-    
+    height: 60vh;
+    justify-content:start;
+    padding-top:20px;
+
+  }
+  .col-lg-12:nth-of-type(4) .project_content  ul li{
+    justify-content:start;
+    align-items: start;
+
+
   }
   .projectcontent_text{
 
   }
   .photo-project{
     width:100%;
-
+    height:40vh;
+  }
+  .img_project_style{
+     flex:1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .project_ivisible{
 
@@ -225,6 +251,27 @@ export default {
     animation-iteration-count: infinite;
     animation-delay: 0.8s;
 }
+.animation-up-and-down{
+    animation-name: add-up-and-down;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 0.8s;
+}
+
+@keyframes add-up-and-down {
+            0% {
+
+              transform: translate(0,0px);
+            }
+            50% {
+              transform: translate(0,-10px);
+            }
+            100% {
+              transform: translate(0,0px);
+            }
+            
+}           
+
 
 .add-animate{
 

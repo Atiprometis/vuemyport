@@ -4,43 +4,44 @@
             <!--  -->
             <div class=" col-lg-6 img-b1 d-flex justify-content-center align-items-center ">
                 <swiper
-                :spaceBetween="30"
+                :spaceBetween=" 30"
                 
                 
                 :autoplay="{
-                delay: 11000,
+                delay: 10000,
                 disableOnInteraction: false,
                 }"
 
                 :allowTouchMove = "false"
 
                 :modules="modules"
-                class="mySwiper pb-5"
+                class="swiper pb-5"
             >
                 <swiper-slide>
-                    <!-- <img class="" width="200" height="200" :src="require(`../../assets/img/project/jisoo2.jpeg`)" alt=""> -->
+
                     <div class="pre-2 m-0 p-0 ">
                     <label class="allab ">
-                    <h1 class="ab1">My name is </h1>
+                    <h1 class="ab1">Hello, My name is </h1>
                     <h2 class="ab2 m-0 p-0 text-uppercase">Chaithawat Samanjit</h2>
                     </label>
                     <div class="line"></div>
                     <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
-                        I am a front-end developer who is constantly seeking self-improvement. Currently, I am looking for opportunities in the field of programming, and I hope to be the one who gets that chance.
+                        {{myaboutme}}
                     </p>   
+                    
                     </div>
 
                 </swiper-slide>
                 <swiper-slide>
-                    <!-- <img class="" width="200" height="200" :src="require(`../../assets/img/project/jisoo1.jpg`)" alt=""> -->
+
                     <div class="pre-2 " >
                         <label class="allab ">
-                        <h1 class="ab1">My project </h1>
-                        <h2 class="ab2 m-0 p-0 text-uppercase">project</h2>
+                        <h1 class="ab1">I am a Front-end </h1>
+                        <h2 class="ab2 m-0 p-0 text-uppercase">Web developer</h2>
                         </label>
                         <div class="line"></div>
                         <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
-                            HTML
+                            {{ myskillbigblock }}
                         </p>   
                     </div>
                 </swiper-slide>
@@ -104,7 +105,9 @@ export default{
         return{
             boxpre1: true,
             boxpre2: true,
-        
+            myaboutme:"I am aspiring to become a web developer and am highly committed to continuously improving myself every day.",
+            myskillbigblock: 'I have knowledge of HTML, CSS, JavaScript, and PHP. I use frameworks such as Vue.js, Laravel, CodeIgniter, and Express.js, and my database expertise is in MySQL. Additionally, I am skilled in design and use programs like Photoshop, Illustrator, and Figma. I am also eager to learn new skills in the future.',
+
         }
     },
 
@@ -179,11 +182,19 @@ export default{
 .pre-1{
     display: none;
 }
+.swiper {
+    width: 100%;
+    height: 30vh; 
+    box-sizing: border-box;
+  }
+
 .pre-2{
     display: block;
     animation-name: fadeIn;
-     animation-duration: 11.3s;
+     animation-duration: 10s;
     animation-iteration-count:infinite;
+    width: 100%;
+    height: 100%;
 }
 .phone{
     width: 40vh;
@@ -312,20 +323,16 @@ export default{
     /* transition: width 1s; */
     background-color: #f4c152;
     animation-name: line-animation;
-    animation-duration: 11.3s;
+    animation-duration: 9.5s;
     animation-iteration-count: infinite;
 }
 @keyframes line-animation {
-                0% {
- 
+               
+                from {
                     width:0%;
                 }
-                50% {
+                to {
                     width:60%;
-                }
-                
-                100% {
-                    width:0%;
                 }
             }  
 
@@ -372,12 +379,9 @@ export default{
   100% {
     opacity:0;
   }
+
   }
-/* .all2:hover{
-    
-    
-    opacity: 0.6;
-} */
+
 
 .fadefontchange{
     

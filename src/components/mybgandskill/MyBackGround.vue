@@ -113,7 +113,7 @@ export default{
                         for (let i = 0; i < animation_element.length; i++) {
                             const el = animation_element[i];
                             observer.observe(el);
-                            console.log('Observing:', el);
+
                         }
                 }
 

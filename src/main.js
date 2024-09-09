@@ -13,7 +13,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faUserSecret,faEye } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret,faEye,faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook,faLinkedin,faGithub,faHtml5,faCss3Alt,faJs,faVuejs,faPhp,faLaravel } from '@fortawesome/free-brands-svg-icons'
 import store from './store'
 
@@ -24,7 +24,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 
 /* add icons to the library */
-library.add(faUserSecret,faFacebook,faLinkedin,faGithub,faEye,faHtml5,faCss3Alt,faJs,faVuejs,faPhp,faLaravel)
+library.add(faUserSecret,faFacebook,faLinkedin,faGithub,faEye,faHtml5,faCss3Alt,faJs,faVuejs,faPhp,faLaravel,faChevronDown)
 
 
 createApp(App).use(store)

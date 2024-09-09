@@ -21,9 +21,7 @@ const router = createRouter({
 
     ],
     scrollBehavior(to, from, savedPosition) {
-        console.log('To:', to);
-    console.log('From:', from);
-    console.log('Saved Position:', savedPosition);
+       
         if (savedPosition) {
             return savedPosition;
         } else {
