@@ -27,9 +27,34 @@
           <span class="projectcontent_text">{{ projectContent }}</span>
         </div>
       </div>
-      <div class="col-lg-12 add-opacity  "  style="background-color: #dda15e">
-        <div class="skill-all project_content flex-column animete-top-down">
+      <div class="col-lg-12 add-opacity d-flex flex-row  "  style="background-color: #dda15e">
+        <div class="col-lg-6 skill-all project_content flex-column animete-top-down">
           <h5 class="projecthead_text text-light">Technology</h5>
+          <ul class=" d-flex justify-content-start ">
+            <li>sad</li>
+          </ul>
+          <span class="skill-text-content text-light">{{ skillContent }}</span>
+        </div>
+        <div class="col-lg-6 skill-all project_content flex-column animete-top-down">
+          <h5 class="projecthead_text text-light">img</h5>
+          img.
+
+        </div>
+      </div>
+
+      <div class="col-lg-12 add-opacity  "  style="background-color: #ffc8dd">
+        <div class="skill-all project_content pt-3 align-items-center flex-column animete-top-down">
+          <h5 class="projecthead_text text-light">Your Role and Project Links</h5>
+          <ul class=" d-flex justify-content-start ">
+            <li>sad</li>
+          </ul>
+          <span class="skill-text-content text-light">{{ skillContent }}</span>
+        </div>
+      </div>
+
+      <div class="col-lg-12 add-opacity  "  style="background-color: #a2d2ff">
+        <div class="skill-all project_content flex-column animete-top-down">
+          <h5 class="projecthead_text text-light">Challenges and Learnings</h5>
           <ul class=" d-flex justify-content-start ">
             <li>sad</li>
           </ul>
@@ -39,7 +64,7 @@
 
       <div class="col-lg-12 d-flex flex-row p-0 m-0" >
         <div class="photo-project "  v-for="(image,index) in imgUrl.slice(0,4) " :key="index">
-          <img class="img_project_style" :src="image.imgFromDatabase" alt="">
+          <img class="img_project_style animate-on-right" :style="{transitionDelay: (0.2 * (index+1))+'s'}" :src="image.imgFromDatabase" alt="">
         </div>
       </div>
       
@@ -95,7 +120,7 @@ export default {
 
         function getDisplayProjectOnScrolling() { 
 
-                   const animation_element = document.querySelectorAll(' .animete-top-down, .animete-on-scroll, .add-opacity');
+                   const animation_element = document.querySelectorAll(' .animete-top-down, .animete-on-scroll, .add-opacity, .animate-on-right');
 
                        const observer = new IntersectionObserver((entries)=>{
 
@@ -161,11 +186,7 @@ export default {
       list-style-type: disc; 
       padding-left: 20px; 
       }
-    /* li {
-    list-style-type: disc; 
-    padding-left: 20px; 
-    width: 100%;
-  } */
+   
   .heading-main{
     color: #fff;
     z-index: 1;
@@ -177,8 +198,8 @@ export default {
 
   .project_content{
     display: flex;
-    justify-content:center;
-    align-items: center;
+    justify-content:flex-start;
+    align-items: flex-start;
     padding: 0 10%;
     height: 50vh;
     width: 100%;
@@ -186,19 +207,17 @@ export default {
   }
   .col-lg-12:nth-of-type(4) .project_content  {
     height: 60vh;
-    justify-content:start;
+    justify-content:flex-start;
     padding-top:20px;
 
   }
   .col-lg-12:nth-of-type(4) .project_content  ul li{
-    justify-content:start;
-    align-items: start;
+    justify-content:flex-start;
+    align-items: flex-start;
 
 
   }
-  .projectcontent_text{
-
-  }
+  
   .photo-project{
     width:100%;
     height:40vh;
@@ -238,7 +257,7 @@ export default {
     transition: all 0.2s ease-out;
     transition-delay: 0.1s;
 }
-.animete-right{
+.animate-on-right{
     opacity: 0;
     transform: translate(100px,0);
     transition: all 1s ease-out;

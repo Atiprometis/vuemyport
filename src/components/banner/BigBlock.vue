@@ -21,11 +21,11 @@
 
                     <div class="pre-2 m-0 p-0 ">
                     <label class="allab ">
-                    <h1 class="ab1">Hello, My name is </h1>
+                    <h1 class="ab1 ">Hello, My name is </h1>
                     <h2 class="ab2 m-0 p-0 text-uppercase">Chaithawat Samanjit</h2>
                     </label>
                     <div class="line"></div>
-                    <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
+                    <p class="text_bigbox fadefontchange  d-flex justify-content-center align-items-center" >
                         {{myaboutme}}
                     </p>   
                     
@@ -33,17 +33,17 @@
 
                 </swiper-slide>
                 <swiper-slide>
+                        <div class="pre-2 m-0 p-0 ">
+                            <label class="allab ">
+                            <h1 class="ab1">I am a Front-end </h1>
+                            <h2 class="ab2 m-0 p-0 text-uppercase">Web developer</h2>
+                            </label>
+                            <div class="line"></div>
+                            <p class="text_bigbox fadefontchange d-flex justify-content-center align-items-center " >
+                                {{ myskillbigblock }}
+                            </p>   
+                        </div>
 
-                    <div class="pre-2 " >
-                        <label class="allab ">
-                        <h1 class="ab1">I am a Front-end </h1>
-                        <h2 class="ab2 m-0 p-0 text-uppercase">Web developer</h2>
-                        </label>
-                        <div class="line"></div>
-                        <p class="all2 fadefontchange  d-flex justify-content-start align-items-start" >
-                            {{ myskillbigblock }}
-                        </p>   
-                    </div>
                 </swiper-slide>
                 
                 
@@ -148,8 +148,6 @@ export default{
                 // document.getElementsByClassName('pre-1');
                 }, 2000);
             }
-
-           
       },
       
     },
@@ -189,7 +187,7 @@ export default{
   }
 
 .pre-2{
-    display: block;
+
     animation-name: fadeIn;
      animation-duration: 10s;
     animation-iteration-count:infinite;
@@ -260,10 +258,6 @@ export default{
     height: 70vh;
     background-color: #B22222;
 }
-
-
-
-
 .e-ro3{
     z-index: 4;
     position: absolute;
@@ -312,7 +306,11 @@ export default{
 }
 .allab{
     text-align: start;
-    
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column; 
 }
 
 .line{
@@ -343,30 +341,23 @@ export default{
     font-weight:700;
     text-align: start;
 }
-.ab1:hover{
-    /* font-size: 3rem; */
-    
-}
+
+
 .ab2{
     font-size: 2.7vw;
     transition: font-size 1s;
     font-weight:700;
 }
-.ab2:hover{
-    /* font-size: 2.5rem; */
 
-}
-.all2{
-    font-size: 1.6vw;
+.text_bigbox{
+    font-size: 1.4rem;
     font-weight:400;
-    width: 30vw;
+
     text-align: start;
     margin: auto;
-
-     
-
     opacity:1;
-
+    padding: 3rem 0rem 3rem 4rem;
+   
 }
 @keyframes fadeIn
   {
