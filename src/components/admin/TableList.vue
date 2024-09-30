@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class=" col-lg-3 p-0 m-0 d-flex justify-content-center align-items-center flex-column" style="height: 100%;">
+            <div class=" col-lg-2 p-0 m-0 d-flex justify-content-center align-items-center flex-column" style="height: 100%;">
                 <h1>table list</h1>
 
                 <button v-on:click="submitAboutme()" type="button" class="btn btn-primary bg-t text-uppercase">about me</button>
@@ -22,8 +22,8 @@
             <EduAll v-if="isEduVisible"/>
             
             <!-- CONTACT -->
-            <div v-if="isContactVisible"  class=" col-lg-9 p-0 m-0">
-                <div  class="bg-t-2"></div>
+            <div v-if="isContactVisible"  class=" col-lg-10 p-0 m-0 d-flex justify-content-center ">
+
                 <CardAdmin>
                     <template v-slot:card-header>
                         <h1>contact</h1>

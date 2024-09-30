@@ -1,7 +1,7 @@
 <template>
 
-<div  class=" col-lg-9 p-0 m-0">
-                <div  class="bg-t-2"></div>
+<div  class=" col-lg-10 p-0 m-0 d-flex justify-content-center">
+
                 <CardAdmin>
                     <template v-slot:card-header>
                         <h1>Exp</h1>
