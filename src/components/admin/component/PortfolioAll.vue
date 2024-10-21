@@ -1,5 +1,40 @@
 <template>
-    <div  class=" col-lg-9 p-0 m-0 d-flex justify-content-center">
+    <div  class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center">
+
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Project Description</th>
+                <th scope="col">skills</th>
+                <th scope="col">Role</th>
+                <th scope="col">Challenges</th>
+                <th scope="col">Link</th>
+                <th scope="col">EDIT</th>
+                <th scope="col">DELETE</th>
+                </tr>
+            </thead>
+            <tbody v-for="item in userData " :key="item.id">
+                <tr>
+                <th scope="row">{{ item.id }}</th>
+                <td>{{ item.projectname }}</td>
+                <td>{{ item.type }}</td>
+                <td><a href="#" @click.prevent="getProjectDescription(item)">SEE MORE</a></td>
+                <td><a href="#" @click.prevent="getSkills(item.id)" >SEE MORE</a></td>
+                <td><a href="#" @click.prevent="getProjectRole(item)" >SEE MORE</a></td>
+                <td><a href="#" @click.prevent="getProjectChallenges(item)" >SEE MORE</a></td>
+                <td><font-awesome-icon :icon="['fas', 'link']" /></td>
+                <td><font-awesome-icon :icon="['fas', 'pen-to-square']" /></td>
+                <td><font-awesome-icon :icon="['fas', 'trash-can']" /></td>
+
+                </tr>
+                
+                
+            </tbody>
+        </table>
+
 
                 <CardAdmin>
                     <template v-slot:card-header>
@@ -34,7 +69,7 @@
                     </template>
                     
                 </CardAdmin>
-            </div>
+    </div>
 
     
 </template>
@@ -43,6 +78,7 @@
  import axios from 'axios'
 
 import CardAdmin from '../CardAdmin.vue'
+import Swal from 'sweetalert2';
 
 export default {
   name: 'PortfolioAll',
@@ -52,12 +88,24 @@ export default {
       userId:4,
       fileName: '',
       imageUrl: '',
+      projectName: 'asdsad',
+      projectType:'WEBSITE',
+      projectDescription:'projectDDDDD',
+      projectSkills:'Skills',
+      projectRole:'Role',
+      projectChallenges:'Challenges',
+      userData:[],
+
     };
   },
   components: {
     CardAdmin,
     
   },
+  mounted(){
+            this.getUserData();
+            
+        },
   methods:{
     onFileUpImages(event){
 
@@ -96,6 +144,62 @@ export default {
             }
 
     },
+    async getUserData(){
+        try{
+            const response = await axios.get('http://localhost:3000/read');
+            this.userData = response.data;
+            console.log("userdata : "+this.userData);
+        } catch (error) {
+            console.error('Error user:', error);
+        }
+    },
+    getProjectDescription(item) {
+
+        Swal.fire({
+          title: "Project Description",
+          text: item.description,
+        });
+      
+    },
+    getProjectSkills(response) {
+        if(response.data && response.data.length > 0){
+            const skills = response.data.map(skill => skill.skill_name).join(', ');
+            Swal.fire({
+            title: "Project Skills",
+            text: `Skills: ${skills}`, // แสดงชื่อทักษะทั้งหมด
+        });
+        }else {
+        Swal.fire({
+            title: "No Skills",
+            text: "No skills found for this project.",
+        });
+    }
+        
+    },
+    getProjectRole(item) {
+        Swal.fire({
+            title: "Project Role",
+            text: item.pj_role,
+        });
+    },
+    getProjectChallenges(item) {
+        Swal.fire({
+            title: "Project Challenges",
+            text: item.pj_challenge,
+        });
+    },
+    async getSkills(item){
+
+        try{
+            const response =  await axios.get(`http://localhost:3000/getskills/${item}`);
+            // console.log("response: "+JSON.stringify(response))
+            await this.getProjectSkills(response);
+        } catch (error) {
+            console.error('Error user:', error);
+        }
+    }
+
+
     // async uploadImage(userId){
        
 

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class=" col-lg-2 p-0 m-0 d-flex justify-content-center align-items-center flex-column" style="height: 100%;">
-                <h1>table list</h1>
+                <!-- <h1>table list</h1> -->
 
                 <button v-on:click="submitAboutme()" type="button" class="btn btn-primary bg-t text-uppercase">about me</button>
                 <!-- <div v-show="!isHiddenAboutme">hide me</div> -->
