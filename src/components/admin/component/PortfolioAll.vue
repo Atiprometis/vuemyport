@@ -1,75 +1,86 @@
 <template>
-    <div  class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center">
+    <div v-if="isPortfolioVisible" class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center">
+                    <h1>1</h1>
+                    <button v-on:click="submitPortfolioEdit()">click 2 </button>
+                    <div  >
 
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Type</th>
-                <th scope="col">Project Description</th>
-                <th scope="col">skills</th>
-                <th scope="col">Role</th>
-                <th scope="col">Challenges</th>
-                <th scope="col">Link</th>
-                <th scope="col">EDIT</th>
-                <th scope="col">DELETE</th>
-                </tr>
-            </thead>
-            <tbody v-for="item in userData " :key="item.id">
-                <tr>
-                <th scope="row">{{ item.id }}</th>
-                <td>{{ item.projectname }}</td>
-                <td>{{ item.type }}</td>
-                <td><a href="#" @click.prevent="getProjectDescription(item)">SEE MORE</a></td>
-                <td><a href="#" @click.prevent="getSkills(item.id)" >SEE MORE</a></td>
-                <td><a href="#" @click.prevent="getProjectRole(item)" >SEE MORE</a></td>
-                <td><a href="#" @click.prevent="getProjectChallenges(item)" >SEE MORE</a></td>
-                <td><font-awesome-icon :icon="['fas', 'link']" /></td>
-                <td><font-awesome-icon :icon="['fas', 'pen-to-square']" /></td>
-                <td><font-awesome-icon :icon="['fas', 'trash-can']" /></td>
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Project Description</th>
+        <th scope="col">skills</th>
+        <th scope="col">Role</th>
+        <th scope="col">Challenges</th>
+        <th scope="col">photo</th>
+        <th scope="col">Link</th>
+        <th scope="col">EDIT</th>
+        <th scope="col">DELETE</th>
+        </tr>
+    </thead>
+    <tbody v-for="item in userData " :key="item.id">
+        <tr>
+        <th scope="row">{{ item.id }}</th>
+        <td>{{ item.projectname }}</td>
+        <td>{{ item.type }}</td>
+        <td><a href="#" @click.prevent="getProjectDescription(item)">SEE MORE</a></td>
+        <td><a href="#" @click.prevent="getSkills(item.id)" >SEE MORE</a></td>
+        <td><a href="#" @click.prevent="getProjectRole(item)" >SEE MORE</a></td>
+        <td><a href="#" @click.prevent="getProjectChallenges(item)" >SEE MORE</a></td>
+        <td><font-awesome-icon :icon="photo" /></td>
+        <td><font-awesome-icon :icon="['fas', 'link']" /></td>
+        <td><font-awesome-icon :icon="['fas', 'pen-to-square']" v-on:click="submitPortfolioEdit(item.id)" class="color-cursor" /></td>
+        <td><font-awesome-icon :icon="['fas', 'trash-can']" /></td>
 
-                </tr>
-                
-                
-            </tbody>
-        </table>
-
-
-                <CardAdmin>
-                    <template v-slot:card-header>
-                        <h1>portfolio</h1>
-                    </template>
-                    <template v-slot:card-content >
-                        <h1>ชื่อโปรเจค</h1>
-                        <form v-on:submit="nameproject" class="form-label">
-                            <input type="text" class="form-control " placeholder="โปรเจค">
-                            
-
-                            <button  type="submit"  class="btn btn-primary">เพิ่ม</button>
-
-                        </form>
-                        
-                        
-                        <h1>type</h1>
-                        <h1>อธิบายโปรเจค</h1>
+        </tr>
+        
+        
+    </tbody>
+</table>
 
 
-                    </template>
-                    <template v-slot:card-button >
-                        <div>
-                            <h1>image อัพโหลด</h1>
-                            <input type="file"  class="form-control " @change="onFileUpImages" placeholder="เนื้อหา">
-                            <button type="button" class="btn btn-primary" v-on:click="createUserFolder()" >create folder</button>
-
-                        </div>
-                        <img v-if="fileName" :src="imageUrl" alt="Preview" style=" height: 100px;width: 100px;"/>
-                        <!-- <h1 v-if="fileName">img : {{ fileName }}</h1> -->
-                        <!-- <h2>img2:{{ imageUrl }}</h2> -->
-                    </template>
+        <CardAdmin>
+            <template v-slot:card-header>
+                <h1>portfolio</h1>
+            </template>
+            <template v-slot:card-content >
+                <h1>ชื่อโปรเจค</h1>
+                <form v-on:submit="nameproject" class="form-label">
+                    <input type="text" class="form-control " placeholder="โปรเจค">
                     
-                </CardAdmin>
+
+                    <button  type="submit"  class="btn btn-primary">เพิ่ม</button>
+
+                </form>
+                
+                
+                <h1>type</h1>
+                <h1>อธิบายโปรเจค</h1>
+
+
+            </template>
+            <template v-slot:card-button >
+                <div>
+                    <h1>image อัพโหลด</h1>
+                    <input type="file"  class="form-control " @change="onFileUpImages" placeholder="เนื้อหา">
+                    <button type="button" class="btn btn-primary" v-on:click="createUserFolder()" >create folder</button>
+
+                </div>
+                <img v-if="fileName" :src="imageUrl" alt="Preview" style=" height: 100px;width: 100px;"/>
+                <!-- <h1 v-if="fileName">img : {{ fileName }}</h1> -->
+                <!-- <h2>img2:{{ imageUrl }}</h2> -->
+            </template>
+            
+        </CardAdmin>
+</div>
     </div>
+    <div v-if="isHiddenPortfolioEdit">
+                    <h1>2</h1>
+                    <button v-on:click="submitPortfolio()">click 1 </button>
+    </div>
+    
 
     
 </template>
@@ -79,6 +90,8 @@
 
 import CardAdmin from '../CardAdmin.vue'
 import Swal from 'sweetalert2';
+
+// import TemplatePortfolio from '../component/TemplatePortfolio'
 
 export default {
   name: 'PortfolioAll',
@@ -95,7 +108,8 @@ export default {
       projectRole:'Role',
       projectChallenges:'Challenges',
       userData:[],
-
+      isHiddenPortfolio: true,
+      isHiddenPortfolioEdit: false,
     };
   },
   components: {
@@ -107,6 +121,19 @@ export default {
             
         },
   methods:{
+    toggleVisibility(section){
+            this.isHiddenPortfolio = section === 'portfolio';
+            this.isHiddenPortfolioEdit = section === 'portfolioedit';
+            
+        },
+        submitPortfolio() {
+            this.toggleVisibility('portfolio')
+            
+        },
+        submitPortfolioEdit() {
+            this.toggleVisibility('portfolioedit')
+
+        },
     onFileUpImages(event){
 
         this.imageUrlPortfolioUpload = event.target.files[0];
@@ -199,25 +226,20 @@ export default {
         }
     }
 
-
-    // async uploadImage(userId){
-       
-
-
-    //     try{
-    //         const response = await axios.post('http://localhost:3000/upload', formData, {
-    //         headers: {
-    //             'Content-Type': 'multipart/form-data',
-    //         },
-    //     });
-    //     console.log('Image upload response:', response.data);
-
-    //     }catch (error) {
-    //         console.error('Error uploading image:', error.response ? error.response.data : error.message);
-    //     }
-    // }
-
-  
+  },
+  computed:{
+    isPortfolioVisible(){
+            return this.isHiddenPortfolio
+        },
+        isPPortfolioEditVisible(){
+            return this.isHiddenPortfolioEdit
+        }
   }
 }
 </script>
+<style>
+.color-cursor{
+    cursor:pointer;
+    color: aqua;;
+}
+</style>

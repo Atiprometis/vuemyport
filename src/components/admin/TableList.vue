@@ -9,7 +9,7 @@
                 <button v-on:click="submitPortfolio()" type="button" class="btn btn-primary bg-t text-uppercase">portfolio </button>
                 <button v-on:click="submitExp()" type="button" class="btn btn-primary bg-t text-uppercase">EXPERIENCE</button>
                 <button v-on:click="submitEdu()" type="button" class="btn btn-primary bg-t text-uppercase">EDUCATION</button>
-                <button v-on:click="submitContact()" type="button" class="btn btn-primary bg-t text-uppercase">CONTACT</button>
+                <!-- <button v-on:click="submitContact()" type="button" class="btn btn-primary bg-t text-uppercase">CONTACT</button> -->
             
             </div>
             <!-- About me -->
