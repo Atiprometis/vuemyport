@@ -3,7 +3,10 @@
         <div class="container">
             <div class="row">
                 
-                
+                <TemplatePortfolio>
+                    
+
+                </TemplatePortfolio>
                 
             </div>
         </div>
@@ -11,8 +14,14 @@
     </div>
 </template>
 <script>
+
+import TemplatePortfolio from './component/TemplatePortfolio.vue'
+
 export default {
     name: 'PortfolioCreate',
+    components:{
+        TemplatePortfolio,
+    },
     data(){
         return {
             

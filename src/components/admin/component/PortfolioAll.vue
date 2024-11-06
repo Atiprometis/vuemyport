@@ -1,6 +1,7 @@
 <template>
     <div v-if="isPortfolioVisible" class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center">
-<table class="table">
+        <button v-on:click="submitPortfolioCreate()">sad</button>
+        <table class="table">
     <thead>
         <tr>
         <th scope="col">#</th>
@@ -67,6 +68,13 @@
         </PortfolioEdit>
                     
     </div>
+    <div v-if="isHiddenPortfolioCreate" class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center justify-content-center">
+        <button v-on:click="submitPortfolio()">BACK</button>
+        <PortfolioCreate >
+            
+        </PortfolioCreate>
+                    
+    </div>
     
 
     
@@ -79,6 +87,7 @@ import CardAdmin from '../CardAdmin.vue'
 import Swal from 'sweetalert2';
 // import TemplatePortfolio from './TemplatePortfolio.vue'
 import PortfolioEdit from '../PortfolioEdit.vue'
+import PortfolioCreate from '../PortfolioCreate.vue'
 
 // import TemplatePortfolio from '../component/TemplatePortfolio'
 
@@ -99,12 +108,14 @@ export default {
       userData:[],
       isHiddenPortfolio: true,
       isHiddenPortfolioEdit: false,
+      isHiddenPortfolioCreate: false,
       parentDataEdit: [],
     };
   },
   components: {
     CardAdmin,
     PortfolioEdit,
+    PortfolioCreate,
   },
   
   mounted(){
@@ -115,7 +126,7 @@ export default {
     toggleVisibility(section){
             this.isHiddenPortfolio = section === 'portfolio';
             this.isHiddenPortfolioEdit = section === 'portfolioedit';
-            
+            this.isHiddenPortfolioCreate = section === 'portfoliocreate';
         },
         submitPortfolio() {
             this.toggleVisibility('portfolio')
@@ -126,6 +137,13 @@ export default {
             this.parentDataEdit = Data;
             // console.log("data : "+JSON.stringify(this.parentDataEdit));
             this.toggleVisibility('portfolioedit')
+
+        },
+        submitPortfolioCreate() {
+            
+            
+            // console.log("data : "+JSON.stringify(this.parentDataEdit));
+            this.toggleVisibility('portfoliocreate')
 
         },
     onFileUpImages(event){
@@ -225,8 +243,11 @@ export default {
     isPortfolioVisible(){
             return this.isHiddenPortfolio
         },
-        isPPortfolioEditVisible(){
+        isPortfolioEditVisible(){
             return this.isHiddenPortfolioEdit
+        },
+        isPortfolioCreateVisible(){
+            return this.isHiddenPortfolioCreate
         }
   }
 }
