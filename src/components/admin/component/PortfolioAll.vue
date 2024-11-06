@@ -1,9 +1,5 @@
 <template>
     <div v-if="isPortfolioVisible" class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center">
-                    <h1>1</h1>
-                    <button v-on:click="submitPortfolioEdit()">click 2 </button>
-                    <div  >
-
 <table class="table">
     <thead>
         <tr>
@@ -29,18 +25,13 @@
         <td><a href="#" @click.prevent="getSkills(item.id)" >SEE MORE</a></td>
         <td><a href="#" @click.prevent="getProjectRole(item)" >SEE MORE</a></td>
         <td><a href="#" @click.prevent="getProjectChallenges(item)" >SEE MORE</a></td>
-        <td><font-awesome-icon :icon="photo" /></td>
         <td><font-awesome-icon :icon="['fas', 'link']" /></td>
-        <td><font-awesome-icon :icon="['fas', 'pen-to-square']" v-on:click="submitPortfolioEdit(item.id)" class="color-cursor" /></td>
+        <td><font-awesome-icon :icon="['fas', 'link']" /></td>
+        <td><font-awesome-icon :icon="['fas', 'pen-to-square']" v-on:click="submitPortfolioEdit(item)" class="color-cursor" /></td>
         <td><font-awesome-icon :icon="['fas', 'trash-can']" /></td>
-
         </tr>
-        
-        
     </tbody>
 </table>
-
-
         <CardAdmin>
             <template v-slot:card-header>
                 <h1>portfolio</h1>
@@ -49,17 +40,10 @@
                 <h1>ชื่อโปรเจค</h1>
                 <form v-on:submit="nameproject" class="form-label">
                     <input type="text" class="form-control " placeholder="โปรเจค">
-                    
-
                     <button  type="submit"  class="btn btn-primary">เพิ่ม</button>
-
                 </form>
-                
-                
                 <h1>type</h1>
                 <h1>อธิบายโปรเจค</h1>
-
-
             </template>
             <template v-slot:card-button >
                 <div>
@@ -74,11 +58,14 @@
             </template>
             
         </CardAdmin>
-</div>
+
     </div>
-    <div v-if="isHiddenPortfolioEdit">
-                    <h1>2</h1>
-                    <button v-on:click="submitPortfolio()">click 1 </button>
+    <div v-if="isHiddenPortfolioEdit" class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center justify-content-center">
+        <button v-on:click="submitPortfolio()">BACK</button>
+        <PortfolioEdit :dataEdit="parentDataEdit">
+            
+        </PortfolioEdit>
+                    
     </div>
     
 
@@ -90,6 +77,8 @@
 
 import CardAdmin from '../CardAdmin.vue'
 import Swal from 'sweetalert2';
+// import TemplatePortfolio from './TemplatePortfolio.vue'
+import PortfolioEdit from '../PortfolioEdit.vue'
 
 // import TemplatePortfolio from '../component/TemplatePortfolio'
 
@@ -110,12 +99,14 @@ export default {
       userData:[],
       isHiddenPortfolio: true,
       isHiddenPortfolioEdit: false,
+      parentDataEdit: [],
     };
   },
   components: {
     CardAdmin,
-    
+    PortfolioEdit,
   },
+  
   mounted(){
             this.getUserData();
             
@@ -130,7 +121,10 @@ export default {
             this.toggleVisibility('portfolio')
             
         },
-        submitPortfolioEdit() {
+        submitPortfolioEdit(Data) {
+            
+            this.parentDataEdit = Data;
+            // console.log("data : "+JSON.stringify(this.parentDataEdit));
             this.toggleVisibility('portfolioedit')
 
         },
@@ -175,7 +169,7 @@ export default {
         try{
             const response = await axios.get('http://localhost:3000/read');
             this.userData = response.data;
-            console.log("userdata : "+this.userData);
+            // console.log("userdata : "+this.userData);
         } catch (error) {
             console.error('Error user:', error);
         }

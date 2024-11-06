@@ -1,17 +1,64 @@
 <template>
-    <div  class=" col-lg-10 p-0 m-0 d-flex justify-content-center">
+    <div  class=" col-lg-12 p-0 m-0 d-flex justify-content-center">
         <div class="container">
             <div class="row">
+                <div>
+                    <form>
+                <slot>
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput" class=" text-uppercase">
+                            name
+                        </label>
+                        <slot name="port-name">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        </slot>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class=" text-uppercase">type</label>
+                        <slot name="port-type">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                        </slot>
+                    </div>
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput" class=" text-uppercase">Project Description</label>
+                        <slot name="port-pd">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        </slot>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class=" text-uppercase">skills</label>
+                        <slot name="port-skills">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                        </slot>
+                        
+                    </div>
+                    <div class="form-group ">
+                        <label for="formGroupExampleInput" class=" text-uppercase">Role</label>
+                        <slot name="port-role">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        </slot>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class=" text-uppercase">Challenges</label>
+                        <slot name="port-chanllege">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                        </slot>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class=" text-uppercase">Link</label>
+                        <slot name="port-link">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                        </slot>
+                    </div>
+                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    <button type="submit" class="btn btn-danger">ยกเลิก</button>
+                </slot>
+                    </form>
+                </div>
                 
                 
-                <div v-if="isPortfolioVisible">
-                    <h1>1</h1>
-                    <button v-on:click="submitPortfolioEdit()">click 2 </button>
-                </div>
-                <div v-if="isHiddenPortfolioEdit">
-                    <h1>2</h1>
-                    <button v-on:click="submitPortfolio()">click 1 </button>
-                </div>
             </div>
         </div>
                 
@@ -23,34 +70,15 @@ export default {
     data(){
         return {
             
-            isHiddenPortfolio: true,
-            isHiddenPortfolioEdit: false,
            
         }
     },
     methods:{
-        toggleVisibility(section){
-            this.isHiddenPortfolio = section === 'portfolio';
-            this.isHiddenPortfolioEdit = section === 'portfolioedit';
-            
-        },
-        submitPortfolio() {
-            this.toggleVisibility('portfolio')
-            console.log(this.isHiddenPortfolio);
-        },
-        submitPortfolioEdit() {
-            this.toggleVisibility('portfolioedit')
-
-        },
+       
     },
     computed:{
 
-        isPortfolioVisible(){
-            return this.isHiddenPortfolio
-        },
-        isPPortfolioEditVisible(){
-            return this.isHiddenPortfolioEdit
-        }
+       
     }
 }
 
