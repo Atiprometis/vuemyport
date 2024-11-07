@@ -1,6 +1,6 @@
 <template>
     <div v-if="isPortfolioVisible" class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center">
-        <button v-on:click="submitPortfolioCreate()">sad</button>
+        <button v-on:click="submitPortfolioCreate()">Create Portfolio</button>
         <table class="table">
     <thead>
         <tr>
@@ -19,6 +19,7 @@
     </thead>
     <tbody v-for="item in userData " :key="item.id">
         <tr>
+
         <th scope="row">{{ item.id }}</th>
         <td>{{ item.projectname }}</td>
         <td>{{ item.type }}</td>
@@ -27,7 +28,7 @@
         <td><a href="#" @click.prevent="getProjectRole(item)" >SEE MORE</a></td>
         <td><a href="#" @click.prevent="getProjectChallenges(item)" >SEE MORE</a></td>
         <td><font-awesome-icon :icon="['fas', 'link']" /></td>
-        <td><font-awesome-icon :icon="['fas', 'link']" /></td>
+        <td><a :href="item.pj_link.startsWith('http') ? item.pj_link : 'https://' + item.pj_link " target="_blank"><font-awesome-icon :icon="['fas', 'link']" /></a></td>
         <td><font-awesome-icon :icon="['fas', 'pen-to-square']" v-on:click="submitPortfolioEdit(item)" class="color-cursor" /></td>
         <td><font-awesome-icon :icon="['fas', 'trash-can']" /></td>
         </tr>
