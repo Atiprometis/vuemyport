@@ -80,7 +80,7 @@ export default {
             e.preventDefault();
 
             try{
-                await axios.post('http://localhost:3000/insert/exp',{
+                await axios.post('http://localhost:3000/api/insert/exp',{
                     projectname: this.insertExpProjectname,
                     content:this.insertExpContent,
                     location:this.insertExpLocation,
@@ -93,7 +93,7 @@ export default {
         }, 
         async getExp(){
             try{
-                const response = await axios.get('http://localhost:3000/readexp')
+                const response = await axios.get('http://localhost:3000/api/readexp')
                 this.showExp = response.data;
                 
             } catch (error) {
@@ -103,7 +103,7 @@ export default {
         async DeleteExp(idExp){
             // console.log('show id '+ idExp)
             try{
-                 await axios.delete(`http://localhost:3000/delete/exp/${idExp}`)
+                 await axios.delete(`http://localhost:3000/api/delete/exp/${idExp}`)
                 // console.log('Delete successful:', response.data);
 
                 await this.getExp();
@@ -180,7 +180,7 @@ export default {
 
             try{
 
-                 await axios.patch('http://localhost:3000/update/exp',updateData)
+                 await axios.patch('http://localhost:3000/api/update/exp',updateData)
 
 
                 console.log('returm = '+ this.patchExpShow);

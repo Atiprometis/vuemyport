@@ -25,13 +25,7 @@
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
                         </slot>
                     </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2" class=" text-uppercase">skills</label>
-                        <slot name="port-skills">
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-                        </slot>
-                        
-                    </div>
+                    
                     <div class="form-group ">
                         <label for="formGroupExampleInput" class=" text-uppercase">Role</label>
                         <slot name="port-role">
@@ -41,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2" class=" text-uppercase">Challenges</label>
-                        <slot name="port-chanllege">
+                        <slot name="port-challenge">
                             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
                         </slot>
                         
@@ -52,8 +46,14 @@
                             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
                         </slot>
                     </div>
-                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
-                    <button type="submit" class="btn btn-danger">ยกเลิก</button>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2" class=" text-uppercase">skills</label>
+                        <slot name="port-skills">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                        </slot>
+                        
+                    </div>
+                    
                 </slot>
                     </form>
                 </div>

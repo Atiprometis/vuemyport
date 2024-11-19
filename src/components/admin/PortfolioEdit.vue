@@ -19,7 +19,7 @@
                     <template v-slot:port-role>
                         <input type="text" class="form-control" id="formGroupExampleInput" :placeholder="dataEdit.pj_role" :value="dataEdit.pj_role">
                     </template>
-                    <template v-slot:port-chanllege>
+                    <template v-slot:port-challenge>
                         <input type="text" class="form-control" id="formGroupExampleInput2" :placeholder="dataEdit.pj_challenge" :value="dataEdit.pj_challenge">
                     </template>
                     <template v-slot:port-link>

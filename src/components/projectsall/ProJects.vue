@@ -62,7 +62,7 @@ import axios from 'axios';
         },
         async getProject() {
             try {
-                const response = await axios.get('http://localhost:3000/read');
+                const response = await axios.get('http://localhost:3000/api/readdata');
                 this.quotes = response.data;
                 // console.log("ourput :" + response );
                 // console.log("ourput2 :" + this.quotes );

@@ -50,7 +50,7 @@ export default{
 
             try{
 
-                const response = await axios.patch('http://localhost:3000/update/aboutme',{
+                const response = await axios.patch('http://localhost:3000/api/update/aboutme',{
                     id:2,
                     content:this.content,
                 })
@@ -65,7 +65,7 @@ export default{
         },
         async getContentAboutme(){
             try{
-                const response = await axios.get('http://localhost:3000/readaboutme')
+                const response = await axios.get('http://localhost:3000/api/readaboutme')
                 this.aboutmeData = response.data;
                 
             } catch (error) {

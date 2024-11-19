@@ -186,7 +186,7 @@ export default {
     },
     async getUserData(){
         try{
-            const response = await axios.get('http://localhost:3000/read');
+            const response = await axios.get('http://localhost:3000/api/readdata');
             this.userData = response.data;
             // console.log("userdata : "+this.userData);
         } catch (error) {
@@ -231,8 +231,8 @@ export default {
     async getSkills(item){
 
         try{
-            const response =  await axios.get(`http://localhost:3000/getskills/${item}`);
-            // console.log("response: "+JSON.stringify(response))
+            const response =  await axios.get(`http://localhost:3000/api/getskills/${item}`);
+           
             await this.getProjectSkills(response);
         } catch (error) {
             console.error('Error user:', error);
