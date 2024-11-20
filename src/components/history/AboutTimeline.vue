@@ -77,7 +77,7 @@ import axios from 'axios'
     methods:{
         async getExp(){
             try{
-                const response = await axios.get('http://localhost:3000/readexp')
+                const response = await axios.get('http://localhost:3000/api/readexp')
                this.projects = response.data
 
             } catch(error){
@@ -86,7 +86,7 @@ import axios from 'axios'
         },
         async getEducation(){
             try{
-                const response = await axios.get('http://localhost:3000/readeducation')
+                const response = await axios.get('http://localhost:3000/api/readeducation')
                this.educations = response.data
 
             } catch(error){

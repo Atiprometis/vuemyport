@@ -123,7 +123,7 @@ export default{
             methods:{
                 async getContentAboutme(){
                     try{
-                        const response = await axios.get('http://localhost:3000/readaboutme')
+                        const response = await axios.get('http://localhost:3000/api/readaboutme')
                         this.aboutmeData = response.data;
                         
                     } catch (error) {

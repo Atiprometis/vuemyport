@@ -6,9 +6,10 @@
             <div id="targetElementB" class=""></div>
             <h1 id="position"></h1>
 
-                <h2 class=" head-text-project mb-2  text-uppercase text-start mt-5 pt-2 ">portfolio</h2>
+                <h2 class=" head-text-project mb-2  text-uppercase text-start mt-5 pt-2">portfolio</h2>
+<!-- {{ quotes }} -->
+                <div class="col-lg-4  col-lg-auto col-sm-12 project-all mb-0 " v-for="item in quotes " :key="item.id">
 
-                <div class="col-lg-4  col-lg-auto col-sm-12 project-all " v-for="item in quotes " :key="item.id">
                     <router-link   class="nav-link" 
                     :to="{ name: 'projectdetail', params:{ idproject:item.id } }">  
 
@@ -50,10 +51,10 @@ import axios from 'axios';
         };
          },
          created(){
-            // this.getProject();
+            this.getProject();
          },
         mounted(){
-            this.getProject();
+            // this.getProject();
             
         },
         methods: {
@@ -65,7 +66,7 @@ import axios from 'axios';
                 const response = await axios.get('http://localhost:3000/api/readdata');
                 this.quotes = response.data;
                 // console.log("ourput :" + response );
-                // console.log("ourput2 :" + this.quotes );
+                console.log("ourput2 :" + this.quotes );
             } catch (error) {
                 console.error('Error fetching quotes:', error);
             }
@@ -85,7 +86,7 @@ import axios from 'axios';
 <style>
 .all-box-project{
     width:100%;
-    height: 100vh;
+    height: 100%;
     background-color: #fff;
 }
 .project-all{
