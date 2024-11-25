@@ -1,16 +1,17 @@
-<template>
+<template >
   <NavBarForProject>
     
   </NavBarForProject>
-    <div class="container-fluid ">
+  <div v-if="isLoading">Loading...</div>
+    <div class="container-fluid " >
   <div class="row">
-
-      <div class="banner-main p-0 m-0 col-lg-12 d-flex justify-content-center align-items-center flex-column" 
+    
+      <div  class="banner-main p-0 m-0 col-lg-12 d-flex justify-content-center align-items-center flex-column" 
       :style="{'--background-image-url':`url(${imgUrlBanner})`}">
 
-          <div class=" d-flex flex-column">
-            <h1 class="heading-main"> {{ projectDetail[0].projectName }}</h1>
-            <p class="heading-main">{{ projectDetail[0].projectType }}
+          <div  class=" d-flex flex-column" v-if="dataPortfolio.length > 0" >
+            <h1 class="heading-main"> {{ dataPortfolio[0].projectname }}</h1>
+            <p class="heading-main">{{ dataPortfolio[0].type }}
               
             </p>
 
@@ -24,8 +25,11 @@
 
       <div class="col-lg-12 animete-top-down" >
         <div class=" project_content justify-content-center align-items-center   flex-column" >
-          <h4 class="projecthead_text">อธิบายโปรเจค</h4>
-          <span class="skill-text-content">{{ projectContent }}</span>
+          <h4 class="projecthead_text">อธิบายโปรเจค </h4>
+
+          
+
+          <span v-if="dataPortfolio.length > 0"  class="skill-text-content">{{ dataPortfolio[0].description }}</span>
         </div>
       </div>
       <div class="col-lg-12 p-0 add-opacity d-flex flex-row  "  style="background-color: #EF9C66;">
@@ -41,7 +45,7 @@
               </li>
             </ul>
           </div>
-          <span class="skill-text-content text-light">{{ skillContent }}</span>
+          <span v-if="dataPortfolio.length > 0"  class="skill-text-content text-light">{{ dataPortfolio[0].skillcontent }}</span>
         </div>
         <div class="col-lg-6 p-0 skill-all project_content d-flex align-items-end flex-column animate-on-right ">
           
@@ -50,24 +54,24 @@
         </div>
       </div>
 
-      <div class="col-lg-12 p-0 m-0 add-opacity  "  style="background-color: #78ABA8">
+      <div  class="col-lg-12 p-0 m-0 add-opacity  "  style="background-color: #78ABA8">
         <div class="skill-all project_content pt-3 align-items-center flex-column animete-top-down">
-          <h3 class="projecthead_text text-light mt-4">บทบาทหน้าที่ และ โปรเจค</h3>
-          <span class="skill-text-content text-light">{{ dataYourRole }}</span>
+          <h3  class="projecthead_text text-light mt-4">บทบาทหน้าที่ และ โปรเจค</h3>
+          <span v-if="dataPortfolio.length > 0"  class="skill-text-content text-light">{{ dataPortfolio[0].pj_role }}</span>
           <h5 class="projecthead_text text-light pt-3">
             MY PROJECT GITHUB
           </h5>
-          <ul class="role_git d-flex justify-content-start align-items-start text-light ">
-            <li><a :href="myGit" target="_blank"  style="color:#fff;">{{ projectDetail[0].projectName }}</a></li>
+          <ul v-if="dataPortfolio.length > 0"  class="role_git d-flex justify-content-start align-items-start text-light ">
+            <li><a :href="myGit" target="_blank"  style="color:#fff;">{{ dataPortfolio[0].pj_link }}</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="col-lg-12 add-opacity  "  style="background-color: #FCDC94; ">
+      <div  class="col-lg-12 add-opacity  "  style="background-color: #FCDC94; ">
         <div class="skill-all project_content flex-column justify-content-center animete-top-down">
           <h3 class="projecthead_text w-100" style="color: #000;">ความท้าทายและการเรียนรู้</h3>
          
-          <span class="skill-text-content " style="color: #000;">{{ challengesAndLearnings }}</span>
+          <span v-if="dataPortfolio.length > 0"  class="skill-text-content " style="color: #000;">{{ dataPortfolio[0].pj_challenge }}</span>
         </div>
       </div>
 
@@ -83,10 +87,11 @@
   <ContactSocial/>
 </div>
 </template>
-
+<p v-else>Loading...</p>
 <script>
 import NavBarForProject from '../navbar/NavBarForProject.vue'
 import ContactSocial from '../social/ContactSocial.vue'
+import axios from 'axios'
 
 export default {
     name: 'ProjectDetail',
@@ -96,7 +101,9 @@ export default {
     },
     data() {
     return {
+      isLoading: true,
       id: null,
+      dataPortfolio: [],
       projectDetail:[{
         projectName:'ชื่อโปรเจค',
         projectType:'WEBSITE',
@@ -147,55 +154,53 @@ export default {
 
     };
   },
-  created() {
+  async created() {
     this.id = this.$route.params.idproject;
-    // console.log("this id = "+this.id);
+    this.getDataProject(this.$route.params.idproject);
+    this.isLoading = false;
   },
   methods:{
     scrollToTop() {
     window.scrollTo(0,0);
-  }
   },
-  mounted() {
-        
-        // this.scrollToTop() 
-
+   async  getDataProject(id){
+      try{
+        const response = await axios.get(`http://localhost:3000/api/getdata/portfolio/${id}`)
+          console.log("reson :"+ response.data)
+          this.dataPortfolio = response.data;
+      }catch(error){
+        return  console.error('Error fetching quotes:', error);
+      }
+    }
+  },
+   mounted() {
         function getDisplayProjectOnScrolling() { 
-
                    const animation_element = document.querySelectorAll(' .animete-top-down, .animete-on-scroll, .add-opacity, .animate-on-right, .animete-top-down-img');
-
                        const observer = new IntersectionObserver((entries)=>{
-
                            entries.forEach((entry)=>{
-
                                 if (entry.intersectionRatio > 0.4) {
-                          //      let ratio = entry.intersectionRatio.toFixed(4);
-                          //  console.log(entry.target, "has started leaving the viewport (ratio "+ratio+")");
                            entry.target.classList.add('add-animate');
 
                                    } 
                                    else if (entry.intersectionRatio < 0.4) {
-                          //  let ratio = entry.intersectionRatio.toFixed(4);
-                          //  console.log(entry.target, "has started entering the viewport (ratio "+ratio+")");
-
                           //  entry.target.classList.remove('add-animate');
                                    }
                            })
-                           
                        },{
                            root: null,
                            threshold: 0.4,
                        });
-
                        for (let i = 0; i < animation_element.length; i++) {
                            const el = animation_element[i];
                            observer.observe(el);
-
                        }
                }
-
                getDisplayProjectOnScrolling();
-  }
+
+                
+               
+  },
+  
 }
 </script>
 

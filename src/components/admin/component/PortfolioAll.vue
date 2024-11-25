@@ -30,7 +30,7 @@
         <td><font-awesome-icon :icon="['fas', 'link']" /></td>
         <td><a :href="item.pj_link.startsWith('http') ? item.pj_link : 'https://' + item.pj_link " target="_blank"><font-awesome-icon :icon="['fas', 'link']" /></a></td>
         <td><font-awesome-icon :icon="['fas', 'pen-to-square']" v-on:click="submitPortfolioEdit(item)" class="color-cursor" /></td>
-        <td><font-awesome-icon :icon="['fas', 'trash-can']" /></td>
+        <td><font-awesome-icon :icon="['fas', 'trash-can']" v-on:click="ShowDeletePortfolio(item.id)" class="color-cursor text-danger" /></td>
         </tr>
     </tbody>
 </table>
@@ -161,6 +161,37 @@ export default {
         reader.readAsDataURL(this.imageUrlPortfolioUpload);
 
       }
+    },
+    async Deleteportfolio(id){
+
+            try{
+                 await axios.delete(`http://localhost:3000/api/delete/portfolio/${id}`)
+                await this.getUserData();
+            } catch(error){
+                return console.error('Error fetching quotes:', error);
+            }
+        },
+    async ShowDeletePortfolio(id){
+            // console.log('show id '+ idExp)
+            Swal.fire({
+                title: "คุณต้องการลบข้อมูลไหม?",
+                text: "ถ้าคุณลบแล้วไม่สามารถย้อนกลับได้!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                    title: "ลบสำเร็จ!",
+                    text: "ลบข้อมูลสำเร็จแล้ว",
+                    icon: "success"
+                    });
+                    this.Deleteportfolio(id);
+
+                }
+                });
     },
     async createUserFolder(){
         

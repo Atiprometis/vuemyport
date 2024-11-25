@@ -19,7 +19,7 @@
                                  
                                 <div class="box-text d-flex flex-column justify-content-center align-items-center   ">
                                     <h3 class="text-main  ">{{ item.projectname }}</h3> 
-                                    <h5 class="text-content m-0 p-0">{{ item.description }}</h5>
+                                    <!-- <h5 class="text-content m-0 p-0">{{ item.description }}</h5> -->
                                     <p class="text-type m-0 p-0 ">{{ item.type }}</p>
                                     
                                 </div>
