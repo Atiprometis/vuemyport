@@ -34,6 +34,13 @@
                         
                     </div>
                     <div class="form-group">
+                        <label for="formGroupExampleInput2" class=" text-uppercase">SkillConntent</label>
+                        <slot name="port-skillcontent">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                        </slot>
+                        
+                    </div>
+                    <div class="form-group">
                         <label for="formGroupExampleInput2" class=" text-uppercase">Challenges</label>
                         <slot name="port-challenge">
                             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
