@@ -78,7 +78,7 @@ export default {
      methods:{
        async EditPortfolio(){
         try{
-            const response = await axios.patch('http://localhost:3000/api/edit/portfolio',{
+            await axios.patch('http://localhost:3000/api/edit/portfolio',{
             projectname: this.editName,
             type: this.editType,
             description: this.editPD,
@@ -88,7 +88,7 @@ export default {
             pj_link: this.editLink,
             id: this.id,
             })
-            console.log("respon :"+response);
+
             await this.backToPortfolio();
             await this.getDataUserPort();
         }catch(error){

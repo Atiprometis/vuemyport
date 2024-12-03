@@ -14,6 +14,7 @@
         <th scope="col">photo</th>
         <th scope="col">Link</th>
         <th scope="col">EDIT</th>
+        <th scope="col">UPLOAD PHOTO</th>
         <th scope="col">DELETE</th>
         </tr>
     </thead>
@@ -30,6 +31,7 @@
         <td><font-awesome-icon :icon="['fas', 'link']" /></td>
         <td><a :href="item.pj_link.startsWith('http') ? item.pj_link : 'https://' + item.pj_link " target="_blank"><font-awesome-icon :icon="['fas', 'link']" /></a></td>
         <td><font-awesome-icon :icon="['fas', 'pen-to-square']" v-on:click="submitPortfolioEdit(item)" class="color-cursor" /></td>
+        <td><font-awesome-icon :icon="['fas', 'upload']" v-on:click="ShowUpload(item.id)"  class="color-cursor" /></td>
         <td><font-awesome-icon :icon="['fas', 'trash-can']" v-on:click="ShowDeletePortfolio(item.id)" class="color-cursor text-danger" /></td>
         </tr>
     </tbody>
@@ -193,6 +195,7 @@ export default {
                 }
                 });
     },
+
     async createUserFolder(){
         
         try{
@@ -268,6 +271,66 @@ export default {
         } catch (error) {
             console.error('Error user:', error);
         }
+    },
+     ShowUpload(itemID){
+        Swal.fire({
+            title: 'Upload File',
+        html: `
+            <div>
+                    <h1>image อัพโหลด</h1>
+                    <input type="file" id="fileInput"  class="form-control "  placeholder="เนื้อหา">
+
+
+                </div>
+
+        `,
+        showCancelButton: true,
+        confirmButtonText: 'Upload',
+        didRender: () => {
+        const fileInput = document.getElementById('fileInput');
+        fileInput.addEventListener('change', (event) => {
+            console.log('File selected:', event.target.files[0]);
+        });
+        },
+        preConfirm: () => {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+            Swal.showValidationMessage('Please select a file to upload.');
+            return false; // หยุดการดำเนินการหากไม่มีไฟล์
+            }
+
+            return file; // ส่งไฟล์ไปให้ Promise
+        }
+        }).then(async (result) => {
+        if (result.isConfirmed) {
+            const file = result.value;
+
+            try {
+        //    console.log('itemID: ' + itemID);
+            // console.log('FILE: ' + file);
+            await axios.post('http://localhost:3000/api/create-folder',{
+                    userId: itemID,
+                });
+                const formData = new FormData();
+                formData.append('images',file);
+                formData.append('userId',itemID);
+                const response = await axios.post('http://localhost:3000/api/upload-image-to-fodler', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+                if (response.status !== 200) {
+                throw new Error('Upload failed.');
+                }
+                console.log(response);
+            Swal.fire('Success!', 'File uploaded successfully!', 'success');
+            } catch (error) {
+            Swal.fire('Error!', error.message, 'error');
+            }
+        }
+        });
     }
 
   },
