@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="pt-5 mt-5" >
-                    <img class="resume-photo" :src="imgUrlBanner" alt=""  :style="{'--background-image-url':`url(${imgUrlBanner})`}">
+                    <img class="resume-photo" :src="imgUrlBanner" alt="" loading="lazy"  :style="{'--background-image-url':`url(${imgUrlBanner})`}">
                 </div>
 
                 <div class=" d-flex justify-content-center align-items-center">
