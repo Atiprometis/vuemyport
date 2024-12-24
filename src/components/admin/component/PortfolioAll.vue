@@ -28,15 +28,18 @@
         <td><a href="#" @click.prevent="getSkills(item.id)" >SEE MORE</a></td>
         <td><a href="#" @click.prevent="getProjectRole(item)" >SEE MORE</a></td>
         <td><a href="#" @click.prevent="getProjectChallenges(item)" >SEE MORE</a></td>
-        <td><font-awesome-icon :icon="['fas', 'link']" /></td>
+        <td><font-awesome-icon v-on:click="showImagefrom(item.id)" 
+            :icon="['fas', 'image']" 
+            class="color-cursor text-info"
+            /></td>
         <td><a :href="item.pj_link.startsWith('http') ? item.pj_link : 'https://' + item.pj_link " target="_blank"><font-awesome-icon :icon="['fas', 'link']" /></a></td>
         <td><font-awesome-icon :icon="['fas', 'pen-to-square']" v-on:click="submitPortfolioEdit(item)" class="color-cursor" /></td>
-        <td><font-awesome-icon :icon="['fas', 'upload']" v-on:click="ShowUpload(item.id)"  class="color-cursor" /></td>
+        <td><font-awesome-icon :icon="['fas', 'upload']" v-on:click="ShowUpload(item.id)"  class="color-cursor text-warning" /></td>
         <td><font-awesome-icon :icon="['fas', 'trash-can']" v-on:click="ShowDeletePortfolio(item.id)" class="color-cursor text-danger" /></td>
         </tr>
     </tbody>
 </table>
-        <CardAdmin>
+        <!-- <CardAdmin>
             <template v-slot:card-header>
                 <h1>portfolio</h1>
             </template>
@@ -57,11 +60,10 @@
 
                 </div>
                 <img v-if="fileName" :src="imageUrl" alt="Preview" style=" height: 100px;width: 100px;"/>
-                <!-- <h1 v-if="fileName">img : {{ fileName }}</h1> -->
-                <!-- <h2>img2:{{ imageUrl }}</h2> -->
+                
             </template>
             
-        </CardAdmin>
+        </CardAdmin> -->
 
     </div>
     <div v-if="isHiddenPortfolioEdit" class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center justify-content-center">
@@ -86,7 +88,7 @@
 <script>
  import axios from 'axios'
 
-import CardAdmin from '../CardAdmin.vue'
+// import CardAdmin from '../CardAdmin.vue'
 import Swal from 'sweetalert2';
 // import TemplatePortfolio from './TemplatePortfolio.vue'
 import PortfolioEdit from '../PortfolioEdit.vue'
@@ -113,10 +115,11 @@ export default {
       isHiddenPortfolioEdit: false,
       isHiddenPortfolioCreate: false,
       parentDataEdit: [],
+
     };
   },
   components: {
-    CardAdmin,
+    // CardAdmin,
     PortfolioEdit,
     PortfolioCreate,
   },
@@ -279,10 +282,7 @@ export default {
             <div>
                     <h1>image อัพโหลด</h1>
                     <input type="file" id="fileInput"  class="form-control "  placeholder="เนื้อหา">
-
-
                 </div>
-
         `,
         showCancelButton: true,
         confirmButtonText: 'Upload',
@@ -331,6 +331,26 @@ export default {
             }
         }
         });
+    },
+    async showImagefrom(userId){
+        // console.log('userId'+userId)
+            try{
+                const response = await axios.post(`http://localhost:3000/api/get-image-all/${userId}`);
+                console.log(response.data.images);
+                const images = response.data.images;
+                const imageHtml = images
+                .map(imageUrl => `<img src="${imageUrl}" alt="Image" style="width: 200px; height: 200px; margin: 5px;">`)
+                .join('');
+
+                Swal.fire({
+               title: "Your Images",
+                html: `<div style="display: flex; flex-wrap: wrap; justify-content: center;">${imageHtml}</div>`,
+                showCloseButton: true
+                });
+            }catch(err){
+                console.error('Error user:', err);
+            }
+
     }
 
   },
@@ -352,4 +372,15 @@ export default {
     cursor:pointer;
     color: aqua;;
 }
+
+/* สไตล์เมื่อมีรูป */
+.has-image {
+  color: red;
+}
+
+/* สไตล์เมื่อไม่มีรูป */
+.no-image {
+  color: black;
+}
+
 </style>
