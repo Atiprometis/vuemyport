@@ -32,7 +32,7 @@
                         
                 </TemplatePortfolio>
                         <button  type="submit" class="btn btn-primary">ยืนยัน</button>
-                        <button type="submit" class="btn btn-danger">ยกเลิก</button>
+                        <button  class="btn btn-danger">ยกเลิก</button>
                 </form>
                 
             </div>

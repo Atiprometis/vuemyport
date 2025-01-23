@@ -56,7 +56,25 @@
                     <div class="form-group">
                         <label for="formGroupExampleInput2" class=" text-uppercase">skills</label>
                         <slot name="port-skills">
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+
+                            <!-- <div class=" h-100">
+                            <multiselect 
+                            v-model="value" 
+                            tag-placeholder="Add this as new tag" 
+                            placeholder="Search or add a tag" 
+                            label="name"
+                            track-by="code" 
+                            :hide-selected="true"
+
+                            :options="options" 
+                            :multiple="true" 
+                            :taggable="true" 
+                            tag-position="bottom"
+                            @tag="addTag">
+                            
+                            </multiselect>
+                            <pre class="language-json"><code>{{ value }}</code></pre>
+                            </div> -->
                         </slot>
                         
                     </div>
@@ -72,24 +90,61 @@
     </div>
 </template>
 <script>
+//   import 'vue-multiselect/dist/vue-multiselect.min.css'; 
+   
+
 export default {
     name: 'TemplatePortfolio',
+
     data(){
         return {
-            
+            value: [],
+            search: "",
+      options: [
+        {name: 'Vue.js', code: 'vu'},
+        {name: 'Javascript', code: 'js'},
+        {name: 'Open Source', code: 'os'},
+        {name: 'Vue.js1', code: 'vu1'},
+        {name: 'Javascript1', code: 'js1'},
+        {name: 'Open Source1', code: 'os1'},
+        {name: 'Vue.js2', code: 'vu2'},
+        {name: 'Javascript2', code: 'js2'},
+        {name: 'Open Source2', code: 'os2'},
+        {name: 'Vue.js3', code: 'vu3'},
+        {name: 'Javascript3', code: 'js3'},
+        {name: 'Open Source3', code: 'os3'},
+      ]
            
         }
     },
+    computed: {
+    
+  },
     methods:{
-       
+        addTag (newTag) {
+      const tag = {
+        name: newTag,
+        code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+      }
+      this.options.push(tag)
+      this.value.push(tag)
     },
-    computed:{
-
-       
-    }
+    
+    },
+    
 }
 
 </script>
 
 <style>
+.multiselect__select {
+  display: none !important;
+}
+
+.multiselect__input{
+
+}
+.multiselect__tags{
+    min-height: 70px;
+}
 </style>

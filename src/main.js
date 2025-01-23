@@ -20,6 +20,7 @@ import store from './store'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+import 'vue-multiselect/dist/vue-multiselect.min.css'; 
 
 
 /* add icons to the library */
