@@ -75,14 +75,13 @@
     </div>
     <div v-if="isHiddenPortfolioCreate" class=" col-lg-10 p-0 m-0 d-flex flex-column justify-content-center justify-content-center">
         <button v-on:click="submitPortfolio()">BACK</button>
-        <PortfolioCreate :onBacktoPort="submitPortfolio"  >
+        <PortfolioCreate :onBacktoPort="submitPortfolio" :getUserDataToport="getUserData" >
             
         </PortfolioCreate>
                     
     </div>
     
 
-    
 </template>
 
 <script>

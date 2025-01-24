@@ -89,6 +89,10 @@ import Multiselect from 'vue-multiselect'
             type: Function, // ระบุว่าค่าที่ส่งมาควรเป็นฟังก์ชัน
             required: true,
             },
+            getUserDataToport: {
+            type: Function, // ระบุว่าค่าที่ส่งมาควรเป็นฟังก์ชัน
+            required: true,
+            },
             
   },
     methods:{
@@ -119,6 +123,8 @@ import Multiselect from 'vue-multiselect'
                         id_skills: id_skill, 
                     });
                 }
+                
+                await this.getUserDataToportfolio()
                 await this.backToPortfolio();
                  console.log('sss full');
 
@@ -137,6 +143,11 @@ import Multiselect from 'vue-multiselect'
         backToPortfolio() {
             if(this.onBacktoPort){
                 this.onBacktoPort();
+            }
+        },   
+        getUserDataToportfolio() {
+            if(this.getUserDataToport){
+                this.getUserDataToport();
             }
         },   
         onFileUpImages(event){
