@@ -3,7 +3,8 @@
         <div class="container">
             <div class="row ">
                 
-            <div class="col-lg-6  my-bg d-flex justify-content-center align-items-center ">
+                <!-- animetion  -->
+            <div class="col-lg-6  my-bg d-none d-lg-block d-md-block d-sm-none  d-flex justify-content-center align-items-center ">
 
                 <img class="phone-my-bg" :src="require(`../../assets/img/mockup/phone_14.png`)" alt="">
                 <img class="myimg-my-bg add-animate-on-bg-opacity " :src="require(`../../assets/img/mockup/t1.png`)" alt="">
@@ -15,9 +16,11 @@
                     <div class="boxskill   animate-on-bg-scroll"  ></div>
                 </div>
             </div>
+                <!-- animetion end -->
+
             <div class="col-lg-6 p-5 mt-5 my-skills d-flex flex-column align-items-start justify-content-start" >
                 <h4 class="  text-start">About me</h4>
-                <p class="p-0 m-0 text-start" v-if="aboutmeData[0]">
+                <p class="p-0 m-0 text-content" v-if="aboutmeData[0]">
                     {{  aboutmeData[0].content }}
                     <!-- Motivated and skilled front-end developer with experience building responsive and user-friendly websites using Vue.js Proficient in HTML, CSS, and JavaScript, as well as experience with PHPframeworks such as Laravel and CodeIgniter. Strong attention to detail and ability to work well in a team environment. -->
                 </p>
@@ -25,7 +28,7 @@
                 <div class=" d-flex flex-column ">
                     <div class="text-start m-0 p-0">
                         <ul class="m-0 p-0 d-flex flex-row font-all">
-                            <li class=" d-flex flex-row">
+                            <li class="m-0 p-0 d-flex flex-row">
                                 <h1 class="animate-on-bg-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'html5']" style="color: #ec4432;" /></h1>
                                 
                                 <h1 class="animate-on-bg-top-down fontawesomes p-2"><font-awesome-icon :icon="['fab', 'css3-alt']" style="color: #3074e8;" /></h1>
@@ -161,15 +164,23 @@ export default{
         width: 100%;
         height:100vh;
         position: relative;
+        display: block;
     }
     .phone-my-bg{
     width: 40vh;
     height: 75vh;
     z-index: 5;
+
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .phone-bg{
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 40vh;
     height: 74vh;
     z-index: 1;
@@ -179,14 +190,19 @@ export default{
     height: 60vh;
     z-index: 4;
     position: absolute;
-    margin-right: 10vh;
+    top: 25%;
+    left: 25%;
+    transform: translate(-25%, -25%);
+
 }
 .mycode-my-bg{
     width: 60vh;
     height: 60vh;
     z-index: 4;
     position: absolute;
-    margin-right: 10vh;
+    top: 25%;
+    left: 5%;
+
 }
 .animate-on-bg-scroll{
     opacity: 0;
@@ -271,8 +287,14 @@ export default{
 .font-all{
 
 }
+.text-start{
+    font-size: 1.5rem;
+}
+.text-content{
+    font-size: 0.9rem;
+}
 .fontawesomes{
-    font-size: 3vw;
+    font-size: 2.6rem;
 
 }
 .fontawesomes:nth-child(1){
@@ -292,6 +314,13 @@ export default{
 }
 .fontawesomes:nth-child(6){
     transition-delay: 1.4s;
+}
+
+@media only screen and (max-width: 768px) {
+    .fontawesomes{
+    font-size: 2.1rem;
+
+    }
 }
 
 </style>

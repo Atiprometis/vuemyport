@@ -2,16 +2,13 @@
     <div class="  ">
         <div class="row g-0">
             <!--  -->
-            <div class=" col-lg-6 img-b1 d-flex justify-content-center align-items-center ">
+            <div class=" col-lg-6 col-md-12 col-sm-12 img-b1 d-flex  justify-content-center align-items-center ">
                 <swiper
                 :spaceBetween=" 30"
-                
-                
                 :autoplay="{
                 delay: 10000,
                 disableOnInteraction: false,
                 }"
-
                 :allowTouchMove = "false"
 
                 :modules="modules"
@@ -25,7 +22,7 @@
                     <h2 class="ab2 m-0 p-0 text-uppercase">Chaithawat Samanjit</h2>
                     </label>
                     <div class="line"></div>
-                    <p class="text_bigbox fadefontchange  d-flex justify-content-center align-items-center" >
+                    <p class="text_bigbox fadefontchange p-3 m-0  d-flex justify-content-center align-items-center" >
                         {{myaboutme}}
                     </p>   
                     
@@ -39,7 +36,7 @@
                             <h2 class="ab2 m-0 p-0 text-uppercase">Web developer</h2>
                             </label>
                             <div class="line"></div>
-                            <p class="text_bigbox fadefontchange d-flex justify-content-center align-items-center " >
+                            <p class="text_bigbox fadefontchange p-3 m-0 d-flex justify-content-center align-items-center " >
                                 {{ myskillbigblock }}
                             </p>   
                         </div>
@@ -49,9 +46,10 @@
                 
                 </swiper>
             </div>
-            <div class="bigblock m-0 p-0 col-lg-6 d-flex justify-content-center align-items-center ">
+            <div class="col-lg-6  d-none d-lg-block d-sm-none d-md-none m-0 p-0 bigblock ">
                 
-                <div class="circle rounded-circle"></div>
+                <div class=" ">
+                    <div class="circle rounded-circle"></div>
                 <div class="circle-2 rounded-circle"></div>
 
                 <img class="phone" :src="require(`../../assets/img/mockup/phone_14.png`)" alt="">
@@ -63,9 +61,10 @@
                 <img class="e-ro3" :src="require(`../../assets/img/e-ro3.png`)" alt="">
                
                 <img class="nri" :src="require(`../../assets/img/nri.png`)" alt="">
-                <img class="k1" :src="require(`../../assets/img/k1.png`)" alt="">
+                <!-- <img class="k1" :src="require(`../../assets/img/k1.png`)" alt=""> -->
+                </div>
                 
-        </div>
+            </div>
         
         </div>
                 
@@ -171,6 +170,146 @@ export default{
     position: relative;
 
 }
+.circle{
+    display: block;
+    z-index: 2;
+    position: absolute;
+    width: 60vh; 
+    height: 60vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FCF4A3;
+}
+.circle-2{
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vh; 
+    height: 70vh;
+    background-color: #B22222;
+}
+.phone{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40vh;
+    height: 75vh;
+    z-index: 4;
+}
+.phone-bg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40vh;
+    height: 74vh;
+    z-index: 1;
+}
+.b1{
+    z-index: 4;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    top: 40vh;
+
+    width: 50vh;
+    height: 40vh;
+    /* animation-name: move;
+    animation-duration: 3s;
+    animation-iteration-count: infinite; */
+
+}
+.b3{
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 40vh;
+
+    width: 55vh;
+    height: 35vh;
+
+    animation-name: move-bg;
+    animation-duration: 4.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.star{
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 45vh;
+
+    width: 60vh;
+    height: 50vh;
+    animation-name: fate-top;
+    animation-duration: 4.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.e-ro3{
+    z-index: 4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 40vh;
+    /* right: -60%; */
+    width: 50vh;
+    height: 40vh;
+     animation-name: move-right;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+
+}
+.nri{
+    z-index: 4;
+    position: absolute;
+    top: 40%;
+    left: 68%;
+    transform: translate(-135%, -50%);
+
+    right: 34vh;
+    width: 5vh;
+    height: 5vh;
+
+    /* animation-name: spin; */
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+   
+}
+/* .k1{
+    z-index: 5;
+    position: absolute;
+    top: 39%;
+    left: 56%;
+    transform: translate(-135%, -50%);
+    right: 34vh;
+    width: 4vh;
+    height: 2vh;
+
+    animation-name: spin;
+
+    animation-duration: 2.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+   
+} */
+.text_bigbox {
+    font-size: 1rem;
+}
 .img-b1{
 
     height: 100vh;
@@ -194,112 +333,6 @@ export default{
     width: 100%;
     height: 100%;
 }
-.phone{
-    width: 40vh;
-    height: 75vh;
-    z-index: 5;
-}
-.phone-bg{
-    position: absolute;
-    width: 40vh;
-    height: 74vh;
-    z-index: 1;
-}
-.b1{
-    z-index: 4;
-    position: absolute;
-    top: 40vh;
-
-    width: 50vh;
-    height: 40vh;
-    /* animation-name: move;
-    animation-duration: 3s;
-    animation-iteration-count: infinite; */
-
-}
-.b3{
-    z-index: 3;
-    position: absolute;
-    top: 40vh;
-
-    width: 55vh;
-    height: 35vh;
-
-    animation-name: move-bg;
-    animation-duration: 4.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-.star{
-    z-index: 3;
-    position: absolute;
-    top: 45vh;
-
-    width: 60vh;
-    height: 50vh;
-    animation-name: fate-top;
-    animation-duration: 4.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-.circle{
-    z-index: 2;
-    position: absolute;
-    width: 60vh; 
-    height: 60vh;
-    background-color: #FCF4A3;
-}
-.circle-2{
-    z-index: 1;
-    position: absolute;
-    width: 70vh; 
-    top: 14.5vh;
-    height: 70vh;
-    background-color: #B22222;
-}
-.e-ro3{
-    z-index: 4;
-    position: absolute;
-    top: 40vh;
-    /* right: -60%; */
-    width: 50vh;
-    height: 40vh;
-     animation-name: move-right;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-
-}
-.k1{
-    z-index: 3;
-    position: absolute;
-    top: 48vh;
-    right: 35vh;
-    width: 3vh;
-    height: 3vh;
-
-    animation-name: spin;
-    /* transform: rotate(270deg); */
-    animation-duration: 2.8s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-   
-}
-.nri{
-    z-index: 3;
-    position: absolute;
-    top: 47vh;
-    right: 34vh;
-    width: 5vh;
-    height: 5vh;
-
-    /* animation-name: spin; */
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-   
-}
-
 .ab1:hover ~ .line{
     background-color: #ca97ca;
     width: 28%;
@@ -336,7 +369,7 @@ export default{
 
 .ab1{
     line-height: 20px;
-    font-size: 2.3vw;
+    font-size: 1.8rem;
     transition: font-size 1s;
     font-weight:700;
     text-align: start;
@@ -344,7 +377,7 @@ export default{
 
 
 .ab2{
-    font-size: 2.7vw;
+    font-size: 2rem;
     transition: font-size 1s;
     font-weight:700;
 }
