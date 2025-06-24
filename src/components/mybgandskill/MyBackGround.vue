@@ -19,12 +19,12 @@
                 <!-- animetion end -->
 
             <div class="col-lg-6 p-5 mt-5 my-skills d-flex flex-column align-items-start justify-content-start" >
-                <h4 class="  text-start">About me</h4>
-                <p class="p-0 m-0 text-content" v-if="aboutmeData[0]">
+                <h4 class="  text-start text-light">About me</h4>
+                <p class="p-0 m-0 text-content text-light" v-if="aboutmeData[0]">
                     {{  aboutmeData[0].content }}
                     <!-- Motivated and skilled front-end developer with experience building responsive and user-friendly websites using Vue.js Proficient in HTML, CSS, and JavaScript, as well as experience with PHPframeworks such as Laravel and CodeIgniter. Strong attention to detail and ability to work well in a team environment. -->
                 </p>
-                <h4 class=" text-start mt-4">Skills</h4>
+                <h4 class=" text-start mt-4 text-light">Skills</h4>
                 <div class=" d-flex flex-column ">
                     <div class="text-start m-0 p-0">
                         <ul class="m-0 p-0 d-flex flex-row font-all">
@@ -150,7 +150,8 @@ export default{
   right: 0;
 }
 .bg-color-my-bg{
-    background-color: #fff;
+    /* background-color: #392F5A; */
+    background: linear-gradient(to right, #0d0d0d, #392F5A);
 }
 
     ul{
@@ -291,10 +292,11 @@ export default{
     font-size: 1.5rem;
 }
 .text-content{
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+    text-align: left;
 }
 .fontawesomes{
-    font-size: 2.6rem;
+    font-size: 3rem;
 
 }
 .fontawesomes:nth-child(1){

@@ -1,8 +1,8 @@
 <template>
     <div class="  ">
-        <div class="row g-0">
+        <div class="row g-0 bigblock-bg">
             <!--  -->
-            <div class=" col-lg-6 col-md-12 col-sm-12 img-b1 d-flex  justify-content-center align-items-center ">
+            <div class=" col-lg-7 col-md-12 col-sm-12 img-b1 d-flex  justify-content-center align-items-center ">
                 <swiper
                 :spaceBetween=" 30"
                 :autoplay="{
@@ -19,10 +19,10 @@
                     <div class="pre-2 m-0 p-0 ">
                     <label class="allab ">
                     <h1 class="ab1 ">Hello, My name is </h1>
-                    <h2 class="ab2 m-0 p-0 text-uppercase">Chaithawat Samanjit</h2>
+                    <h2 class="ab2 m-2 px-2 text-uppercase">Chaithawat Samanjit</h2>
                     </label>
                     <div class="line"></div>
-                    <p class="text_bigbox fadefontchange p-3 m-0  d-flex justify-content-center align-items-center" >
+                    <p class="text_bigbox fadefontchange text-center p-3 m-0  d-flex justify-content-center align-items-center" >
                         {{myaboutme}}
                     </p>   
                     
@@ -36,7 +36,7 @@
                             <h2 class="ab2 m-0 p-0 text-uppercase">Web developer</h2>
                             </label>
                             <div class="line"></div>
-                            <p class="text_bigbox fadefontchange p-3 m-0 d-flex justify-content-center align-items-center " >
+                            <p class="text_bigbox fadefontchange text-center p-3 m-0 d-flex justify-content-center align-items-center " >
                                 {{ myskillbigblock }}
                             </p>   
                         </div>
@@ -46,7 +46,7 @@
                 
                 </swiper>
             </div>
-            <div class="col-lg-6  d-none d-lg-block d-sm-none d-md-none m-0 p-0 bigblock ">
+            <div class="col-lg-5  d-none d-lg-block d-sm-none d-md-none m-0 p-0 bigblock ">
                 
                 <div class=" ">
                     <div class="circle rounded-circle"></div>
@@ -157,7 +157,12 @@ export default{
 </script>
 
 <style>
+.bigblock-bg{
+    background: linear-gradient(to bottom right, #fff7d6, #ffddc1, #ffb3b3);
 
+    width: 100%;
+    height: 100vh;
+}
 .con{
     width: 100%;
 }
@@ -166,7 +171,7 @@ export default{
 
     width:100%;
 
-    background: #ffffff;
+    /* background: #fff; */
     position: relative;
 
 }
@@ -313,8 +318,8 @@ export default{
 .img-b1{
 
     height: 100vh;
-    background-color: #fff;
-    color: #000;;
+
+    color: #a52a2a;;
 }
 .pre-1{
     display: none;
