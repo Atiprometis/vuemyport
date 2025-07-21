@@ -46,7 +46,7 @@
                             
                             </div>
                         </div>
-                        <div class="dot m-1"></div>
+                        <div class="dot m-1 pb-5"></div>
                     </div>
                     
 
@@ -118,30 +118,28 @@ text-underline-offset: 8px;
 
 }
 .dot {
-  padding: 0 7% 0 0%;
-
-  display: inline-block;
+  padding-right: 7%;
+  display: inline-flex;
   position: relative;
+  alight-items: center;
+  justify-content: center;
 
 }
 .dot::after {
     content: "";
-    height: 30px;
-    width: 30px;
+    width: clamp(20px, 5vw, 30px);    
+  height: clamp(20px, 5vw, 30px);
     background-color: #fff;
     border-radius: 50%;
-    left: 0;
-    display: inline-block;
     position: absolute;
-    border: #FDBB59 solid 4px;
+    border: #FDBB59 solid 0.25em;     /* ใช้ em จะ scale กับ font */
     z-index: 2;
+    left: 0;
+   
 }
 .timeline {
    
   position: relative;
-
- 
-  /* background-color: rgb(206, 39, 39); */
 
 
 }
@@ -150,13 +148,8 @@ text-underline-offset: 8px;
   height:100%;
   width: 7px;
   position: absolute;
-  top:0;
-  left: 0;
-    margin-left: 2vh;
-    margin-top: 1vh;
-
+  top:20px;
+  left: 15px;
   background-color: #FDBB58;
-
-  display: inline-block;
 }
 </style>
