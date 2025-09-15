@@ -5,6 +5,7 @@
     <thead>
         <tr>
         <th scope="col">#</th>
+        <th scope="col">photo main</th>
         <th scope="col">Name</th>
         <th scope="col">Type</th>
         <th scope="col">Project Description</th>
@@ -19,9 +20,10 @@
         </tr>
     </thead>
     <tbody v-for="item in userData " :key="item.id">
-        <tr>
+        <tr class="frame-portfolio">
 
         <th scope="row">{{ item.id }}</th>
+        <td><img  alt="" :src="`http://localhost:3000/assets/user/${item.id}/cover/${item.photo}`" style="width: 200px; height: 200px" ></td>
         <td>{{ item.projectname }}</td>
         <td>{{ item.type }}</td>
         <td><a href="#" @click.prevent="getProjectDescription(item)">SEE MORE</a></td>
@@ -378,5 +380,13 @@ export default {
 .no-image {
   color: black;
 }
-
+.frame-portfolio{
+    height: 200px;
+    width: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s ease;
+}
 </style>

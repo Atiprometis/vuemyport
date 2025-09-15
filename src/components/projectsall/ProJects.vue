@@ -15,8 +15,9 @@
 
                             <label class="col-12  project-box  ">
 
-                                <img class="img-pj  " :src="getImgUrl(item.photo)" alt="" >
-                                 
+                                <!-- <img class="img-pj  " :src="getImgUrl(item.id,item.photo)" alt="" > -->
+                                <img class="img-pj " :src="`http://localhost:3000/assets/user/${item.id}/cover/${item.photo}`" />
+
                                 <div class="box-text d-flex flex-column justify-content-center align-items-center   ">
                                     <h3 class="text-main  ">{{ item.projectname }}</h3> 
                                     <!-- <h5 class="text-content m-0 p-0">{{ item.description }}</h5> -->
@@ -39,16 +40,14 @@
 // import { ref  } from 'vue';
 import axios from 'axios';
 
-
-
-
-    export default{
+    export default {
+        name: 'ProJects',
         data(){
         return{
         //    pic:"https://img.i-scmp.com/cdn-cgi/image/fit=contain,width=425,format=auto/sites/default/files/styles/768x768/public/d8/images/methode/2020/06/08/4b0bdfc6-a639-11ea-8ea0-d7434be00753_image_hires_121748.jpg?itok=zq4iUnBF&v=1591589877",
         //     size:200,
-        quotes: [],
-        };
+            quotes: [],
+            };
          },
          created(){
             this.getProject();
@@ -58,28 +57,23 @@ import axios from 'axios';
             
         },
         methods: {
-        getImgUrl: function (imagePath) {
-        return require('@/assets/img/project/' + imagePath);
-        },
+        // getImgUrl (userId, imagePath) {
+        //    return require(`http://localhost:3000/assets/user/${userId}/cover/${imagePath}`);
+        // }
         async getProject() {
             try {
                 const response = await axios.get('http://localhost:3000/api/readdata');
                 this.quotes = response.data;
                 // console.log("ourput :" + response );
                 console.log("ourput2 :" + this.quotes );
-            } catch (error) {
-                console.error('Error fetching quotes:', error);
+                } catch (error) {
+                    console.error('Error fetching quotes:', error);
+                }
             }
-            },
-       
-            
-
-        },
-        name: 'ProJects',
-
-
+        }
     }
-    
+
+
 
 </script>
 
@@ -97,32 +91,34 @@ import axios from 'axios';
 .project-box {
     display:block;
     width: 100%;
-    height: 40vh;
+    aspect-ratio: 4 / 3;
     cursor: pointer;
     position: relative;
     top:0;
     left: 0;
-    /* background-color: #060303; */
+overflow: hidden;
     margin-left: auto;
   margin-right: auto;
   margin-bottom: 4vh;
 
   filter: drop-shadow(6px 6px 6px #c9c9c9);
 
-  
+
 }
 .img-pj{
     width: 100%;
-    height: 40vh;
-  
-    object-fit: cover;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover; 
+  object-position: center 20%;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
-   
+  
 }
 .project-all:hover .img-pj{
     filter: grayscale(0%);
     -webkit-filter: grayscale(0%);
+   
 }
 .box-text{
     
@@ -136,7 +132,7 @@ import axios from 'axios';
     top:0;
     left: 0;
     width: 100%;
-    height: 40vh;
+   aspect-ratio: 4 / 3;
     padding-top: 1.5vh;
     margin-bottom: 4vh;
     background: rgba(0,0,0,0.6);
